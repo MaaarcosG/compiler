@@ -1,0 +1,6 @@
+class Program {
+    void main() {
+        var = true;
+        print(var);
+    }
+}
