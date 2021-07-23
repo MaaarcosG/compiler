@@ -143,21 +143,21 @@ class DecafListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#op.
-    def enterOp(self, ctx:DecafParser.OpContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#op.
-    def exitOp(self, ctx:DecafParser.OpContext):
-        pass
-
-
     # Enter a parse tree produced by DecafParser#arith_op.
     def enterArith_op(self, ctx:DecafParser.Arith_opContext):
         pass
 
     # Exit a parse tree produced by DecafParser#arith_op.
     def exitArith_op(self, ctx:DecafParser.Arith_opContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#p_arith_op.
+    def enterP_arith_op(self, ctx:DecafParser.P_arith_opContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#p_arith_op.
+    def exitP_arith_op(self, ctx:DecafParser.P_arith_opContext):
         pass
 
 

@@ -1,52 +1,28 @@
-grammar Decaf;
 
-/*
- * Lexer Rules
- */
-fragment ALPHA: [a-zA-Z_];
+/*Gramatica de DECAF*/
+grammar Decaf;
 
 fragment DIGIT: [0-9];
 
-fragment ALPHA_NUM: ALPHA | DIGIT;
+fragment LETTER: [a-zA-Z_];
 
-fragment LETTER: [a-zA-Z];
+NUM: DIGIT (DIGIT)* ;
 
-ID: ALPHA ALPHA_NUM*;
+ID: LETTER (LETTER|DIGIT)* ;
+CHAR:'\'' LETTER '\'';
+SPACES : [ \t\r\n\f]+  ->channel(HIDDEN);
 
-NUM: DIGIT DIGIT*;
+program: 'class' 'Program' '{' (declaration)* '}' EOF;
 
-APOSTROPHE: '\'';
-
-CHAR_LITERAL: APOSTROPHE (LETTER | [\\\t\n]) APOSTROPHE;
-
-TRUE: 'true';
-
-FALSE: 'false';
-
-/*
- * Parser Rules
- */
-
-program: 'class' 'Program' '{' (declaration)* '}';
-
-declaration:
-	structDeclaration
-	| varDeclaration
-	| methodDeclaration;
+declaration: structDeclaration | varDeclaration | methodDeclaration;
 
 varDeclaration: varType ID ';' | varType ID '[' NUM ']' ';';
 
-structDeclaration: 'struct' ID '{' (varDeclaration)* '}';
+structDeclaration: 'struct' ID '{' (varDeclaration)* '}' ';';
 
-varType:
-	'int'
-	| 'char'
-	| 'boolean'
-	| 'struct' ID
-	| structDeclaration
-	| 'void';
+varType: 'int' | 'char' | 'boolean' | 'struct' ID | structDeclaration | 'void';
 
-methodDeclaration: methodType ID '(' (parameter)* ')' block;
+methodDeclaration: methodType ID '(' (parameter | parameter (',' parameter)*)?  ')' block ;
 
 methodType: 'int' | 'char' | 'boolean' | 'void';
 
@@ -56,33 +32,33 @@ parameterType: 'int' | 'char' | 'boolean';
 
 block: '{' (varDeclaration)* (statement)* '}';
 
-statement:
-	'if' '(' expression ')' block ('else' block)?
-	| 'while' '(' expression ')' block
-	| 'return' expression? ';'
-	| methodCall ';'
-	| block
-	| location '=' expression
-	| expression? ';';
+statement: 'if' '(' expression ')' block1 = block ('else' block2 = block)?
+        | 'while' '(' expression ')' block
+        | 'return' (expression)? ';'
+        | methodCall ';'
+        | block
+        | left = location '=' right = expression
+        | (expression)? ';'; 
 
-location: (ID | ID '[' expression ']') ('.' location)?;
+location: (ID | ID '[' expression ']' ) ('.' location)?;
 
-expression:
-	location
-	| methodCall
-	| literal
-	| expression op expression
-	| '-' expression
-	| '!' expression
-	| '(' expression ')';
-
-methodCall: ID '(' arg* ')';
+expression: methodCall | location | literal
+        | '(' expression ')' 
+        | '-' expression
+        | '!' expression
+        | left = expression p_arith_op right = expression
+        | left = expression arith_op right = expression
+        | left = expression rel_op right = expression
+        | left = expression eq_op right = expression
+        | left = expression cond_op right = expression ;
+        
+methodCall: ID '(' (arg | arg (',' arg)*)?    ')';
 
 arg: expression;
 
-op: arith_op | rel_op | eq_op | cond_op;
+arith_op: '+' | '-' ;
 
-arith_op: '+' | '-' | '*' | '/' | '%';
+p_arith_op: '*' | '/' | '%';
 
 rel_op: '<' | '>' | '<=' | '>=';
 
@@ -94,8 +70,6 @@ literal: int_literal | char_literal | bool_literal;
 
 int_literal: NUM;
 
-char_literal: '\'' CHAR_LITERAL '\'';
+char_literal: CHAR; 
 
-bool_literal: TRUE | FALSE;
-
-WHITESPACE: [\t\r\n ] -> skip;
+bool_literal: 'true' | 'false';
