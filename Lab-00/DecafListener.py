@@ -17,75 +17,75 @@ class DecafListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#declaration.
-    def enterDeclaration(self, ctx:DecafParser.DeclarationContext):
+    # Enter a parse tree produced by DecafParser#var_declar.
+    def enterVar_declar(self, ctx:DecafParser.Var_declarContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#declaration.
-    def exitDeclaration(self, ctx:DecafParser.DeclarationContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#varDeclaration.
-    def enterVarDeclaration(self, ctx:DecafParser.VarDeclarationContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#varDeclaration.
-    def exitVarDeclaration(self, ctx:DecafParser.VarDeclarationContext):
+    # Exit a parse tree produced by DecafParser#var_declar.
+    def exitVar_declar(self, ctx:DecafParser.Var_declarContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#structDeclaration.
-    def enterStructDeclaration(self, ctx:DecafParser.StructDeclarationContext):
+    # Enter a parse tree produced by DecafParser#struct_declar.
+    def enterStruct_declar(self, ctx:DecafParser.Struct_declarContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#structDeclaration.
-    def exitStructDeclaration(self, ctx:DecafParser.StructDeclarationContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#varType.
-    def enterVarType(self, ctx:DecafParser.VarTypeContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#varType.
-    def exitVarType(self, ctx:DecafParser.VarTypeContext):
+    # Exit a parse tree produced by DecafParser#struct_declar.
+    def exitStruct_declar(self, ctx:DecafParser.Struct_declarContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#methodDeclaration.
-    def enterMethodDeclaration(self, ctx:DecafParser.MethodDeclarationContext):
+    # Enter a parse tree produced by DecafParser#field_declar.
+    def enterField_declar(self, ctx:DecafParser.Field_declarContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#methodDeclaration.
-    def exitMethodDeclaration(self, ctx:DecafParser.MethodDeclarationContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#methodType.
-    def enterMethodType(self, ctx:DecafParser.MethodTypeContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#methodType.
-    def exitMethodType(self, ctx:DecafParser.MethodTypeContext):
+    # Exit a parse tree produced by DecafParser#field_declar.
+    def exitField_declar(self, ctx:DecafParser.Field_declarContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#parameter.
-    def enterParameter(self, ctx:DecafParser.ParameterContext):
+    # Enter a parse tree produced by DecafParser#array_id.
+    def enterArray_id(self, ctx:DecafParser.Array_idContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#parameter.
-    def exitParameter(self, ctx:DecafParser.ParameterContext):
+    # Exit a parse tree produced by DecafParser#array_id.
+    def exitArray_id(self, ctx:DecafParser.Array_idContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#parameterType.
-    def enterParameterType(self, ctx:DecafParser.ParameterTypeContext):
+    # Enter a parse tree produced by DecafParser#field_var.
+    def enterField_var(self, ctx:DecafParser.Field_varContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#parameterType.
-    def exitParameterType(self, ctx:DecafParser.ParameterTypeContext):
+    # Exit a parse tree produced by DecafParser#field_var.
+    def exitField_var(self, ctx:DecafParser.Field_varContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#var_id.
+    def enterVar_id(self, ctx:DecafParser.Var_idContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#var_id.
+    def exitVar_id(self, ctx:DecafParser.Var_idContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#method_declar.
+    def enterMethod_declar(self, ctx:DecafParser.Method_declarContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#method_declar.
+    def exitMethod_declar(self, ctx:DecafParser.Method_declarContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#return_type.
+    def enterReturn_type(self, ctx:DecafParser.Return_typeContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#return_type.
+    def exitReturn_type(self, ctx:DecafParser.Return_typeContext):
         pass
 
 
@@ -107,6 +107,33 @@ class DecafListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by DecafParser#method_call_inter.
+    def enterMethod_call_inter(self, ctx:DecafParser.Method_call_interContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#method_call_inter.
+    def exitMethod_call_inter(self, ctx:DecafParser.Method_call_interContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#method_call.
+    def enterMethod_call(self, ctx:DecafParser.Method_callContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#method_call.
+    def exitMethod_call(self, ctx:DecafParser.Method_callContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#expr.
+    def enterExpr(self, ctx:DecafParser.ExprContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#expr.
+    def exitExpr(self, ctx:DecafParser.ExprContext):
+        pass
+
+
     # Enter a parse tree produced by DecafParser#location.
     def enterLocation(self, ctx:DecafParser.LocationContext):
         pass
@@ -116,48 +143,21 @@ class DecafListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#expression.
-    def enterExpression(self, ctx:DecafParser.ExpressionContext):
+    # Enter a parse tree produced by DecafParser#callout_arg.
+    def enterCallout_arg(self, ctx:DecafParser.Callout_argContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#expression.
-    def exitExpression(self, ctx:DecafParser.ExpressionContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#methodCall.
-    def enterMethodCall(self, ctx:DecafParser.MethodCallContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#methodCall.
-    def exitMethodCall(self, ctx:DecafParser.MethodCallContext):
+    # Exit a parse tree produced by DecafParser#callout_arg.
+    def exitCallout_arg(self, ctx:DecafParser.Callout_argContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#arg.
-    def enterArg(self, ctx:DecafParser.ArgContext):
+    # Enter a parse tree produced by DecafParser#int_literal.
+    def enterInt_literal(self, ctx:DecafParser.Int_literalContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#arg.
-    def exitArg(self, ctx:DecafParser.ArgContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#arith_op.
-    def enterArith_op(self, ctx:DecafParser.Arith_opContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#arith_op.
-    def exitArith_op(self, ctx:DecafParser.Arith_opContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#p_arith_op.
-    def enterP_arith_op(self, ctx:DecafParser.P_arith_opContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#p_arith_op.
-    def exitP_arith_op(self, ctx:DecafParser.P_arith_opContext):
+    # Exit a parse tree produced by DecafParser#int_literal.
+    def exitInt_literal(self, ctx:DecafParser.Int_literalContext):
         pass
 
 
@@ -197,30 +197,48 @@ class DecafListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#int_literal.
-    def enterInt_literal(self, ctx:DecafParser.Int_literalContext):
+    # Enter a parse tree produced by DecafParser#bin_op.
+    def enterBin_op(self, ctx:DecafParser.Bin_opContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#int_literal.
-    def exitInt_literal(self, ctx:DecafParser.Int_literalContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#char_literal.
-    def enterChar_literal(self, ctx:DecafParser.Char_literalContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#char_literal.
-    def exitChar_literal(self, ctx:DecafParser.Char_literalContext):
+    # Exit a parse tree produced by DecafParser#bin_op.
+    def exitBin_op(self, ctx:DecafParser.Bin_opContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#bool_literal.
-    def enterBool_literal(self, ctx:DecafParser.Bool_literalContext):
+    # Enter a parse tree produced by DecafParser#arith_op.
+    def enterArith_op(self, ctx:DecafParser.Arith_opContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#bool_literal.
-    def exitBool_literal(self, ctx:DecafParser.Bool_literalContext):
+    # Exit a parse tree produced by DecafParser#arith_op.
+    def exitArith_op(self, ctx:DecafParser.Arith_opContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#var_type.
+    def enterVar_type(self, ctx:DecafParser.Var_typeContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#var_type.
+    def exitVar_type(self, ctx:DecafParser.Var_typeContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#assign_op.
+    def enterAssign_op(self, ctx:DecafParser.Assign_opContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#assign_op.
+    def exitAssign_op(self, ctx:DecafParser.Assign_opContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#method_name.
+    def enterMethod_name(self, ctx:DecafParser.Method_nameContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#method_name.
+    def exitMethod_name(self, ctx:DecafParser.Method_nameContext):
         pass
 
 

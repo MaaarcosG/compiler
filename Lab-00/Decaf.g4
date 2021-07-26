@@ -1,75 +1,181 @@
-
-/*Gramatica de DECAF*/
 grammar Decaf;
 
-fragment DIGIT: [0-9];
+/* Lexer Rules */
 
-fragment LETTER: [a-zA-Z_];
+CLASS               : 'class';
 
-NUM: DIGIT (DIGIT)* ;
+PROGRAM             : 'Program';
 
-ID: LETTER (LETTER|DIGIT)* ;
-CHAR:'\'' LETTER '\'';
-SPACES : [ \t\r\n\f]+  ->channel(HIDDEN);
+IF                  : 'if';
 
-program: 'class' 'Program' '{' (declaration)* '}' EOF;
+ELSE                : 'else';
 
-declaration: structDeclaration | varDeclaration | methodDeclaration;
+FOR                 : 'for';
 
-varDeclaration: varType ID ';' | varType ID '[' NUM ']' ';';
+RETURN              : 'return';
 
-structDeclaration: 'struct' ID '{' (varDeclaration)* '}' ';';
+BREAK               : 'break';
 
-varType: 'int' | 'char' | 'boolean' | 'struct' ID | structDeclaration | 'void';
+CONTINUE            : 'continue';
 
-methodDeclaration: methodType ID '(' (parameter | parameter (',' parameter)*)?  ')' block ;
+BOOLEAN             : 'boolean';
 
-methodType: 'int' | 'char' | 'boolean' | 'void';
+STRUCT              : 'struct';
 
-parameter: parameterType ID | parameterType ID '[' ']';
+CHAR                : 'char';
 
-parameterType: 'int' | 'char' | 'boolean';
+INT                 : 'int';
 
-block: '{' (varDeclaration)* (statement)* '}';
+STRING              : 'string';
 
-statement: 'if' '(' expression ')' block1 = block ('else' block2 = block)?
-        | 'while' '(' expression ')' block
-        | 'return' (expression)? ';'
-        | methodCall ';'
-        | block
-        | left = location '=' right = expression
-        | (expression)? ';'; 
+TRUE                : 'True';
 
-location: (ID | ID '[' expression ']' ) ('.' location)?;
+FALSE               : 'False';
 
-expression: methodCall | location | literal
-        | '(' expression ')' 
-        | '-' expression
-        | '!' expression
-        | left = expression p_arith_op right = expression
-        | left = expression arith_op right = expression
-        | left = expression rel_op right = expression
-        | left = expression eq_op right = expression
-        | left = expression cond_op right = expression ;
-        
-methodCall: ID '(' (arg | arg (',' arg)*)?    ')';
+VOID                : 'void';
 
-arg: expression;
+CALLOUT             : 'callout';
 
-arith_op: '+' | '-' ;
+// Symbol Specification
+SEMICOLON           : ';';
 
-p_arith_op: '*' | '/' | '%';
+LCURLY              : '{';
 
-rel_op: '<' | '>' | '<=' | '>=';
+RCURLY              : '}';
 
-eq_op: '==' | '!=';
+LSQUARE             : '[';
 
-cond_op: '&&' | '||';
+RSQUARE             : ']';
 
-literal: int_literal | char_literal | bool_literal;
+LROUND              : '(';
 
-int_literal: NUM;
+RROUND              : ')';
 
-char_literal: CHAR; 
+COMMA               : ',';
 
-bool_literal: 'true' | 'false';
+QUOTES              : '"';
+
+APOSTROPHE          : '\'';
+
+ADD                 : '+';
+
+SUB                 : '-';
+
+MULTIPLY            : '*';
+
+DIVIDE              : '/';
+
+REMINDER            : '%';
+
+AND                 : '&&';
+
+OR                  : '||';
+
+NOT                 : '!';
+
+GREATER_OP          : '>';
+
+LESS_OP             : '<';
+
+GREATER_eq_op       : '>=';
+
+LESS_eq_op          : '<=';
+
+EQUAL_OP            : '=';
+
+ADD_eq_op           : '+=';
+
+SUB_eq_op           : '-=';
+
+EQUALITY_OP         : '==';
+
+UNEQUALITY_OP       : '!=';
+
+ID                  : LETTER(LETTER|DIGIT)*;
+
+LETTER      : [a-zA-Z_];
+
+CHAR_LITERAL        : APOSTROPHE ( '\\' [btnfr"'\\] | ~[\r\n\\"] ) APOSTROPHE;
+
+DECIMAL_LITERAL     : [0-9]+;
+
+fragment DIGIT      : [0-9];
+
+HEX_LITERAL         : '0'[xX][0-9a-fA-F]+;
+
+BOOL_LITERAL        : TRUE | FALSE;
+
+STRING_LITERAL      : '"' ( '\\' [btnfr"'\\] | ~[\r\n\\"] )* '"';
+
+/* Parser Rules */
+
+program		    : CLASS PROGRAM LCURLY field_declar* method_declar* RCURLY;
+
+var_declar            : (var_type field_var) (COMMA var_type field_var)* SEMICOLON;
+
+struct_declar       : STRUCT ID LCURLY (var_declar*) RCURLY;
+
+field_declar         : var_type field_var (COMMA field_var)* SEMICOLON;
+
+array_id            : ID LSQUARE int_literal RSQUARE;
+
+field_var           : var_id | array_id;
+
+var_id              : ID;
+
+method_declar        : return_type method_name LROUND ((var_type var_id) (COMMA var_type var_id)*)? RROUND block;
+
+return_type         : (var_type | VOID);
+
+block               : LCURLY var_declar* statement* RCURLY;
+
+statement           : IF LROUND expr RROUND block (ELSE block)?
+                    | FOR var_id (EQUAL_OP int_literal)? COMMA ((var_id (EQUAL_OP int_literal)?) | int_literal) block
+                    | RETURN expr SEMICOLON
+                    | method_call
+                    | location assign_op expr
+                    | location assign_op expr SEMICOLON
+                    | var_id EQUAL_OP expr SEMICOLON
+                    | BREAK SEMICOLON;
+
+method_call_inter   : method_name LROUND (expr (COMMA expr)*)? RROUND;
+
+method_call         : method_call_inter
+                    | method_call_inter SEMICOLON
+                    | CALLOUT LROUND STRING_LITERAL (COMMA callout_arg (COMMA callout_arg)*)? RROUND SEMICOLON;
+
+expr                : location
+                    | literal
+                    | expr bin_op expr
+                    | SUB expr
+                    | method_call
+                    | NOT expr
+                    | LROUND expr RROUND;
+
+location            : (var_id | array_id) ('.' location)?;
+
+callout_arg         : expr | STRING_LITERAL;
+
+int_literal         : DECIMAL_LITERAL | HEX_LITERAL;
+
+rel_op              : GREATER_OP | LESS_OP | LESS_eq_op | GREATER_eq_op;
+
+eq_op               : EQUALITY_OP | UNEQUALITY_OP;
+
+cond_op             : AND | OR;
+
+literal             : int_literal | CHAR_LITERAL | BOOL_LITERAL;
+
+bin_op              : arith_op | rel_op | eq_op | cond_op;
+
+arith_op            : ADD | SUB | MULTIPLY | DIVIDE | REMINDER;
+
+var_type            : INT | BOOLEAN | STRUCT ID | struct_declar | VOID;
+
+assign_op           : EQUAL_OP
+                    | ADD_eq_op
+                    | SUB_eq_op;
+
+method_name         : ID;
+
+WHITESPACE			: [ \t\r\n] -> skip ;
