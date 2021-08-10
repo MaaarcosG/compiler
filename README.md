@@ -1,4 +1,4 @@
-# Compiler
+# Decaf Compiler
 
 Codigo Fuente: https://github.com/MaaarcosG/compiler.git
 
@@ -10,6 +10,7 @@ Hecho por:
 
 - Python 3.8 or higher
 - Graphicviz installed on the computer
+- Antlr4 python
 
 ```bash
 $ pip install antlr4-python3-runtime
