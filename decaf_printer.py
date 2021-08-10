@@ -47,7 +47,7 @@ class Decaf_Printer(DecafListener):
         type = ctx.getChild(0).getText()
         name = ctx.getChild(1).getText()
         # printeamos los valores 
-        print('-> Variable de Tipo: %s\n-> Nombre de la variable %s' % (type, name))
+        print('%s\n-> Variable de Tipo: %s\n-> Nombre de la variable %s' % (('*'*50), type, name))
         _scope = self.stack.peek()
 
     def exitVar_declar(self, ctx: DecafParser.Var_declarContext):
