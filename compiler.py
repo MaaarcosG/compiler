@@ -13,6 +13,7 @@ def main(argv):
     tree = parser.program()
     visitor = CustomVisitor()
     visitor.visit(tree)   
+    # print(visitor.scope.peek().id)
     # obtenemos la informacion del archivo y lo mandamos para que se imprima el arbol
     data = str(argv[1])
     name = data.split('\\')[-1].split('.')[0]

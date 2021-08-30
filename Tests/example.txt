@@ -17,6 +17,9 @@ class Program {
         b = 2;
         varBoolean = true;
         c = a + b;
+        if(a==0) {
+            int x;
+        }
         return a;
     }
 }

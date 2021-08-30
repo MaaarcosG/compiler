@@ -12,6 +12,8 @@ class CustomVisitor(DecafVisitor):
         self.scope = Decaf_Stack()
         self.errors = []
         self.offset = 0
+        # counter of scope 
+        self.count = 0
 
     def error(self):
         self.flag = True
@@ -75,7 +77,10 @@ class CustomVisitor(DecafVisitor):
 
         s = Symbol(name, vartype, self.offset)
         self.offset += scope.typeTable.getSize(vartype)
+        print('Add %s to scope %s' % (name, scope.name))
+        scope.parent and print(scope.parent.id)
         scope.add(s)
+        scope.parent and print(scope.parent.id)
 
         return self.visitChildren(ctx)
 
@@ -85,12 +90,12 @@ class CustomVisitor(DecafVisitor):
         vartype = ctx.var_Type.getText().replace('struct', '')
 
         size = int(str(ctx.NUM()))
-
+        print(size)
         s = Symbol(name, vartype, self.offset, listSize=size)
-        print(scope.typeTable.entrys['int'])
+        # print(scope.typeTable.id['int'])
         self.offset += (scope.typeTable.getSize(vartype) * size)
         scope.add(s)
-
+        print('ITS IN METHOD DECLARATION')
         return self.visitChildren(ctx)
     
     def visitStruct_declar(self, ctx: DecafParser.Struct_declarContext):
@@ -107,13 +112,13 @@ class CustomVisitor(DecafVisitor):
         scope = self.scope.peek()
         returnType = ctx.returnType.getText()
         
-        s = Type_Item(name, 0, 'method', {}, returnType)
+        data = Type_Item(name, 0, 'method', {}, returnType)
         
         for param in ctx.parameter():
             values = self.visitParameter(param)
-            s.addParam(values)
+            data.addParam(values)
 
-        scope.addType(s)
+        scope.addType(data)
 
         # enter method scope
         self.enter_scope(name, 'method')
@@ -126,7 +131,19 @@ class CustomVisitor(DecafVisitor):
         scope = self.scope.peek()
         vartype = ctx.var_Type.getText()
         
-        s = Symbol(name, vartype, self.offset)
+        s = Symbol(name, vartype, self.offset, param=True)
         scope.add(s)
         v = self.visitChildren(ctx)
         return s
+    
+    def visitIfStmt(self, ctx: DecafParser.IfStmtContext):
+        self.enter_scope('block %s if' % str(self.count))
+        self.count += 1
+        self.exit_scope()
+        return self.visitChildren(ctx)
+    
+    def visitWhileStmt(self, ctx: DecafParser.WhileStmtContext):
+        self.enter_scope('block %s if' % str(self.count))
+        self.count += 1
+        self.exit_scope()
+        return self.visitChildren(ctx)

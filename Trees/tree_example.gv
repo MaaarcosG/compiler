@@ -307,20 +307,66 @@ digraph "Trees/tree_example" {
 	151 -> 152
 	153 [label=statement color=green]
 	79 -> 153
-	154 [label=returnStmt color=green]
+	154 [label=ifStmt color=green]
 	153 -> 154
-	155 [label=return color=blue]
+	155 [label=if color=blue]
 	154 -> 155
-	156 [label=expression color=green]
+	156 [label="(" color=blue]
 	154 -> 156
-	157 [label=location color=green]
-	156 -> 157
-	158 [label=a color=blue]
+	157 [label=expression color=green]
+	154 -> 157
+	158 [label=expression color=green]
 	157 -> 158
-	159 [label=";" color=blue]
-	154 -> 159
-	160 [label="}" color=blue]
-	79 -> 160
-	161 [label="}" color=blue]
-	0 -> 161
+	159 [label=location color=green]
+	158 -> 159
+	160 [label=a color=blue]
+	159 -> 160
+	161 [label=eq_op color=green]
+	157 -> 161
+	162 [label="==" color=blue]
+	161 -> 162
+	163 [label=expression color=green]
+	157 -> 163
+	164 [label=literal color=green]
+	163 -> 164
+	165 [label=int_literal color=green]
+	164 -> 165
+	166 [label=0 color=blue]
+	165 -> 166
+	167 [label=")" color=blue]
+	154 -> 167
+	168 [label=block color=green]
+	154 -> 168
+	169 [label="{" color=blue]
+	168 -> 169
+	170 [label=var_declar color=green]
+	168 -> 170
+	171 [label=var_type color=green]
+	170 -> 171
+	172 [label=int color=blue]
+	171 -> 172
+	173 [label=x color=blue]
+	170 -> 173
+	174 [label=";" color=blue]
+	170 -> 174
+	175 [label="}" color=blue]
+	168 -> 175
+	176 [label=statement color=green]
+	79 -> 176
+	177 [label=returnStmt color=green]
+	176 -> 177
+	178 [label=return color=blue]
+	177 -> 178
+	179 [label=expression color=green]
+	177 -> 179
+	180 [label=location color=green]
+	179 -> 180
+	181 [label=a color=blue]
+	180 -> 181
+	182 [label=";" color=blue]
+	177 -> 182
+	183 [label="}" color=blue]
+	79 -> 183
+	184 [label="}" color=blue]
+	0 -> 184
 }
