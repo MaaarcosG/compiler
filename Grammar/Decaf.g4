@@ -25,8 +25,8 @@ declaration:
 struct_declar: 'struct' name=ID '{' (var_declar)* '}' (';')?;
       
 var_declar:
-      vType=var_type  name=ID ';'
-    | vType=var_type  name=ID '[' size=NUM ']' ';';
+      var_Type=var_type  name=ID ';' #single_VarDeclar
+    | var_Type=var_type  name=ID '[' size=NUM ']' ';' #list_VarDeclar;
 
 structInstantiation:
     'struct' struct=ID name=ID;
@@ -49,8 +49,8 @@ method_type:
     | 'void';
 
 parameter: 
-      vType=parameter_type name=ID 
-    | vType=parameter_type name=ID '[' ']' 
+      var_Type=parameter_type name=ID 
+    | var_Type=parameter_type name=ID '[' ']' 
     | 'void';
 
 parameter_type: 
@@ -61,13 +61,21 @@ parameter_type:
 block: '{' (decl=var_declar)* (state=statement)* '}';
 
 statement:
-      'if' '(' expression ')' ifblock=block ('else' elseblock=block)?
-    | 'while' '(' expression ')' block
-    | 'return' (expression)? ';'
+      ifStmt
+    | whileStmt
+    | returnStmt
     | method_call ';'
     | block
-    | left=location '=' right=expression
+    | assigStmt
     | (expression)? ';';
+
+ifStmt: 'if' '(' expression ')' ifblock=block ('else' elseblock=block)?;
+
+whileStmt: 'while' '(' expression ')' block;
+
+returnStmt: 'return' (expression)? ';';
+
+assigStmt: left=location '=' right=expression;
 
 location: (name=ID | name=ID '[' expr=expression ']') ('.' loc=location)?;
 
@@ -76,40 +84,27 @@ method_call: method=ID '(' (arg (',' arg)*)* ')';
 arg: expression;
 
 expression:
-      method_call #methodCallExpr
-    | location #locationExpr
-    | literal #literalExpr
+      method_call #methodCallExpression
+    | location #locationExpression
+    | literal #literalExpression
     | left=expression op=higher_arith_op right=expression #higherArithOp
     | left=expression op=arith_op right=expression #arithOp
     | left=expression op=rel_op right=expression #relationOp
     | left=expression op=eq_op right=expression #equalityOp
     | left=expression op=cond_op right=expression #conditionalOp
-    | '-' expression #negativeExpr
-    | '!' expression #negationExpr
-    | '(' expression ')' #parentExpr;
+    | '-' expression #negativeExpression
+    | '!' expression #negationExpression
+    | '(' expression ')' #parentExpression;
 
-higher_arith_op:
-      '*' 
-    | '/' 
-    | '%';
+higher_arith_op: '*' | '/' | '%';
 
-arith_op: 
-      '+' 
-    | '-';
+arith_op: '+' | '-';
 
-rel_op: 
-      '<' 
-    | '>' 
-    | '<=' 
-    | '>=';
+rel_op: '<' | '>' | '<=' | '>=';
 
-eq_op: 
-      '=='
-    | '!=';
+eq_op: '==' | '!=';
 
-cond_op: 
-      '&&' 
-    | '||';
+cond_op: '&&' | '||';
 
 literal: 
       int_literal 

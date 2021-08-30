@@ -1,0 +1,22 @@
+class Program {
+    int a;
+    struct example {
+        int subExample;
+    }
+    int MetodoSuma(int num1, int num2){
+        int num3;
+        num3 = num1 + num2;
+        return num3;
+    }
+    void ProbramosIntentos(int nani) {
+        int c;
+        int b;
+        int d[2];
+        boolean varBoolean;
+        a = 0;
+        b = 2;
+        varBoolean = true;
+        c = a + b;
+        return a;
+    }
+}

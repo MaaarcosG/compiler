@@ -2,9 +2,8 @@ from Grammar.DecafParser import DecafParser
 from Grammar.DecafLexer import DecafLexer
 from create_tree import get_printer_tree
 from antlr4 import *
-from decaf_printer import Decaf_Printer
+from py_decaf import CustomVisitor
 import sys
-
 
 def main(argv):
     input = FileStream(argv[1])
@@ -12,12 +11,8 @@ def main(argv):
     stream = CommonTokenStream(lexer)
     parser = DecafParser(stream)
     tree = parser.program()
-    listener = Decaf_Printer()
-    walker = ParseTreeWalker()
-
-    # creates the symbol table, and the ast tree
-    walker.walk(listener, tree)\
-    
+    visitor = CustomVisitor()
+    visitor.visit(tree)   
     # obtenemos la informacion del archivo y lo mandamos para que se imprima el arbol
     data = str(argv[1])
     name = data.split('\\')[-1].split('.')[0]
