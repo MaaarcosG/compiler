@@ -1,0 +1,72 @@
+
+class Program {
+    
+    struct DataClass {
+        int size;
+        char id;
+    }
+
+    struct Student {
+        char name;
+        int age;
+        struct DataClass data;
+    }
+
+    struct Student {
+        char test;
+    }
+
+    char testVar;
+    int intArray[5];
+    int invalidArray[0];
+    int invalidArray2[0];
+
+    void main(char args[]) {
+        int y;
+        y = 5 * 10 - 2 + 'A';
+        int y;
+        y = y * 2;
+        return 0;
+        y[10];
+    }
+
+    int main() {
+        struct Student std;
+        std.name = 'A';
+        std.data = 10;
+    }
+
+    char hello(int kkk, char str) {
+        if(kkk > 10) {
+            int x;
+            x = 10;
+        } else {
+            int l;
+            l = 11;
+        }
+        return 10;
+    }
+
+    int clashing(int k) {
+        char ac[4];
+        ac[clashing()];
+        ac[1];
+        ac[hello(10, 'a')];
+        return hello(10, ac);
+    }
+
+    int clashing(int a) {
+        if(10) {}
+        while('a'){}
+        while(true || false){}
+        if( !(10 > 5) && true ){}
+        if(!('Z') || false) {}
+    }
+
+    int testStm() {
+        hello(10, 'a');
+        char a[5];
+        if(main(a)) {}
+    }
+
+}

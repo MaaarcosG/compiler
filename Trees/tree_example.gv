@@ -361,12 +361,22 @@ digraph "Trees/tree_example" {
 	177 -> 179
 	180 [label=location color=green]
 	179 -> 180
-	181 [label=a color=blue]
+	181 [label=d color=blue]
 	180 -> 181
-	182 [label=";" color=blue]
-	177 -> 182
-	183 [label="}" color=blue]
-	79 -> 183
-	184 [label="}" color=blue]
-	0 -> 184
+	182 [label="[" color=blue]
+	180 -> 182
+	183 [label=expression color=green]
+	180 -> 183
+	184 [label=location color=green]
+	183 -> 184
+	185 [label=a color=blue]
+	184 -> 185
+	186 [label="]" color=blue]
+	180 -> 186
+	187 [label=";" color=blue]
+	177 -> 187
+	188 [label="}" color=blue]
+	79 -> 188
+	189 [label="}" color=blue]
+	0 -> 189
 }

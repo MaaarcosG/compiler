@@ -2,7 +2,7 @@ from Grammar.DecafParser import DecafParser
 from Grammar.DecafLexer import DecafLexer
 from create_tree import get_printer_tree
 from antlr4 import *
-from py_decaf import CustomVisitor
+from decaf_function import CustomVisitor
 import sys
 
 def main(argv):

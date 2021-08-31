@@ -3,11 +3,11 @@ from antlr4 import *
 from Grammar.DecafVisitor import DecafVisitor
 from Grammar.DecafParser import DecafParser
 from stack import Decaf_Stack
+import inspect
 from collections import OrderedDict
-from symbol_table import Symbol, SymbolTable, Type_Item, Type_Table
+from symbol_table import Symbol, SymbolTable, Type_Item, Type_Table, Type_Enum
 
 class CustomVisitor(DecafVisitor):
-
     def __init__(self):
         self.scope = Decaf_Stack()
         self.errors = []
@@ -24,7 +24,7 @@ class CustomVisitor(DecafVisitor):
         st = SymbolTable(name, parent=parent, stype=t, typeTable=Type_Table(), id={})
         self.scope.push(st) # ADD data symbol table
         # debugg
-        print('Enter Scope: %s' % name)
+        # print('Enter Scope: %s' % name)
 
     def exit_scope(self):
         if self.scope.empty():
@@ -78,9 +78,9 @@ class CustomVisitor(DecafVisitor):
         s = Symbol(name, vartype, self.offset)
         self.offset += scope.typeTable.getSize(vartype)
         print('Add %s to scope %s' % (name, scope.name))
-        scope.parent and print(scope.parent.id)
+        # Getting the line number in the ParserVisitor
+        # print(ctx.start.line)
         scope.add(s)
-        scope.parent and print(scope.parent.id)
 
         return self.visitChildren(ctx)
 
@@ -90,19 +90,20 @@ class CustomVisitor(DecafVisitor):
         vartype = ctx.var_Type.getText().replace('struct', '')
 
         size = int(str(ctx.NUM()))
-        print(size)
+        # print(size)
+
         s = Symbol(name, vartype, self.offset, listSize=size)
-        # print(scope.typeTable.id['int'])
         self.offset += (scope.typeTable.getSize(vartype) * size)
         scope.add(s)
-        print('ITS IN METHOD DECLARATION')
+        # print('ITS IN METHOD DECLARATION')
         return self.visitChildren(ctx)
     
     def visitStruct_declar(self, ctx: DecafParser.Struct_declarContext):
         name = str(ctx.ID())
         scope = self.scope.peek()
         self.enter_scope(name, 'struct')
-        s = Type_Item(name, 0, 'struct', {})
+        # Type_Enum is definition in symbol table
+        s = Type_Item(name, 0, Type_Enum.Struct, {})
         scope.addType(s)
         self.exit_scope()
         return self.visitChildren(ctx)
@@ -129,7 +130,7 @@ class CustomVisitor(DecafVisitor):
     def visitParameter(self, ctx: DecafParser.ParameterContext):
         name = str(ctx.ID())
         scope = self.scope.peek()
-        vartype = ctx.var_Type.getText()
+        vartype = ctx.getChild(0).getText()
         
         s = Symbol(name, vartype, self.offset, param=True)
         scope.add(s)

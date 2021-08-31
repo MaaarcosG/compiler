@@ -1,6 +1,7 @@
 from enum import Enum
+from typing import Type
 
-class type_enum(Enum):
+class Type_Enum(Enum):
     Char = 0
     Boolean = 1
     Integer = 2
@@ -19,7 +20,7 @@ class SymbolTable:
     def search(self, name):
         if name not in self.id:
             return self.parent and self.parent.search(name)
-        return self.id[name], self.name
+        return self.id[name]
         
     def add(self, symbol):
         self.id[symbol.name] = symbol
@@ -30,6 +31,12 @@ class SymbolTable:
     
     def addType(self, t):
         self.typeTable.add(t)
+    
+    def t_exist(self, t, spect=None):
+        if t in self.typeTable.id:
+            ids = self.typeTable.id[t]
+            return ((id.type == spect) or not spect) and id
+        return self.parent and self.parent.t_exist(t, spect) 
 
 class Symbol:
     def __init__(self, name, stype, offset=0, param=False, listSize=0):
@@ -52,9 +59,9 @@ class Type_Item:
 class Type_Table:
     def __init__(self):
         self.id = {}
-        self.id['char'] = Type_Item('String', 1)
-        self.id['int'] = Type_Item('Integer', 4)
-        self.id['boolean'] = Type_Item('Boolean', 1)
+        self.id['char'] = Type_Item(Type_Enum.Char, 1)
+        self.id['int'] = Type_Item(Type_Enum.Integer, 4)
+        self.id['boolean'] = Type_Item(Type_Enum.Boolean, 1)
 
     def addParam(self, name, param):
         if name in self.id:

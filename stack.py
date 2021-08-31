@@ -19,5 +19,5 @@ class Decaf_Stack():
         if self.items:
             return self.items[len(self.items)-1]
         else:
-            print('Stack Empty')
+            # print('Stack Empty')
             return None
