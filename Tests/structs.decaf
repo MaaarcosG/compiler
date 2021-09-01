@@ -1,4 +1,4 @@
-class Structs{
+class Program{
 	struct MyTest{
 		int n;
 		char b;

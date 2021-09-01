@@ -196,3 +196,7 @@ class CustomVisitor(DecafVisitor):
     def visitAssigStmt(self, ctx: DecafParser.AssigStmtContext):
         self.validator.visit(ctx)
         return self.visitChildren(ctx)
+
+    def visitInt_literal(self, ctx: DecafParser.Int_literalContext):
+        self.validator.visit(ctx)
+        return self.visitChildren(ctx)

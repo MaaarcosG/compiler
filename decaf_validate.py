@@ -114,7 +114,7 @@ class Evaluator(DecafVisitor):
                 return Type_Enum.Error
         
             # numeros de expresiones
-            numExpr = ctx.expr
+            numExpr = ctx.expr.getText()
             try:
                 number = int(numExpr)
                 # el numero tiene que ser mayor a 0
@@ -209,4 +209,3 @@ class Evaluator(DecafVisitor):
             return Type_Enum.Error
 
         return Type_Enum.Integer
-        
