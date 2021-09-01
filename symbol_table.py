@@ -35,7 +35,7 @@ class SymbolTable:
     def t_exist(self, t, spect=None):
         if t in self.typeTable.id:
             ids = self.typeTable.id[t]
-            return ((id.type == spect) or not spect) and id
+            return ((ids.type == spect) or not spect) and ids
         return self.parent and self.parent.t_exist(t, spect) 
 
 class Symbol:
@@ -44,6 +44,7 @@ class Symbol:
         self.stype = stype
         self.offset = offset
         self.param = param
+        self.listSize = listSize
 
 class Type_Item:
     def __init__(self, name, size=0, type='struct', paramlist={}, ret=None):
@@ -62,6 +63,7 @@ class Type_Table:
         self.id['char'] = Type_Item(Type_Enum.Char, 1)
         self.id['int'] = Type_Item(Type_Enum.Integer, 4)
         self.id['boolean'] = Type_Item(Type_Enum.Boolean, 1)
+        self.id['void'] = Type_Item(Type_Enum.Void, 0)
 
     def addParam(self, name, param):
         if name in self.id:

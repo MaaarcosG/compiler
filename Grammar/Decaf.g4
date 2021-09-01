@@ -6,11 +6,15 @@ fragment DIGIT: '0'..'9' ;
 
 /*Reglas de DECAF*/
 ID: LETTER (LETTER|DIGIT)*;
+
 NUM: DIGIT (DIGIT)* ;
-/* CHAR: '\'' LETTER '\''; */
-CHAR: '\'' ( ~['\r\n\\] | '\\' ['\\] ) '\'';
+
+CHAR: '\'' LETTER '\'';
+
 SPACES : [ \t\r\n\f]+  ->channel(HIDDEN);
+
 COMMENT: '/*' .*? '*/' -> channel(2);
+
 LINE_COMMENT: '//' ~[\r\n]* -> channel(2);
 
 /*Parser Rules*/
@@ -28,8 +32,7 @@ var_declar:
       var_Type=var_type  name=ID ';' #single_VarDeclar
     | var_Type=var_type  name=ID '[' size=NUM ']' ';' #list_VarDeclar;
 
-structInstantiation:
-    'struct' struct=ID name=ID;
+structInstantiation: 'struct' struct=ID name=ID;
 
 var_type:
      'int'
@@ -39,8 +42,7 @@ var_type:
     | struct_declar 
     | 'void' ;
 
-method_declar:
-    returnType=method_type name=ID '(' (parameter (',' parameter)*)* ')' block;
+method_declar: returnType=method_type name=ID '(' (parameter (',' parameter)*)* ')' block;
 
 method_type:
       'int' 

@@ -3,6 +3,7 @@ from Grammar.DecafLexer import DecafLexer
 from create_tree import get_printer_tree
 from antlr4 import *
 from decaf_function import CustomVisitor
+from decaf_errors import printer
 import sys
 
 def main(argv):
@@ -14,9 +15,11 @@ def main(argv):
     visitor = CustomVisitor()
     visitor.visit(tree)   
     # print(visitor.scope.peek().id)
+    printer(visitor.validator.errors)
     # obtenemos la informacion del archivo y lo mandamos para que se imprima el arbol
     data = str(argv[1])
     name = data.split('\\')[-1].split('.')[0]
+
     # creamos el arbol
     (view, _) = get_printer_tree(tree, name)
     view.view()
