@@ -13,17 +13,16 @@ Hecho por:
 - Antlr4 python
 - Flask
 
+Primero clonar el repositorio
+```bash
+$ git clone https://github.com/MaaarcosG/compiler.git
+```
 Todos los requerimientos se encuentra en el archivo requeriments.txt
 
 ```bash
 $ pip install -r requirements.txt
 ```
 ## Creacion de archivos Decaf
-Primero clonar el repositorio
-
-```bash
-$ git clone https://github.com/MaaarcosG/Automatas.git
-```
 Irse a la carpeta Grammar, para ejecutar la gramatica de Decaf.g4
 ```bash
 $ java -Xmx500M -cp antlr4.jar org.antlr.v4.Tool -Dlanguage=Python3 Decaf.g4 -visitor
