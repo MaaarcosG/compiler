@@ -37,6 +37,15 @@ class SymbolTable:
             ids = self.typeTable.id[t]
             return ((ids.type == spect) or not spect) and ids
         return self.parent and self.parent.t_exist(t, spect) 
+    
+    def __str__(self) -> str:
+        string = 'Name: ' + str(self.name) + '\n'
+        string = string + 'id: ' + str(self.id) + '\n'
+        string = string + 'parent: ' + str(self.parent) + '\n'
+        string = string + 'typeTable: ' + str(self.typeTable) + '\n'
+        string = string + 'scopeType: ' + str(self.scopeType) + '\n'
+
+        return string
 
 class Symbol:
     def __init__(self, name, stype, offset=0, param=False, listSize=0):
@@ -45,6 +54,15 @@ class Symbol:
         self.offset = offset
         self.param = param
         self.listSize = listSize
+
+    def __str__(self) -> str:
+        string = 'Name: ' + str(self.name) + '\n'
+        string = string + 'stype: ' + str(self.stype) + '\n'
+        string = string + 'offset: ' + str(self.offset) + '\n'
+        string = string + 'param: ' + str(self.param) + '\n'
+        string = string + 'offset: ' + str(self.listSize) + '\n'
+
+        return string
 
 class Type_Item:
     def __init__(self, name, size=0, type='struct', paramlist={}, ret=None):
@@ -89,3 +107,8 @@ class Type_Table:
         if name in self.id:
             return self.id[name].paramlist
         return None
+    
+    def __str__(self) -> str:
+        string = 'Id: ' + str(self.id) + '\n'
+
+        return string

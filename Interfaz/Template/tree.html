@@ -1,0 +1,11 @@
+{% extends "template.html" %}
+{% block title %}Tree{% endblock %}
+{% set active_page = "tree" %}
+{% block content %}
+<h3 class="titulo">ESTE ES EL ARBOL (VISUALIZACION DE PDF)</h3>
+    <iframe
+        class="frame"
+        src="{{ url_for('static',filename='img/tree_gui.gv.pdf') }}"
+        type="application/pdf"
+        ></iframe>
+{% endblock %}

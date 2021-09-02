@@ -50,9 +50,8 @@ class CustomVisitor(DecafVisitor):
         name = str(ctx.ID())
         scope = self.scope.peek()
         tt = ctx.var_Type.getText()
-
         vartype = scope.t_exist(tt.replace('struct', '')).name
-
+        
         # found struct
         if scope.scopeType == 'struct':
             tt = scope.parent.typeTable
@@ -68,6 +67,7 @@ class CustomVisitor(DecafVisitor):
             symbol_name = tt.replace('struct', '')
 
             struct = Symbol(name, symbol_name, self.offset)
+            # print(struct)
             scope.add(struct)
 
             structParams = scope.typeTable.getParams(symbol_name)
@@ -93,7 +93,6 @@ class CustomVisitor(DecafVisitor):
         vartype = ctx.var_Type.getText().replace('struct', '')
 
         size = int(str(ctx.NUM()))
-        # print(size)
 
         if scope.scopeType == 'struct':
             typet = scope.parent.t_exist(vartype)
@@ -200,3 +199,6 @@ class CustomVisitor(DecafVisitor):
     def visitInt_literal(self, ctx: DecafParser.Int_literalContext):
         self.validator.visit(ctx)
         return self.visitChildren(ctx)
+    
+    def visitBlock(self, ctx: DecafParser.BlockContext):
+       return self.visitChildren(ctx)

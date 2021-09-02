@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block title %}Codigo{% endblock %}
+{% set active_page = "code" %}
+{% block content %}
+<h3 class="titulo">CODIGO</h3>
+<form class="input-wrapper" action="/" method="POST">
+    <textarea class="source" name="src" cols="80">{{code}}</textarea>
+    <input type="submit" value="Compile">
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %} - Decaf Compiler</title>
+  </head>
+  <body>
+      <div class="content">
+          <div id="menu" class="topnav">
+              {% set navigation_bar = [
+                  ('/', 'code', 'Code'),
+                  ('/tree', 'tree', 'Tree'),
+                  ('/errors', 'errors', 'Errors')
+              ] -%}
+              {% set active_page = active_page|default('code') -%}
+              {% for href, id, caption in navigation_bar %}
+                <a href="{{ href|e }}" {% if id == active_page %} class="active"{% endif %}>{{ caption|e }}</a>
+              {% endfor %}
+          </div>
+          <!--
+          <div class="box">
+            <h3 class="titulo1">Error</h3>
+            <div class="errors">
+              {% if errors %}
+                {% for error in errors %}
+                  <p> {{ error }} </p>
+                {% endfor %}
+              {% else %}
+                  <p>No existe ningun error</p>
+              {% endif %}
+            </div>
+          </div>-->
+          <div id="content" class="main">
+              {% block content %}
+              {% endblock %}
+          </div>
+      </div>
+  </body>
+</html>

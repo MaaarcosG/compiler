@@ -11,11 +11,14 @@ Hecho por:
 - Python 3.8 or higher
 - Graphicviz installed on the computer
 - Antlr4 python
+- Flask
+
+Todos los requerimientos se encuentra en el archivo requeriments.txt
 
 ```bash
-$ pip install antlr4-python3-runtime
+$ pip install -r requirements.txt
 ```
-## Uso
+## Creacion de archivos Decaf
 Primero clonar el repositorio
 
 ```bash
@@ -25,9 +28,23 @@ Irse a la carpeta Grammar, para ejecutar la gramatica de Decaf.g4
 ```bash
 $ java -Xmx500M -cp antlr4.jar org.antlr.v4.Tool -Dlanguage=Python3 Decaf.g4 -visitor
 ```
-Regresar al root del proyecto, ejecutar el compiler.py que recibe como parametro el archivo a compilar.
+## Compilar en la Terminal
+Regresar al root del proyecto, ejecutar el compiler.py que recibe como parametro el archivo a compilar. Este si gusta usarlo desde la terminal del sistema operativo.
 
 ```bash
 $ python compiler.py Tests\test.txt 
 ```
 Para revisar el arbol generado se encuentra en la carpeta Trees
+
+## Ejecucion con GUI
+
+La interfaz grafica se encuentra en el archivo compiler_gui.py
+
+```bash
+$ git python compiler_gui.py
+```
+Luego de ejecutarse el archivo y a la direccion
+```bash
+http://localhost:5000
+```
+Dentro se tiene una interfaz del usuario, facil de usar. 

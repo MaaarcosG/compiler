@@ -85,7 +85,7 @@ class Evaluator(DecafVisitor):
         rtype = self.visit(ctx.right)
 
         if rtype != ltype:
-            error = generic('Can only assing to two expressions with the same type', ctx.start.line)
+            error = generic('Can only assing to two expressions with the same type ---> left = %s right = %s ' % (ctx.left.getText(), ctx.right.getText()), ctx.start.line)
             self.errors.append(error)
             return Type_Enum.Error
         return Type_Enum.Error
@@ -96,7 +96,7 @@ class Evaluator(DecafVisitor):
         scope = self.scopes.peek()
         data = scope.search(name)
         value = Type_Enum.Error
-        
+    
         # print('Try location....')
 
         # verificamos los datos
@@ -204,7 +204,7 @@ class Evaluator(DecafVisitor):
         rtype = self.visit(ctx.right)
 
         if (rtype != Type_Enum.Integer) or (ltype != Type_Enum.Integer):
-            error = expect_error(Type_Enum.Boolean, '%s %s %s' % (ltype, opera, rtype), ctx.start.line)
+            error = expect_error(Type_Enum.Integer, '%s %s %s' % (ltype, opera, rtype), ctx.start.line)
             self.errors.append(error)
             return Type_Enum.Error
 

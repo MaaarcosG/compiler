@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% block title %}Errors{% endblock %}
+{% set active_page = "errors" %}
+{% block content %}
+<h3 class="titulo">ERRORES</h3>
+<div class="errors">
+    {% if errors %}
+        {% for error in errors %}
+            <p> {{ error }} </p>
+        {% endfor %}
+    {% else %}
+        <p>No existe ningun error</p>
+    {% endif %}
+</div>
+{% endblock %}
