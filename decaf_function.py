@@ -1,3 +1,4 @@
+from typing import Type
 from antlr4 import *
 # importamos la gramatica
 from Grammar.DecafVisitor import DecafVisitor
@@ -15,6 +16,7 @@ class CustomVisitor(DecafVisitor):
         self.count = 0
         # contiene los errores
         self.validator = Evaluator(scopes = self.scope)
+        self.save = {}
 
     def error(self):
         self.flag = True
@@ -31,7 +33,9 @@ class CustomVisitor(DecafVisitor):
         if self.scope.empty():
             pass
         else:
-            return self.scope.pop()
+            popp = self.scope.pop()
+            self.save[popp.name] = popp
+            return popp
 
     # get errors
     def get_Error(self, error):
@@ -44,15 +48,15 @@ class CustomVisitor(DecafVisitor):
     def visitProgram(self, ctx: DecafParser.ProgramContext):
         self.enter_scope('global')
         return self.visitChildren(ctx)
-    
-        
+
     def visitSingle_VarDeclar(self, ctx: DecafParser.Single_VarDeclarContext):
         name = str(ctx.ID())
         scope = self.scope.peek()
-        tt = ctx.var_Type.getText()
-        vartype = scope.t_exist(tt.replace('struct', '')).name
-        
-        # found struct
+        type_text = ctx.var_Type.getText()
+        # print(type_text)
+        vartype = scope.t_exist(type_text.replace('struct', '')).name
+
+        # si esta dentro del struct
         if scope.scopeType == 'struct':
             tt = scope.parent.typeTable
             param = Symbol(name, vartype, 0)
@@ -61,10 +65,11 @@ class CustomVisitor(DecafVisitor):
             tt.addSize(name, tt.getSize(tt))
             tt.addParam(scope.name, param)
             return self.visitChildren(ctx)
-
-        elif 'struct' in tt:
+        
+        # si es declaracion struct
+        elif 'struct' in type_text:
             # add struct to symbol table
-            symbol_name = tt.replace('struct', '')
+            symbol_name = type_text.replace('struct', '')
 
             struct = Symbol(name, symbol_name, self.offset)
             # print(struct)
@@ -79,7 +84,7 @@ class CustomVisitor(DecafVisitor):
             return self.visitChildren(ctx)
 
         s = Symbol(name, vartype, self.offset)
-        self.offset += scope.typeTable.getSize(tt)
+        self.offset += scope.typeTable.getSize(type_text)
         # print('Add %s to scope %s' % (name, scope.name))
         # Getting the line number in the ParserVisitor
         # print(ctx.start.line)
@@ -93,7 +98,7 @@ class CustomVisitor(DecafVisitor):
         vartype = ctx.var_Type.getText().replace('struct', '')
 
         size = int(str(ctx.NUM()))
-
+        
         if scope.scopeType == 'struct':
             typet = scope.parent.t_exist(vartype)
             typetable = scope.parent.typeTable
@@ -141,13 +146,13 @@ class CustomVisitor(DecafVisitor):
         name = str(ctx.ID())
         scope = self.scope.peek()
         tt = ctx.getChild(0).getText()
+        # tt = ctx.var_Type.getText()
         vartype = scope.t_exist(tt)
             
         s = Symbol(name, vartype.name, self.offset, param=True)
         self.offset += vartype.size
         scope.add(s)
         return s
-            
 
     def visitIfStmt(self, ctx: DecafParser.IfStmtContext):
         self.enter_scope('ifblock %s if' % str(self.count))

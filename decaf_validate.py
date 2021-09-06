@@ -28,13 +28,11 @@ class Evaluator(DecafVisitor):
     
     '''EXPRESIONNS'''
 
-    def visitMethodCall(self, ctx: DecafParser.MethodCallExpressionContext):
+    def visitMethod_call(self, ctx: DecafParser.Method_callContext):
         methodName = str(ctx.ID())
-        scope = self.scope.peek()
+        scope = self.scopes.peek()
         method = scope.t_exist(methodName, 'method')
-        
-        print(methodName, 'in methodCall', ctx.start.line)
-    
+
         if not method:
             error = not_defined('method', methodName, ctx.start.line)
             self.errors.append(error) # anadimos el error
@@ -43,7 +41,7 @@ class Evaluator(DecafVisitor):
         # lista de valores
         value = []
         # lista de parametros encontrados
-        params = [i.stype for i in method.paramlist]
+        params = [i.stype for i in method.paramlist.values()]
 
         # recorremos los argumentos posibles
         for i in ctx.arg():
@@ -91,13 +89,11 @@ class Evaluator(DecafVisitor):
         return Type_Enum.Error
     
     def visitLocation(self, ctx: DecafParser.LocationContext):
-         # return self.visitChildren(ctx)
+        # return self.visitChildren(ctx)
         name = ctx.name.text
         scope = self.scopes.peek()
         data = scope.search(name)
         value = Type_Enum.Error
-    
-        # print('Try location....')
 
         # verificamos los datos
         if not data:
@@ -130,7 +126,7 @@ class Evaluator(DecafVisitor):
                 error = generic('Index must be an INTEGER', ctx.start.line)
                 self.errors.append(error)
                 return Type_Enum.Error
-        
+
         if ctx.loc:
             struct = scope.t_exist(data.stype, Type_Enum.Struct)
             # si no esta dentro del struct
@@ -138,12 +134,17 @@ class Evaluator(DecafVisitor):
                 error = generic('Location passed but %s is not a struct' % name, ctx.start.line)
                 self.errors.append(error)
                 return Type_Enum.Error
+
+            # la lista esta saliendo vacia revisar porque print(struct.paramlist)
+
+            # print(struct.paramlist)
             if ctx.loc.name.text not in struct.paramlist:
                 error = generic('Location %s not defined in struct of %s of type %s' % (ctx.loc.name.text, name, data.stype), ctx.start.line)
                 self.errors.append(error)
                 return Type_Enum.Error
             
             value = struct.paramlist[ctx.loc.name.text].stype
+            # print(value)
         return value
        
     '''OPERACIONES'''
@@ -190,7 +191,10 @@ class Evaluator(DecafVisitor):
         opera = ctx.op.getText()
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-
+        '''
+        print(ltype)
+        print(ctx.right.getText())
+        '''
         if (rtype != Type_Enum.Integer) or (ltype != Type_Enum.Integer):
             error = expect_error(Type_Enum.Boolean, '%s %s %s' % (ltype, opera, rtype), ctx.start.line)
             self.errors.append(error)

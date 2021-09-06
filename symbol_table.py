@@ -74,6 +74,15 @@ class Type_Item:
     
     def addParam(self, param):
         self.paramlist[param.name] = param
+    
+    def __str__(self) -> str:
+        string = 'Name: ' + str(self.name) + '\n'
+        string = string + 'size: ' + str(self.size) + '\n'
+        string = string + 'paramlist: ' + str(self.paramlist) + '\n'
+        string = string + 'type: ' + str(self.type) + '\n'
+        string = string + 'ret: ' + str(self.ret) + '\n'
+
+        return string
 
 class Type_Table:
     def __init__(self):

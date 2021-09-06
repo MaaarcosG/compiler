@@ -1,6 +1,6 @@
 class Program{
 	struct A {
-		int a;
+		char a;
 	};
 	struct B{
 		int b[5];
@@ -10,16 +10,15 @@ class Program{
 	struct A y;
 	struct A z;
 	
+	int i;
 	void main(void) {
 		struct B y[5];
-		int i;
 		int j;
 		int k;	
-		
+		char x[10];
 		i = 0;
-		j=0;
-		z.a = 3;	
-		
+		j = 0;
+		x[3] = "3";
 		while(i<=10){
 			y[j].b[0] = InputInt();
 			if (y[j].b[0]==5){

@@ -35,8 +35,6 @@ def main(argv):
     # print(visitor.scope.peek().id)
     # printer(visitor.validator.errors)
 
-    
-
     '''
     # creamos el arbol
     (view, _) = get_printer_tree(tree, name)

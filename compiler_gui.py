@@ -9,8 +9,7 @@ def code():
     code = ''
     if session.get('code'):
         code = session['code']
-    return render_template('code.html', code=code)
-    
+    return render_template('code.html', code=code)    
 
 @app.route('/', methods=['POST'])
 def get_code():

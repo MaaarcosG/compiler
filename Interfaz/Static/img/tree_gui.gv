@@ -21,7 +21,7 @@ digraph "Trees/tree_gui" {
 	5 -> 9
 	10 [label=var_type color=green]
 	9 -> 10
-	11 [label=int color=blue]
+	11 [label=char color=blue]
 	10 -> 11
 	12 [label=a color=blue]
 	9 -> 12
@@ -103,650 +103,650 @@ digraph "Trees/tree_gui" {
 	45 -> 50
 	51 [label=declaration color=green]
 	0 -> 51
-	52 [label=method_declar color=green]
+	52 [label=var_declar color=green]
 	51 -> 52
-	53 [label=method_type color=green]
+	53 [label=var_type color=green]
 	52 -> 53
-	54 [label=void color=blue]
+	54 [label=int color=blue]
 	53 -> 54
-	55 [label=main color=blue]
+	55 [label=i color=blue]
 	52 -> 55
-	56 [label="(" color=blue]
+	56 [label=";" color=blue]
 	52 -> 56
-	57 [label=parameter color=green]
-	52 -> 57
-	58 [label=void color=blue]
+	57 [label=declaration color=green]
+	0 -> 57
+	58 [label=method_declar color=green]
 	57 -> 58
-	59 [label=")" color=blue]
-	52 -> 59
-	60 [label=block color=green]
-	52 -> 60
-	61 [label="{" color=blue]
-	60 -> 61
-	62 [label=var_declar color=green]
-	60 -> 62
-	63 [label=var_type color=green]
-	62 -> 63
-	64 [label=struct color=blue]
+	59 [label=method_type color=green]
+	58 -> 59
+	60 [label=void color=blue]
+	59 -> 60
+	61 [label=main color=blue]
+	58 -> 61
+	62 [label="(" color=blue]
+	58 -> 62
+	63 [label=parameter color=green]
+	58 -> 63
+	64 [label=void color=blue]
 	63 -> 64
-	65 [label=B color=blue]
-	63 -> 65
-	66 [label=y color=blue]
-	62 -> 66
-	67 [label="[" color=blue]
-	62 -> 67
-	68 [label=5 color=blue]
-	62 -> 68
-	69 [label="]" color=blue]
-	62 -> 69
-	70 [label=";" color=blue]
-	62 -> 70
-	71 [label=var_declar color=green]
-	60 -> 71
-	72 [label=var_type color=green]
-	71 -> 72
-	73 [label=int color=blue]
-	72 -> 73
-	74 [label=i color=blue]
-	71 -> 74
-	75 [label=";" color=blue]
-	71 -> 75
-	76 [label=var_declar color=green]
-	60 -> 76
-	77 [label=var_type color=green]
-	76 -> 77
-	78 [label=int color=blue]
+	65 [label=")" color=blue]
+	58 -> 65
+	66 [label=block color=green]
+	58 -> 66
+	67 [label="{" color=blue]
+	66 -> 67
+	68 [label=var_declar color=green]
+	66 -> 68
+	69 [label=var_type color=green]
+	68 -> 69
+	70 [label=struct color=blue]
+	69 -> 70
+	71 [label=B color=blue]
+	69 -> 71
+	72 [label=y color=blue]
+	68 -> 72
+	73 [label="[" color=blue]
+	68 -> 73
+	74 [label=5 color=blue]
+	68 -> 74
+	75 [label="]" color=blue]
+	68 -> 75
+	76 [label=";" color=blue]
+	68 -> 76
+	77 [label=var_declar color=green]
+	66 -> 77
+	78 [label=var_type color=green]
 	77 -> 78
-	79 [label=j color=blue]
-	76 -> 79
-	80 [label=";" color=blue]
-	76 -> 80
-	81 [label=var_declar color=green]
-	60 -> 81
-	82 [label=var_type color=green]
-	81 -> 82
-	83 [label=int color=blue]
+	79 [label=int color=blue]
+	78 -> 79
+	80 [label=j color=blue]
+	77 -> 80
+	81 [label=";" color=blue]
+	77 -> 81
+	82 [label=var_declar color=green]
+	66 -> 82
+	83 [label=var_type color=green]
 	82 -> 83
-	84 [label=k color=blue]
-	81 -> 84
-	85 [label=";" color=blue]
-	81 -> 85
-	86 [label=statement color=green]
-	60 -> 86
-	87 [label=assigStmt color=green]
-	86 -> 87
-	88 [label=location color=green]
+	84 [label=int color=blue]
+	83 -> 84
+	85 [label=k color=blue]
+	82 -> 85
+	86 [label=";" color=blue]
+	82 -> 86
+	87 [label=var_declar color=green]
+	66 -> 87
+	88 [label=var_type color=green]
 	87 -> 88
-	89 [label=i color=blue]
+	89 [label=char color=blue]
 	88 -> 89
-	90 [label="=" color=blue]
+	90 [label=x color=blue]
 	87 -> 90
-	91 [label=expression color=green]
+	91 [label="[" color=blue]
 	87 -> 91
-	92 [label=literal color=green]
-	91 -> 92
-	93 [label=int_literal color=green]
-	92 -> 93
-	94 [label=0 color=blue]
-	93 -> 94
+	92 [label=10 color=blue]
+	87 -> 92
+	93 [label="]" color=blue]
+	87 -> 93
+	94 [label=";" color=blue]
+	87 -> 94
 	95 [label=statement color=green]
-	60 -> 95
-	96 [label=";" color=blue]
+	66 -> 95
+	96 [label=assigStmt color=green]
 	95 -> 96
-	97 [label=statement color=green]
-	60 -> 97
-	98 [label=assigStmt color=green]
+	97 [label=location color=green]
+	96 -> 97
+	98 [label=i color=blue]
 	97 -> 98
-	99 [label=location color=green]
-	98 -> 99
-	100 [label=j color=blue]
-	99 -> 100
-	101 [label="=" color=blue]
-	98 -> 101
-	102 [label=expression color=green]
-	98 -> 102
-	103 [label=literal color=green]
+	99 [label="=" color=blue]
+	96 -> 99
+	100 [label=expression color=green]
+	96 -> 100
+	101 [label=literal color=green]
+	100 -> 101
+	102 [label=int_literal color=green]
+	101 -> 102
+	103 [label=0 color=blue]
 	102 -> 103
-	104 [label=int_literal color=green]
-	103 -> 104
-	105 [label=0 color=blue]
+	104 [label=statement color=green]
+	66 -> 104
+	105 [label=";" color=blue]
 	104 -> 105
 	106 [label=statement color=green]
-	60 -> 106
-	107 [label=";" color=blue]
+	66 -> 106
+	107 [label=assigStmt color=green]
 	106 -> 107
-	108 [label=statement color=green]
-	60 -> 108
-	109 [label=assigStmt color=green]
+	108 [label=location color=green]
+	107 -> 108
+	109 [label=j color=blue]
 	108 -> 109
-	110 [label=location color=green]
-	109 -> 110
-	111 [label=z color=blue]
-	110 -> 111
-	112 [label="." color=blue]
-	110 -> 112
-	113 [label=location color=green]
-	110 -> 113
-	114 [label=a color=blue]
+	110 [label="=" color=blue]
+	107 -> 110
+	111 [label=expression color=green]
+	107 -> 111
+	112 [label=literal color=green]
+	111 -> 112
+	113 [label=int_literal color=green]
+	112 -> 113
+	114 [label=0 color=blue]
 	113 -> 114
-	115 [label="=" color=blue]
-	109 -> 115
-	116 [label=expression color=green]
-	109 -> 116
-	117 [label=literal color=green]
-	116 -> 117
-	118 [label=int_literal color=green]
+	115 [label=statement color=green]
+	66 -> 115
+	116 [label=";" color=blue]
+	115 -> 116
+	117 [label=statement color=green]
+	66 -> 117
+	118 [label=assigStmt color=green]
 	117 -> 118
-	119 [label=3 color=blue]
+	119 [label=location color=green]
 	118 -> 119
-	120 [label=statement color=green]
-	60 -> 120
-	121 [label=";" color=blue]
-	120 -> 121
-	122 [label=statement color=green]
-	60 -> 122
-	123 [label=whileStmt color=green]
+	120 [label=x color=blue]
+	119 -> 120
+	121 [label="[" color=blue]
+	119 -> 121
+	122 [label=expression color=green]
+	119 -> 122
+	123 [label=literal color=green]
 	122 -> 123
-	124 [label=while color=blue]
+	124 [label=int_literal color=green]
 	123 -> 124
-	125 [label="(" color=blue]
-	123 -> 125
-	126 [label=expression color=green]
-	123 -> 126
-	127 [label=expression color=green]
-	126 -> 127
-	128 [label=location color=green]
-	127 -> 128
-	129 [label=i color=blue]
+	125 [label=3 color=blue]
+	124 -> 125
+	126 [label="]" color=blue]
+	119 -> 126
+	127 [label="=" color=blue]
+	118 -> 127
+	128 [label=expression color=green]
+	118 -> 128
+	129 [label=literal color=green]
 	128 -> 129
-	130 [label=rel_op color=green]
-	126 -> 130
-	131 [label="<=" color=blue]
+	130 [label=int_literal color=green]
+	129 -> 130
+	131 [label=3 color=blue]
 	130 -> 131
-	132 [label=expression color=green]
-	126 -> 132
-	133 [label=literal color=green]
+	132 [label=statement color=green]
+	66 -> 132
+	133 [label=";" color=blue]
 	132 -> 133
-	134 [label=int_literal color=green]
-	133 -> 134
-	135 [label=10 color=blue]
+	134 [label=statement color=green]
+	66 -> 134
+	135 [label=whileStmt color=green]
 	134 -> 135
-	136 [label=")" color=blue]
-	123 -> 136
-	137 [label=block color=green]
-	123 -> 137
-	138 [label="{" color=blue]
-	137 -> 138
-	139 [label=statement color=green]
-	137 -> 139
-	140 [label=assigStmt color=green]
+	136 [label=while color=blue]
+	135 -> 136
+	137 [label="(" color=blue]
+	135 -> 137
+	138 [label=expression color=green]
+	135 -> 138
+	139 [label=expression color=green]
+	138 -> 139
+	140 [label=location color=green]
 	139 -> 140
-	141 [label=location color=green]
+	141 [label=i color=blue]
 	140 -> 141
-	142 [label=y color=blue]
-	141 -> 142
-	143 [label="[" color=blue]
-	141 -> 143
+	142 [label=rel_op color=green]
+	138 -> 142
+	143 [label="<=" color=blue]
+	142 -> 143
 	144 [label=expression color=green]
-	141 -> 144
-	145 [label=location color=green]
+	138 -> 144
+	145 [label=literal color=green]
 	144 -> 145
-	146 [label=j color=blue]
+	146 [label=int_literal color=green]
 	145 -> 146
-	147 [label="]" color=blue]
-	141 -> 147
-	148 [label="." color=blue]
-	141 -> 148
-	149 [label=location color=green]
-	141 -> 149
-	150 [label=b color=blue]
+	147 [label=10 color=blue]
+	146 -> 147
+	148 [label=")" color=blue]
+	135 -> 148
+	149 [label=block color=green]
+	135 -> 149
+	150 [label="{" color=blue]
 	149 -> 150
-	151 [label="[" color=blue]
+	151 [label=statement color=green]
 	149 -> 151
-	152 [label=expression color=green]
-	149 -> 152
-	153 [label=literal color=green]
+	152 [label=assigStmt color=green]
+	151 -> 152
+	153 [label=location color=green]
 	152 -> 153
-	154 [label=int_literal color=green]
+	154 [label=y color=blue]
 	153 -> 154
-	155 [label=0 color=blue]
-	154 -> 155
-	156 [label="]" color=blue]
-	149 -> 156
-	157 [label="=" color=blue]
-	140 -> 157
-	158 [label=expression color=green]
-	140 -> 158
-	159 [label=method_call color=green]
-	158 -> 159
-	160 [label=InputInt color=blue]
-	159 -> 160
-	161 [label="(" color=blue]
-	159 -> 161
-	162 [label=")" color=blue]
-	159 -> 162
-	163 [label=statement color=green]
-	137 -> 163
-	164 [label=";" color=blue]
-	163 -> 164
-	165 [label=statement color=green]
-	137 -> 165
-	166 [label=ifStmt color=green]
+	155 [label="[" color=blue]
+	153 -> 155
+	156 [label=expression color=green]
+	153 -> 156
+	157 [label=location color=green]
+	156 -> 157
+	158 [label=j color=blue]
+	157 -> 158
+	159 [label="]" color=blue]
+	153 -> 159
+	160 [label="." color=blue]
+	153 -> 160
+	161 [label=location color=green]
+	153 -> 161
+	162 [label=b color=blue]
+	161 -> 162
+	163 [label="[" color=blue]
+	161 -> 163
+	164 [label=expression color=green]
+	161 -> 164
+	165 [label=literal color=green]
+	164 -> 165
+	166 [label=int_literal color=green]
 	165 -> 166
-	167 [label=if color=blue]
+	167 [label=0 color=blue]
 	166 -> 167
-	168 [label="(" color=blue]
-	166 -> 168
-	169 [label=expression color=green]
-	166 -> 169
+	168 [label="]" color=blue]
+	161 -> 168
+	169 [label="=" color=blue]
+	152 -> 169
 	170 [label=expression color=green]
-	169 -> 170
-	171 [label=location color=green]
+	152 -> 170
+	171 [label=method_call color=green]
 	170 -> 171
-	172 [label=y color=blue]
+	172 [label=InputInt color=blue]
 	171 -> 172
-	173 [label="[" color=blue]
+	173 [label="(" color=blue]
 	171 -> 173
-	174 [label=expression color=green]
+	174 [label=")" color=blue]
 	171 -> 174
-	175 [label=location color=green]
-	174 -> 175
-	176 [label=j color=blue]
+	175 [label=statement color=green]
+	149 -> 175
+	176 [label=";" color=blue]
 	175 -> 176
-	177 [label="]" color=blue]
-	171 -> 177
-	178 [label="." color=blue]
-	171 -> 178
-	179 [label=location color=green]
-	171 -> 179
-	180 [label=b color=blue]
-	179 -> 180
-	181 [label="[" color=blue]
-	179 -> 181
+	177 [label=statement color=green]
+	149 -> 177
+	178 [label=ifStmt color=green]
+	177 -> 178
+	179 [label=if color=blue]
+	178 -> 179
+	180 [label="(" color=blue]
+	178 -> 180
+	181 [label=expression color=green]
+	178 -> 181
 	182 [label=expression color=green]
-	179 -> 182
-	183 [label=literal color=green]
+	181 -> 182
+	183 [label=location color=green]
 	182 -> 183
-	184 [label=int_literal color=green]
+	184 [label=y color=blue]
 	183 -> 184
-	185 [label=0 color=blue]
-	184 -> 185
-	186 [label="]" color=blue]
-	179 -> 186
-	187 [label=eq_op color=green]
-	169 -> 187
-	188 [label="==" color=blue]
+	185 [label="[" color=blue]
+	183 -> 185
+	186 [label=expression color=green]
+	183 -> 186
+	187 [label=location color=green]
+	186 -> 187
+	188 [label=j color=blue]
 	187 -> 188
-	189 [label=expression color=green]
-	169 -> 189
-	190 [label=literal color=green]
-	189 -> 190
-	191 [label=int_literal color=green]
-	190 -> 191
-	192 [label=5 color=blue]
+	189 [label="]" color=blue]
+	183 -> 189
+	190 [label="." color=blue]
+	183 -> 190
+	191 [label=location color=green]
+	183 -> 191
+	192 [label=b color=blue]
 	191 -> 192
-	193 [label=")" color=blue]
-	166 -> 193
-	194 [label=block color=green]
-	166 -> 194
-	195 [label="{" color=blue]
+	193 [label="[" color=blue]
+	191 -> 193
+	194 [label=expression color=green]
+	191 -> 194
+	195 [label=literal color=green]
 	194 -> 195
-	196 [label=statement color=green]
-	194 -> 196
-	197 [label=assigStmt color=green]
+	196 [label=int_literal color=green]
+	195 -> 196
+	197 [label=0 color=blue]
 	196 -> 197
-	198 [label=location color=green]
-	197 -> 198
-	199 [label=y color=blue]
-	198 -> 199
-	200 [label="[" color=blue]
-	198 -> 200
+	198 [label="]" color=blue]
+	191 -> 198
+	199 [label=eq_op color=green]
+	181 -> 199
+	200 [label="==" color=blue]
+	199 -> 200
 	201 [label=expression color=green]
-	198 -> 201
-	202 [label=location color=green]
+	181 -> 201
+	202 [label=literal color=green]
 	201 -> 202
-	203 [label=j color=blue]
+	203 [label=int_literal color=green]
 	202 -> 203
-	204 [label="]" color=blue]
-	198 -> 204
-	205 [label="." color=blue]
-	198 -> 205
-	206 [label=location color=green]
-	198 -> 206
-	207 [label=b color=blue]
+	204 [label=5 color=blue]
+	203 -> 204
+	205 [label=")" color=blue]
+	178 -> 205
+	206 [label=block color=green]
+	178 -> 206
+	207 [label="{" color=blue]
 	206 -> 207
-	208 [label="[" color=blue]
+	208 [label=statement color=green]
 	206 -> 208
-	209 [label=expression color=green]
-	206 -> 209
-	210 [label=literal color=green]
+	209 [label=assigStmt color=green]
+	208 -> 209
+	210 [label=location color=green]
 	209 -> 210
-	211 [label=int_literal color=green]
+	211 [label=y color=blue]
 	210 -> 211
-	212 [label=0 color=blue]
-	211 -> 212
-	213 [label="]" color=blue]
-	206 -> 213
-	214 [label="=" color=blue]
-	197 -> 214
-	215 [label=expression color=green]
-	197 -> 215
-	216 [label=location color=green]
-	215 -> 216
-	217 [label=z color=blue]
-	216 -> 217
-	218 [label="." color=blue]
-	216 -> 218
-	219 [label=location color=green]
-	216 -> 219
-	220 [label=a color=blue]
-	219 -> 220
-	221 [label=statement color=green]
-	194 -> 221
-	222 [label=";" color=blue]
+	212 [label="[" color=blue]
+	210 -> 212
+	213 [label=expression color=green]
+	210 -> 213
+	214 [label=location color=green]
+	213 -> 214
+	215 [label=j color=blue]
+	214 -> 215
+	216 [label="]" color=blue]
+	210 -> 216
+	217 [label="." color=blue]
+	210 -> 217
+	218 [label=location color=green]
+	210 -> 218
+	219 [label=b color=blue]
+	218 -> 219
+	220 [label="[" color=blue]
+	218 -> 220
+	221 [label=expression color=green]
+	218 -> 221
+	222 [label=literal color=green]
 	221 -> 222
-	223 [label=statement color=green]
-	194 -> 223
-	224 [label=assigStmt color=green]
+	223 [label=int_literal color=green]
+	222 -> 223
+	224 [label=0 color=blue]
 	223 -> 224
-	225 [label=location color=green]
-	224 -> 225
-	226 [label=k color=blue]
-	225 -> 226
-	227 [label="=" color=blue]
-	224 -> 227
-	228 [label=expression color=green]
-	224 -> 228
-	229 [label=method_call color=green]
+	225 [label="]" color=blue]
+	218 -> 225
+	226 [label="=" color=blue]
+	209 -> 226
+	227 [label=expression color=green]
+	209 -> 227
+	228 [label=location color=green]
+	227 -> 228
+	229 [label=z color=blue]
 	228 -> 229
-	230 [label=factorial color=blue]
-	229 -> 230
-	231 [label="(" color=blue]
-	229 -> 231
-	232 [label=arg color=green]
-	229 -> 232
-	233 [label=expression color=green]
-	232 -> 233
-	234 [label=method_call color=green]
+	230 [label="." color=blue]
+	228 -> 230
+	231 [label=location color=green]
+	228 -> 231
+	232 [label=a color=blue]
+	231 -> 232
+	233 [label=statement color=green]
+	206 -> 233
+	234 [label=";" color=blue]
 	233 -> 234
-	235 [label=ReturnNumber color=blue]
-	234 -> 235
-	236 [label="(" color=blue]
-	234 -> 236
-	237 [label=")" color=blue]
-	234 -> 237
-	238 [label=")" color=blue]
-	229 -> 238
-	239 [label=statement color=green]
-	194 -> 239
-	240 [label=";" color=blue]
-	239 -> 240
-	241 [label=statement color=green]
-	194 -> 241
-	242 [label=method_call color=green]
+	235 [label=statement color=green]
+	206 -> 235
+	236 [label=assigStmt color=green]
+	235 -> 236
+	237 [label=location color=green]
+	236 -> 237
+	238 [label=k color=blue]
+	237 -> 238
+	239 [label="=" color=blue]
+	236 -> 239
+	240 [label=expression color=green]
+	236 -> 240
+	241 [label=method_call color=green]
+	240 -> 241
+	242 [label=factorial color=blue]
 	241 -> 242
-	243 [label=OutputInt color=blue]
-	242 -> 243
-	244 [label="(" color=blue]
-	242 -> 244
-	245 [label=arg color=green]
-	242 -> 245
-	246 [label=expression color=green]
+	243 [label="(" color=blue]
+	241 -> 243
+	244 [label=arg color=green]
+	241 -> 244
+	245 [label=expression color=green]
+	244 -> 245
+	246 [label=method_call color=green]
 	245 -> 246
-	247 [label=location color=green]
+	247 [label=ReturnNumber color=blue]
 	246 -> 247
-	248 [label=k color=blue]
-	247 -> 248
+	248 [label="(" color=blue]
+	246 -> 248
 	249 [label=")" color=blue]
-	242 -> 249
-	250 [label=";" color=blue]
+	246 -> 249
+	250 [label=")" color=blue]
 	241 -> 250
-	251 [label="}" color=blue]
-	194 -> 251
-	252 [label=statement color=green]
-	137 -> 252
-	253 [label=assigStmt color=green]
-	252 -> 253
-	254 [label=location color=green]
+	251 [label=statement color=green]
+	206 -> 251
+	252 [label=";" color=blue]
+	251 -> 252
+	253 [label=statement color=green]
+	206 -> 253
+	254 [label=method_call color=green]
 	253 -> 254
-	255 [label=y color=blue]
+	255 [label=OutputInt color=blue]
 	254 -> 255
-	256 [label="[" color=blue]
+	256 [label="(" color=blue]
 	254 -> 256
-	257 [label=expression color=green]
+	257 [label=arg color=green]
 	254 -> 257
-	258 [label=location color=green]
+	258 [label=expression color=green]
 	257 -> 258
-	259 [label=j color=blue]
+	259 [label=location color=green]
 	258 -> 259
-	260 [label="]" color=blue]
-	254 -> 260
-	261 [label="." color=blue]
+	260 [label=k color=blue]
+	259 -> 260
+	261 [label=")" color=blue]
 	254 -> 261
-	262 [label=location color=green]
-	254 -> 262
-	263 [label=c color=blue]
-	262 -> 263
-	264 [label="." color=blue]
-	262 -> 264
-	265 [label=location color=green]
-	262 -> 265
-	266 [label=a color=blue]
+	262 [label=";" color=blue]
+	253 -> 262
+	263 [label="}" color=blue]
+	206 -> 263
+	264 [label=statement color=green]
+	149 -> 264
+	265 [label=assigStmt color=green]
+	264 -> 265
+	266 [label=location color=green]
 	265 -> 266
-	267 [label="=" color=blue]
-	253 -> 267
-	268 [label=expression color=green]
-	253 -> 268
-	269 [label=method_call color=green]
-	268 -> 269
-	270 [label=factorial color=blue]
+	267 [label=y color=blue]
+	266 -> 267
+	268 [label="[" color=blue]
+	266 -> 268
+	269 [label=expression color=green]
+	266 -> 269
+	270 [label=location color=green]
 	269 -> 270
-	271 [label="(" color=blue]
-	269 -> 271
-	272 [label=arg color=green]
-	269 -> 272
-	273 [label=expression color=green]
-	272 -> 273
+	271 [label=j color=blue]
+	270 -> 271
+	272 [label="]" color=blue]
+	266 -> 272
+	273 [label="." color=blue]
+	266 -> 273
 	274 [label=location color=green]
-	273 -> 274
-	275 [label=y color=blue]
+	266 -> 274
+	275 [label=c color=blue]
 	274 -> 275
-	276 [label="[" color=blue]
+	276 [label="." color=blue]
 	274 -> 276
-	277 [label=expression color=green]
+	277 [label=location color=green]
 	274 -> 277
-	278 [label=location color=green]
+	278 [label=a color=blue]
 	277 -> 278
-	279 [label=j color=blue]
-	278 -> 279
-	280 [label="]" color=blue]
-	274 -> 280
-	281 [label="." color=blue]
-	274 -> 281
-	282 [label=location color=green]
-	274 -> 282
-	283 [label=b color=blue]
-	282 -> 283
-	284 [label="[" color=blue]
-	282 -> 284
+	279 [label="=" color=blue]
+	265 -> 279
+	280 [label=expression color=green]
+	265 -> 280
+	281 [label=method_call color=green]
+	280 -> 281
+	282 [label=factorial color=blue]
+	281 -> 282
+	283 [label="(" color=blue]
+	281 -> 283
+	284 [label=arg color=green]
+	281 -> 284
 	285 [label=expression color=green]
-	282 -> 285
-	286 [label=literal color=green]
+	284 -> 285
+	286 [label=location color=green]
 	285 -> 286
-	287 [label=int_literal color=green]
+	287 [label=y color=blue]
 	286 -> 287
-	288 [label=0 color=blue]
-	287 -> 288
-	289 [label="]" color=blue]
-	282 -> 289
-	290 [label=")" color=blue]
-	269 -> 290
-	291 [label=statement color=green]
-	137 -> 291
-	292 [label=";" color=blue]
-	291 -> 292
-	293 [label=statement color=green]
-	137 -> 293
-	294 [label=method_call color=green]
-	293 -> 294
-	295 [label=OutputInt color=blue]
+	288 [label="[" color=blue]
+	286 -> 288
+	289 [label=expression color=green]
+	286 -> 289
+	290 [label=location color=green]
+	289 -> 290
+	291 [label=j color=blue]
+	290 -> 291
+	292 [label="]" color=blue]
+	286 -> 292
+	293 [label="." color=blue]
+	286 -> 293
+	294 [label=location color=green]
+	286 -> 294
+	295 [label=b color=blue]
 	294 -> 295
-	296 [label="(" color=blue]
+	296 [label="[" color=blue]
 	294 -> 296
-	297 [label=arg color=green]
+	297 [label=expression color=green]
 	294 -> 297
-	298 [label=expression color=green]
+	298 [label=literal color=green]
 	297 -> 298
-	299 [label=location color=green]
+	299 [label=int_literal color=green]
 	298 -> 299
-	300 [label=y color=blue]
+	300 [label=0 color=blue]
 	299 -> 300
-	301 [label="[" color=blue]
-	299 -> 301
-	302 [label=expression color=green]
-	299 -> 302
-	303 [label=location color=green]
-	302 -> 303
-	304 [label=j color=blue]
+	301 [label="]" color=blue]
+	294 -> 301
+	302 [label=")" color=blue]
+	281 -> 302
+	303 [label=statement color=green]
+	149 -> 303
+	304 [label=";" color=blue]
 	303 -> 304
-	305 [label="]" color=blue]
-	299 -> 305
-	306 [label="." color=blue]
-	299 -> 306
-	307 [label=location color=green]
-	299 -> 307
-	308 [label=c color=blue]
-	307 -> 308
-	309 [label="." color=blue]
-	307 -> 309
-	310 [label=location color=green]
-	307 -> 310
-	311 [label=a color=blue]
+	305 [label=statement color=green]
+	149 -> 305
+	306 [label=method_call color=green]
+	305 -> 306
+	307 [label=OutputInt color=blue]
+	306 -> 307
+	308 [label="(" color=blue]
+	306 -> 308
+	309 [label=arg color=green]
+	306 -> 309
+	310 [label=expression color=green]
+	309 -> 310
+	311 [label=location color=green]
 	310 -> 311
-	312 [label=")" color=blue]
-	294 -> 312
-	313 [label=";" color=blue]
-	293 -> 313
-	314 [label=statement color=green]
-	137 -> 314
-	315 [label=assigStmt color=green]
+	312 [label=y color=blue]
+	311 -> 312
+	313 [label="[" color=blue]
+	311 -> 313
+	314 [label=expression color=green]
+	311 -> 314
+	315 [label=location color=green]
 	314 -> 315
-	316 [label=location color=green]
+	316 [label=j color=blue]
 	315 -> 316
-	317 [label=i color=blue]
-	316 -> 317
-	318 [label="=" color=blue]
-	315 -> 318
-	319 [label=expression color=green]
-	315 -> 319
-	320 [label=expression color=green]
+	317 [label="]" color=blue]
+	311 -> 317
+	318 [label="." color=blue]
+	311 -> 318
+	319 [label=location color=green]
+	311 -> 319
+	320 [label=c color=blue]
 	319 -> 320
-	321 [label=location color=green]
-	320 -> 321
-	322 [label=i color=blue]
-	321 -> 322
-	323 [label=arith_op color=green]
-	319 -> 323
-	324 [label="+" color=blue]
-	323 -> 324
-	325 [label=expression color=green]
-	319 -> 325
-	326 [label=literal color=green]
-	325 -> 326
-	327 [label=int_literal color=green]
+	321 [label="." color=blue]
+	319 -> 321
+	322 [label=location color=green]
+	319 -> 322
+	323 [label=a color=blue]
+	322 -> 323
+	324 [label=")" color=blue]
+	306 -> 324
+	325 [label=";" color=blue]
+	305 -> 325
+	326 [label=statement color=green]
+	149 -> 326
+	327 [label=assigStmt color=green]
 	326 -> 327
-	328 [label=1 color=blue]
+	328 [label=location color=green]
 	327 -> 328
-	329 [label=statement color=green]
-	137 -> 329
-	330 [label=";" color=blue]
-	329 -> 330
-	331 [label="}" color=blue]
-	137 -> 331
-	332 [label="}" color=blue]
-	60 -> 332
-	333 [label=declaration color=green]
-	0 -> 333
-	334 [label=method_declar color=green]
+	329 [label=i color=blue]
+	328 -> 329
+	330 [label="=" color=blue]
+	327 -> 330
+	331 [label=expression color=green]
+	327 -> 331
+	332 [label=expression color=green]
+	331 -> 332
+	333 [label=location color=green]
+	332 -> 333
+	334 [label=i color=blue]
 	333 -> 334
-	335 [label=method_type color=green]
-	334 -> 335
-	336 [label=int color=blue]
+	335 [label=arith_op color=green]
+	331 -> 335
+	336 [label="+" color=blue]
 	335 -> 336
-	337 [label=factorial color=blue]
-	334 -> 337
-	338 [label="(" color=blue]
-	334 -> 338
-	339 [label=parameter color=green]
-	334 -> 339
-	340 [label=parameter_type color=green]
+	337 [label=expression color=green]
+	331 -> 337
+	338 [label=literal color=green]
+	337 -> 338
+	339 [label=int_literal color=green]
+	338 -> 339
+	340 [label=1 color=blue]
 	339 -> 340
-	341 [label=int color=blue]
-	340 -> 341
-	342 [label=n color=blue]
-	339 -> 342
-	343 [label=")" color=blue]
-	334 -> 343
-	344 [label=block color=green]
-	334 -> 344
-	345 [label="{" color=blue]
-	344 -> 345
-	346 [label=statement color=green]
-	344 -> 346
-	347 [label=ifStmt color=green]
+	341 [label=statement color=green]
+	149 -> 341
+	342 [label=";" color=blue]
+	341 -> 342
+	343 [label="}" color=blue]
+	149 -> 343
+	344 [label="}" color=blue]
+	66 -> 344
+	345 [label=declaration color=green]
+	0 -> 345
+	346 [label=method_declar color=green]
+	345 -> 346
+	347 [label=method_type color=green]
 	346 -> 347
-	348 [label=if color=blue]
+	348 [label=int color=blue]
 	347 -> 348
-	349 [label="(" color=blue]
-	347 -> 349
-	350 [label=expression color=green]
-	347 -> 350
-	351 [label=expression color=green]
-	350 -> 351
-	352 [label=location color=green]
+	349 [label=factorial color=blue]
+	346 -> 349
+	350 [label="(" color=blue]
+	346 -> 350
+	351 [label=parameter color=green]
+	346 -> 351
+	352 [label=parameter_type color=green]
 	351 -> 352
-	353 [label=n color=blue]
+	353 [label=int color=blue]
 	352 -> 353
-	354 [label=eq_op color=green]
-	350 -> 354
-	355 [label="==" color=blue]
-	354 -> 355
-	356 [label=expression color=green]
-	350 -> 356
-	357 [label=literal color=green]
+	354 [label=n color=blue]
+	351 -> 354
+	355 [label=")" color=blue]
+	346 -> 355
+	356 [label=block color=green]
+	346 -> 356
+	357 [label="{" color=blue]
 	356 -> 357
-	358 [label=int_literal color=green]
-	357 -> 358
-	359 [label=0 color=blue]
+	358 [label=statement color=green]
+	356 -> 358
+	359 [label=ifStmt color=green]
 	358 -> 359
-	360 [label=")" color=blue]
-	347 -> 360
-	361 [label=block color=green]
-	347 -> 361
-	362 [label="{" color=blue]
-	361 -> 362
-	363 [label=statement color=green]
-	361 -> 363
-	364 [label=returnStmt color=green]
+	360 [label=if color=blue]
+	359 -> 360
+	361 [label="(" color=blue]
+	359 -> 361
+	362 [label=expression color=green]
+	359 -> 362
+	363 [label=expression color=green]
+	362 -> 363
+	364 [label=location color=green]
 	363 -> 364
-	365 [label=return color=blue]
+	365 [label=n color=blue]
 	364 -> 365
-	366 [label=expression color=green]
-	364 -> 366
-	367 [label=literal color=green]
+	366 [label=eq_op color=green]
+	362 -> 366
+	367 [label="==" color=blue]
 	366 -> 367
-	368 [label=int_literal color=green]
-	367 -> 368
-	369 [label=1 color=blue]
+	368 [label=expression color=green]
+	362 -> 368
+	369 [label=literal color=green]
 	368 -> 369
-	370 [label=";" color=blue]
-	364 -> 370
-	371 [label="}" color=blue]
-	361 -> 371
-	372 [label=else color=blue]
-	347 -> 372
+	370 [label=int_literal color=green]
+	369 -> 370
+	371 [label=0 color=blue]
+	370 -> 371
+	372 [label=")" color=blue]
+	359 -> 372
 	373 [label=block color=green]
-	347 -> 373
+	359 -> 373
 	374 [label="{" color=blue]
 	373 -> 374
 	375 [label=statement color=green]
@@ -757,166 +757,190 @@ digraph "Trees/tree_gui" {
 	376 -> 377
 	378 [label=expression color=green]
 	376 -> 378
-	379 [label=expression color=green]
+	379 [label=literal color=green]
 	378 -> 379
-	380 [label=location color=green]
+	380 [label=int_literal color=green]
 	379 -> 380
-	381 [label=n color=blue]
+	381 [label=1 color=blue]
 	380 -> 381
-	382 [label=higher_arith_op color=green]
-	378 -> 382
-	383 [label="*" color=blue]
-	382 -> 383
-	384 [label=expression color=green]
-	378 -> 384
-	385 [label=method_call color=green]
-	384 -> 385
-	386 [label=factorial color=blue]
+	382 [label=";" color=blue]
+	376 -> 382
+	383 [label="}" color=blue]
+	373 -> 383
+	384 [label=else color=blue]
+	359 -> 384
+	385 [label=block color=green]
+	359 -> 385
+	386 [label="{" color=blue]
 	385 -> 386
-	387 [label="(" color=blue]
+	387 [label=statement color=green]
 	385 -> 387
-	388 [label=arg color=green]
-	385 -> 388
-	389 [label=expression color=green]
+	388 [label=returnStmt color=green]
+	387 -> 388
+	389 [label=return color=blue]
 	388 -> 389
 	390 [label=expression color=green]
-	389 -> 390
-	391 [label=location color=green]
+	388 -> 390
+	391 [label=expression color=green]
 	390 -> 391
-	392 [label=n color=blue]
+	392 [label=location color=green]
 	391 -> 392
-	393 [label=arith_op color=green]
-	389 -> 393
-	394 [label="-" color=blue]
-	393 -> 394
-	395 [label=expression color=green]
-	389 -> 395
-	396 [label=literal color=green]
-	395 -> 396
-	397 [label=int_literal color=green]
+	393 [label=n color=blue]
+	392 -> 393
+	394 [label=higher_arith_op color=green]
+	390 -> 394
+	395 [label="*" color=blue]
+	394 -> 395
+	396 [label=expression color=green]
+	390 -> 396
+	397 [label=method_call color=green]
 	396 -> 397
-	398 [label=1 color=blue]
+	398 [label=factorial color=blue]
 	397 -> 398
-	399 [label=")" color=blue]
-	385 -> 399
-	400 [label=";" color=blue]
-	376 -> 400
-	401 [label="}" color=blue]
-	373 -> 401
-	402 [label="}" color=blue]
-	344 -> 402
-	403 [label=declaration color=green]
-	0 -> 403
-	404 [label=method_declar color=green]
+	399 [label="(" color=blue]
+	397 -> 399
+	400 [label=arg color=green]
+	397 -> 400
+	401 [label=expression color=green]
+	400 -> 401
+	402 [label=expression color=green]
+	401 -> 402
+	403 [label=location color=green]
+	402 -> 403
+	404 [label=n color=blue]
 	403 -> 404
-	405 [label=method_type color=green]
-	404 -> 405
-	406 [label=void color=blue]
+	405 [label=arith_op color=green]
+	401 -> 405
+	406 [label="-" color=blue]
 	405 -> 406
-	407 [label=OutputInt color=blue]
-	404 -> 407
-	408 [label="(" color=blue]
-	404 -> 408
-	409 [label=parameter color=green]
-	404 -> 409
-	410 [label=parameter_type color=green]
+	407 [label=expression color=green]
+	401 -> 407
+	408 [label=literal color=green]
+	407 -> 408
+	409 [label=int_literal color=green]
+	408 -> 409
+	410 [label=1 color=blue]
 	409 -> 410
-	411 [label=int color=blue]
-	410 -> 411
-	412 [label=n color=blue]
-	409 -> 412
-	413 [label=")" color=blue]
-	404 -> 413
-	414 [label=block color=green]
-	404 -> 414
-	415 [label="{" color=blue]
-	414 -> 415
-	416 [label="}" color=blue]
-	414 -> 416
-	417 [label=declaration color=green]
-	0 -> 417
-	418 [label=method_declar color=green]
+	411 [label=")" color=blue]
+	397 -> 411
+	412 [label=";" color=blue]
+	388 -> 412
+	413 [label="}" color=blue]
+	385 -> 413
+	414 [label="}" color=blue]
+	356 -> 414
+	415 [label=declaration color=green]
+	0 -> 415
+	416 [label=method_declar color=green]
+	415 -> 416
+	417 [label=method_type color=green]
+	416 -> 417
+	418 [label=void color=blue]
 	417 -> 418
-	419 [label=method_type color=green]
-	418 -> 419
-	420 [label=int color=blue]
-	419 -> 420
-	421 [label=InputInt color=blue]
-	418 -> 421
-	422 [label="(" color=blue]
-	418 -> 422
-	423 [label=parameter color=green]
-	418 -> 423
-	424 [label=void color=blue]
-	423 -> 424
+	419 [label=OutputInt color=blue]
+	416 -> 419
+	420 [label="(" color=blue]
+	416 -> 420
+	421 [label=parameter color=green]
+	416 -> 421
+	422 [label=parameter_type color=green]
+	421 -> 422
+	423 [label=int color=blue]
+	422 -> 423
+	424 [label=n color=blue]
+	421 -> 424
 	425 [label=")" color=blue]
-	418 -> 425
+	416 -> 425
 	426 [label=block color=green]
-	418 -> 426
+	416 -> 426
 	427 [label="{" color=blue]
 	426 -> 427
-	428 [label=statement color=green]
+	428 [label="}" color=blue]
 	426 -> 428
-	429 [label=returnStmt color=green]
-	428 -> 429
-	430 [label=return color=blue]
+	429 [label=declaration color=green]
+	0 -> 429
+	430 [label=method_declar color=green]
 	429 -> 430
-	431 [label=expression color=green]
-	429 -> 431
-	432 [label=literal color=green]
+	431 [label=method_type color=green]
+	430 -> 431
+	432 [label=int color=blue]
 	431 -> 432
-	433 [label=int_literal color=green]
-	432 -> 433
-	434 [label=0 color=blue]
-	433 -> 434
-	435 [label=";" color=blue]
-	429 -> 435
-	436 [label="}" color=blue]
-	426 -> 436
-	437 [label=declaration color=green]
-	0 -> 437
-	438 [label=method_declar color=green]
-	437 -> 438
-	439 [label=method_type color=green]
+	433 [label=InputInt color=blue]
+	430 -> 433
+	434 [label="(" color=blue]
+	430 -> 434
+	435 [label=parameter color=green]
+	430 -> 435
+	436 [label=void color=blue]
+	435 -> 436
+	437 [label=")" color=blue]
+	430 -> 437
+	438 [label=block color=green]
+	430 -> 438
+	439 [label="{" color=blue]
 	438 -> 439
-	440 [label=int color=blue]
-	439 -> 440
-	441 [label=ReturnNumber color=blue]
-	438 -> 441
-	442 [label="(" color=blue]
-	438 -> 442
-	443 [label=parameter color=green]
-	438 -> 443
-	444 [label=void color=blue]
+	440 [label=statement color=green]
+	438 -> 440
+	441 [label=returnStmt color=green]
+	440 -> 441
+	442 [label=return color=blue]
+	441 -> 442
+	443 [label=expression color=green]
+	441 -> 443
+	444 [label=literal color=green]
 	443 -> 444
-	445 [label=")" color=blue]
-	438 -> 445
-	446 [label=block color=green]
-	438 -> 446
-	447 [label="{" color=blue]
-	446 -> 447
-	448 [label=statement color=green]
-	446 -> 448
-	449 [label=returnStmt color=green]
-	448 -> 449
-	450 [label=return color=blue]
+	445 [label=int_literal color=green]
+	444 -> 445
+	446 [label=0 color=blue]
+	445 -> 446
+	447 [label=";" color=blue]
+	441 -> 447
+	448 [label="}" color=blue]
+	438 -> 448
+	449 [label=declaration color=green]
+	0 -> 449
+	450 [label=method_declar color=green]
 	449 -> 450
-	451 [label=expression color=green]
-	449 -> 451
-	452 [label=location color=green]
+	451 [label=method_type color=green]
+	450 -> 451
+	452 [label=int color=blue]
 	451 -> 452
-	453 [label=z color=blue]
-	452 -> 453
-	454 [label="." color=blue]
-	452 -> 454
-	455 [label=location color=green]
-	452 -> 455
-	456 [label=a color=blue]
+	453 [label=ReturnNumber color=blue]
+	450 -> 453
+	454 [label="(" color=blue]
+	450 -> 454
+	455 [label=parameter color=green]
+	450 -> 455
+	456 [label=void color=blue]
 	455 -> 456
-	457 [label=";" color=blue]
-	449 -> 457
-	458 [label="}" color=blue]
-	446 -> 458
-	459 [label="}" color=blue]
-	0 -> 459
+	457 [label=")" color=blue]
+	450 -> 457
+	458 [label=block color=green]
+	450 -> 458
+	459 [label="{" color=blue]
+	458 -> 459
+	460 [label=statement color=green]
+	458 -> 460
+	461 [label=returnStmt color=green]
+	460 -> 461
+	462 [label=return color=blue]
+	461 -> 462
+	463 [label=expression color=green]
+	461 -> 463
+	464 [label=location color=green]
+	463 -> 464
+	465 [label=z color=blue]
+	464 -> 465
+	466 [label="." color=blue]
+	464 -> 466
+	467 [label=location color=green]
+	464 -> 467
+	468 [label=a color=blue]
+	467 -> 468
+	469 [label=";" color=blue]
+	461 -> 469
+	470 [label="}" color=blue]
+	458 -> 470
+	471 [label="}" color=blue]
+	0 -> 471
 }
