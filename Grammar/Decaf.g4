@@ -1,48 +1,40 @@
 grammar Decaf;
 
 /*Definiciones para letras y digitos*/
-fragment LETTER: ('a'..'z'|'A'..'Z') ;
-fragment DIGIT: '0'..'9' ;
+fragment LETTER: [a-zA-Z_];
+fragment DIGIT: [0-9]; 
 
 /*Reglas de DECAF*/
 ID: LETTER (LETTER|DIGIT)*;
-
 NUM: DIGIT (DIGIT)* ;
-
 CHAR: '\'' LETTER '\'';
-
 SPACES : [ \t\r\n\f]+  ->channel(HIDDEN);
-
 COMMENT: '/*' .*? '*/' -> channel(2);
-
 LINE_COMMENT: '//' ~[\r\n]* -> channel(2);
 
 /*Parser Rules*/
-program: 'class' 'Program' '{' (declaration)* '}';
+program: 'class' 'Program' '{' (declaration)* '}' EOF;
 
 declaration:
       struct_declar
     | var_declar
-    | method_declar
-    | structInstantiation;
+    | method_declar;
 
-struct_declar: 'struct' name=ID '{' (var_declar)* '}' (';')?;
-      
 var_declar:
-      var_Type=var_type  name=ID ';' #single_VarDeclar
-    | var_Type=var_type  name=ID '[' size=NUM ']' ';' #list_VarDeclar;
+      var_type  ID ';' #single_VarDeclar
+    | var_type  ID '[' NUM ']' ';' #list_VarDeclar;
 
-structInstantiation: 'struct' struct=ID name=ID;
-
+struct_declar: 'struct' ID '{' (var_declar)* '}' ';';
+      
 var_type:
-     'int'
+      'int'
     | 'char' 
     | 'boolean' 
     | 'struct' ID 
     | struct_declar 
     | 'void' ;
 
-method_declar: returnType=method_type name=ID '(' (parameter (',' parameter)*)* ')' block;
+method_declar: method_type ID '(' (parameter | parameter (',' parameter)*)?  ')' block;
 
 method_type:
       'int' 
@@ -51,52 +43,43 @@ method_type:
     | 'void';
 
 parameter: 
-      var_Type=parameter_type name=ID 
-    | var_Type=parameter_type name=ID '[' ']' 
-    | 'void';
+      parameter_type ID 
+    | parameter_type ID '[' ']';
 
 parameter_type: 
       'int' 
     | 'char'
     | 'boolean';
 
-block: '{' (decl=var_declar)* (state=statement)* '}';
+block: '{' (var_declar)* (statement)* '}';
 
 statement:
-      ifStmt
-    | whileStmt
-    | returnStmt
-    | method_call ';'
-    | block
-    | assigStmt
-    | (expression)? ';';
+      'if' '(' expression ')' block1 = block ('else' block2 = block)? #if_Scope
+    | 'while' '(' expression ')' block #while_Scope
+    | 'return' (expression)? ';' #stmnt_return
+    | method_call ';' #stmnt_methodCall
+    | block #stmnt_block
+    | left = location '=' right = expression #stmnt_equal
+    | (expression)? ';' #stmnt_expression; 
 
-ifStmt: 'if' '(' expression ')' ifblock=block ('else' elseblock=block)?;
-
-whileStmt: 'while' '(' expression ')' block;
-
-returnStmt: 'return' (expression)? ';';
-
-assigStmt: left=location '=' right=expression;
-
-location: (name=ID | name=ID '[' expr=expression ']') ('.' loc=location)?;
-
-method_call: method=ID '(' (arg (',' arg)*)* ')';
-
-arg: expression;
+location: (ID | ID '[' expression ']' ) ('.' location)?;
 
 expression:
       method_call #methodCallExpression
     | location #locationExpression
     | literal #literalExpression
-    | left=expression op=higher_arith_op right=expression #higherArithOp
-    | left=expression op=arith_op right=expression #arithOp
-    | left=expression op=rel_op right=expression #relationOp
-    | left=expression op=eq_op right=expression #equalityOp
-    | left=expression op=cond_op right=expression #conditionalOp
     | '-' expression #negativeExpression
     | '!' expression #negationExpression
-    | '(' expression ')' #parentExpression;
+    | '(' expression ')' #parentExpression
+    | left=expression higher_arith_op right=expression #higherArithOp
+    | left=expression arith_op right=expression #arithOp
+    | left=expression rel_op right=expression #relationOp
+    | left=expression eq_op right=expression #equalityOp
+    | left=expression cond_op right=expression #conditionalOp;
+
+method_call: ID '(' (arg | arg (',' arg)*)?    ')';
+
+arg: expression;
 
 higher_arith_op: '*' | '/' | '%';
 

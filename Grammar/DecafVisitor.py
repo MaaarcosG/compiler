@@ -19,11 +19,6 @@ class DecafVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by DecafParser#struct_declar.
-    def visitStruct_declar(self, ctx:DecafParser.Struct_declarContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by DecafParser#single_VarDeclar.
     def visitSingle_VarDeclar(self, ctx:DecafParser.Single_VarDeclarContext):
         return self.visitChildren(ctx)
@@ -34,8 +29,8 @@ class DecafVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by DecafParser#structInstantiation.
-    def visitStructInstantiation(self, ctx:DecafParser.StructInstantiationContext):
+    # Visit a parse tree produced by DecafParser#struct_declar.
+    def visitStruct_declar(self, ctx:DecafParser.Struct_declarContext):
         return self.visitChildren(ctx)
 
 
@@ -69,43 +64,43 @@ class DecafVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by DecafParser#statement.
-    def visitStatement(self, ctx:DecafParser.StatementContext):
+    # Visit a parse tree produced by DecafParser#if_Scope.
+    def visitIf_Scope(self, ctx:DecafParser.If_ScopeContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by DecafParser#ifStmt.
-    def visitIfStmt(self, ctx:DecafParser.IfStmtContext):
+    # Visit a parse tree produced by DecafParser#while_Scope.
+    def visitWhile_Scope(self, ctx:DecafParser.While_ScopeContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by DecafParser#whileStmt.
-    def visitWhileStmt(self, ctx:DecafParser.WhileStmtContext):
+    # Visit a parse tree produced by DecafParser#stmnt_return.
+    def visitStmnt_return(self, ctx:DecafParser.Stmnt_returnContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by DecafParser#returnStmt.
-    def visitReturnStmt(self, ctx:DecafParser.ReturnStmtContext):
+    # Visit a parse tree produced by DecafParser#stmnt_methodCall.
+    def visitStmnt_methodCall(self, ctx:DecafParser.Stmnt_methodCallContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by DecafParser#assigStmt.
-    def visitAssigStmt(self, ctx:DecafParser.AssigStmtContext):
+    # Visit a parse tree produced by DecafParser#stmnt_block.
+    def visitStmnt_block(self, ctx:DecafParser.Stmnt_blockContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by DecafParser#stmnt_equal.
+    def visitStmnt_equal(self, ctx:DecafParser.Stmnt_equalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by DecafParser#stmnt_expression.
+    def visitStmnt_expression(self, ctx:DecafParser.Stmnt_expressionContext):
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by DecafParser#location.
     def visitLocation(self, ctx:DecafParser.LocationContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by DecafParser#method_call.
-    def visitMethod_call(self, ctx:DecafParser.Method_callContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by DecafParser#arg.
-    def visitArg(self, ctx:DecafParser.ArgContext):
         return self.visitChildren(ctx)
 
 
@@ -161,6 +156,16 @@ class DecafVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by DecafParser#arithOp.
     def visitArithOp(self, ctx:DecafParser.ArithOpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by DecafParser#method_call.
+    def visitMethod_call(self, ctx:DecafParser.Method_callContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by DecafParser#arg.
+    def visitArg(self, ctx:DecafParser.ArgContext):
         return self.visitChildren(ctx)
 
 

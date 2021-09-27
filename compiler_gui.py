@@ -16,7 +16,7 @@ def get_code():
     code = request.form['src']
     session['code'] = code
     visited_decaf = compiler_gui(code)
-    session['errors'] = visited_decaf.validator.errors
+    session['errors'] = visited_decaf.error
     print(session['errors'])
     return render_template('code.html', code=code)
 
