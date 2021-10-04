@@ -72,6 +72,10 @@ class SymbolTable:
     def __str__(self) -> str:
         string = 'Name: ' + str(self.name) + '\n'
         string = string + 'id: ' + str(self.id) + '\n'
+        string = string + 'stype: ' + str(self.stype) + '\n'
+        string = string + 'parent: ' + str(self.parent) + '\n'
+        string = string + 'symbol: ' + str(self.symbol) + '\n'
+        string = string + 'data: ' + str(self.data) + '\n'
 
         return string
 

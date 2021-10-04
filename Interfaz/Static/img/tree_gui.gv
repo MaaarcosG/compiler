@@ -883,6 +883,4 @@ digraph "Trees/tree_gui" {
 	429 -> 440
 	441 [label="}" color=blue]
 	0 -> 441
-	442 [label=<EOF> color=blue]
-	0 -> 442
 }

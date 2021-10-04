@@ -9,8 +9,7 @@ ID: LETTER (LETTER|DIGIT)*;
 NUM: DIGIT (DIGIT)* ;
 CHAR: '\'' LETTER '\'';
 SPACES : [ \t\r\n\f]+  ->channel(HIDDEN);
-COMMENT: '/*' .*? '*/' -> channel(2);
-LINE_COMMENT: '//' ~[\r\n]* -> channel(2);
+LINE_COMMENT: '//' ~[\r\n]* -> skip;
 
 /*Parser Rules*/
 program: 'class' 'Program' '{' (declaration)* '}';
@@ -34,7 +33,7 @@ var_type:
     | struct_declar 
     | 'void' ;
 
-method_declar: method_type ID '(' (parameter | parameter (',' parameter)*)?  ')' block;
+method_declar: method_type ID '(' (parameter (',' parameter)*)?  ')' block;
 
 method_type:
       'int' 
