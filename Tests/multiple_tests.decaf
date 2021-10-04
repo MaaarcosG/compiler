@@ -16,7 +16,7 @@ class Program{
 		int j;
 		int k;	
 		i = 0;
-		j=0;
+		j = 0;
 		z.a = 3;	
 		while(i<=10){
 			y[j].b[0]=InputInt();

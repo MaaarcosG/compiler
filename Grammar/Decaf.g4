@@ -13,7 +13,7 @@ COMMENT: '/*' .*? '*/' -> channel(2);
 LINE_COMMENT: '//' ~[\r\n]* -> channel(2);
 
 /*Parser Rules*/
-program: 'class' 'Program' '{' (declaration)* '}' EOF;
+program: 'class' 'Program' '{' (declaration)* '}';
 
 declaration:
       struct_declar
@@ -24,7 +24,7 @@ var_declar:
       var_type  ID ';' #single_VarDeclar
     | var_type  ID '[' NUM ']' ';' #list_VarDeclar;
 
-struct_declar: 'struct' ID '{' (var_declar)* '}' ';';
+struct_declar: 'struct' ID '{' (var_declar)* '}' (';')?;
       
 var_type:
       'int'
@@ -54,13 +54,13 @@ parameter_type:
 block: '{' (var_declar)* (statement)* '}';
 
 statement:
-      'if' '(' expression ')' block1 = block ('else' block2 = block)? #if_Scope
-    | 'while' '(' expression ')' block #while_Scope
-    | 'return' (expression)? ';' #stmnt_return
-    | method_call ';' #stmnt_methodCall
-    | block #stmnt_block
-    | left = location '=' right = expression #stmnt_equal
-    | (expression)? ';' #stmnt_expression; 
+      'if' '(' expression ')' block1 = block ('else' block2 = block)? #ifStmt
+    | 'while' '(' expression ')' block #whileStmt
+    | 'return' (expression)? ';' #returnStmt
+    | method_call ';' #methodCallStmt
+    | block #blockStmt
+    | left = location '=' right = expression #assigStmt
+    | (expression)? ';' #expressionStmt; 
 
 location: (ID | ID '[' expression ']' ) ('.' location)?;
 

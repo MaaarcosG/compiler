@@ -17,9 +17,9 @@ def serializedATN():
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\3\2\3\2\3\2\3\2\7\2\67\n\2\f\2\16\2:\13\2\3\2\3")
-        buf.write("\2\3\2\3\3\3\3\3\3\5\3B\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3")
-        buf.write("\4\3\4\3\4\3\4\3\4\5\4O\n\4\3\5\3\5\3\5\3\5\7\5U\n\5\f")
-        buf.write("\5\16\5X\13\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6")
+        buf.write("\2\3\3\3\3\3\3\5\3A\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3")
+        buf.write("\4\3\4\3\4\3\4\5\4N\n\4\3\5\3\5\3\5\3\5\7\5T\n\5\f\5\16")
+        buf.write("\5W\13\5\3\5\3\5\5\5[\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6")
         buf.write("\5\6d\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\7\7m\n\7\f\7\16")
         buf.write("\7p\13\7\5\7r\n\7\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\t\3\t")
         buf.write("\3\t\3\t\3\t\3\t\5\t\u0081\n\t\3\n\3\n\3\13\3\13\7\13")
@@ -39,8 +39,8 @@ def serializedATN():
         buf.write("\n\26\3\27\3\27\3\30\3\30\3\31\3\31\3\31\2\3\32\32\2\4")
         buf.write("\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\2\n\3")
         buf.write("\2\13\16\3\2\13\r\3\2\32\34\4\2\30\30\35\35\3\2\36!\3")
-        buf.write("\2\"#\3\2$%\3\2&\'\2\u0120\2\62\3\2\2\2\4A\3\2\2\2\6N")
-        buf.write("\3\2\2\2\bP\3\2\2\2\nc\3\2\2\2\fe\3\2\2\2\16v\3\2\2\2")
+        buf.write("\2\"#\3\2$%\3\2&\'\2\u0121\2\62\3\2\2\2\4@\3\2\2\2\6M")
+        buf.write("\3\2\2\2\bO\3\2\2\2\nc\3\2\2\2\fe\3\2\2\2\16v\3\2\2\2")
         buf.write("\20\u0080\3\2\2\2\22\u0082\3\2\2\2\24\u0084\3\2\2\2\26")
         buf.write("\u00b3\3\2\2\2\30\u00bb\3\2\2\2\32\u00cd\3\2\2\2\34\u00e8")
         buf.write("\3\2\2\2\36\u00f7\3\2\2\2 \u00f9\3\2\2\2\"\u00fb\3\2\2")
@@ -48,69 +48,70 @@ def serializedATN():
         buf.write("\3\2\2\2,\u0108\3\2\2\2.\u010a\3\2\2\2\60\u010c\3\2\2")
         buf.write("\2\62\63\7\3\2\2\63\64\7\4\2\2\648\7\5\2\2\65\67\5\4\3")
         buf.write("\2\66\65\3\2\2\2\67:\3\2\2\28\66\3\2\2\289\3\2\2\29;\3")
-        buf.write("\2\2\2:8\3\2\2\2;<\7\6\2\2<=\7\2\2\3=\3\3\2\2\2>B\5\b")
-        buf.write("\5\2?B\5\6\4\2@B\5\f\7\2A>\3\2\2\2A?\3\2\2\2A@\3\2\2\2")
-        buf.write("B\5\3\2\2\2CD\5\n\6\2DE\7(\2\2EF\7\7\2\2FO\3\2\2\2GH\5")
-        buf.write("\n\6\2HI\7(\2\2IJ\7\b\2\2JK\7)\2\2KL\7\t\2\2LM\7\7\2\2")
-        buf.write("MO\3\2\2\2NC\3\2\2\2NG\3\2\2\2O\7\3\2\2\2PQ\7\n\2\2QR")
-        buf.write("\7(\2\2RV\7\5\2\2SU\5\6\4\2TS\3\2\2\2UX\3\2\2\2VT\3\2")
-        buf.write("\2\2VW\3\2\2\2WY\3\2\2\2XV\3\2\2\2YZ\7\6\2\2Z[\7\7\2\2")
-        buf.write("[\t\3\2\2\2\\d\7\13\2\2]d\7\f\2\2^d\7\r\2\2_`\7\n\2\2")
-        buf.write("`d\7(\2\2ad\5\b\5\2bd\7\16\2\2c\\\3\2\2\2c]\3\2\2\2c^")
-        buf.write("\3\2\2\2c_\3\2\2\2ca\3\2\2\2cb\3\2\2\2d\13\3\2\2\2ef\5")
-        buf.write("\16\b\2fg\7(\2\2gq\7\17\2\2hr\5\20\t\2in\5\20\t\2jk\7")
-        buf.write("\20\2\2km\5\20\t\2lj\3\2\2\2mp\3\2\2\2nl\3\2\2\2no\3\2")
-        buf.write("\2\2or\3\2\2\2pn\3\2\2\2qh\3\2\2\2qi\3\2\2\2qr\3\2\2\2")
-        buf.write("rs\3\2\2\2st\7\21\2\2tu\5\24\13\2u\r\3\2\2\2vw\t\2\2\2")
-        buf.write("w\17\3\2\2\2xy\5\22\n\2yz\7(\2\2z\u0081\3\2\2\2{|\5\22")
-        buf.write("\n\2|}\7(\2\2}~\7\b\2\2~\177\7\t\2\2\177\u0081\3\2\2\2")
-        buf.write("\u0080x\3\2\2\2\u0080{\3\2\2\2\u0081\21\3\2\2\2\u0082")
-        buf.write("\u0083\t\3\2\2\u0083\23\3\2\2\2\u0084\u0088\7\5\2\2\u0085")
-        buf.write("\u0087\5\6\4\2\u0086\u0085\3\2\2\2\u0087\u008a\3\2\2\2")
-        buf.write("\u0088\u0086\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008e\3")
-        buf.write("\2\2\2\u008a\u0088\3\2\2\2\u008b\u008d\5\26\f\2\u008c")
-        buf.write("\u008b\3\2\2\2\u008d\u0090\3\2\2\2\u008e\u008c\3\2\2\2")
-        buf.write("\u008e\u008f\3\2\2\2\u008f\u0091\3\2\2\2\u0090\u008e\3")
-        buf.write("\2\2\2\u0091\u0092\7\6\2\2\u0092\25\3\2\2\2\u0093\u0094")
-        buf.write("\7\22\2\2\u0094\u0095\7\17\2\2\u0095\u0096\5\32\16\2\u0096")
-        buf.write("\u0097\7\21\2\2\u0097\u009a\5\24\13\2\u0098\u0099\7\23")
-        buf.write("\2\2\u0099\u009b\5\24\13\2\u009a\u0098\3\2\2\2\u009a\u009b")
-        buf.write("\3\2\2\2\u009b\u00b4\3\2\2\2\u009c\u009d\7\24\2\2\u009d")
-        buf.write("\u009e\7\17\2\2\u009e\u009f\5\32\16\2\u009f\u00a0\7\21")
-        buf.write("\2\2\u00a0\u00a1\5\24\13\2\u00a1\u00b4\3\2\2\2\u00a2\u00a4")
-        buf.write("\7\25\2\2\u00a3\u00a5\5\32\16\2\u00a4\u00a3\3\2\2\2\u00a4")
-        buf.write("\u00a5\3\2\2\2\u00a5\u00a6\3\2\2\2\u00a6\u00b4\7\7\2\2")
-        buf.write("\u00a7\u00a8\5\34\17\2\u00a8\u00a9\7\7\2\2\u00a9\u00b4")
-        buf.write("\3\2\2\2\u00aa\u00b4\5\24\13\2\u00ab\u00ac\5\30\r\2\u00ac")
-        buf.write("\u00ad\7\26\2\2\u00ad\u00ae\5\32\16\2\u00ae\u00b4\3\2")
-        buf.write("\2\2\u00af\u00b1\5\32\16\2\u00b0\u00af\3\2\2\2\u00b0\u00b1")
-        buf.write("\3\2\2\2\u00b1\u00b2\3\2\2\2\u00b2\u00b4\7\7\2\2\u00b3")
-        buf.write("\u0093\3\2\2\2\u00b3\u009c\3\2\2\2\u00b3\u00a2\3\2\2\2")
-        buf.write("\u00b3\u00a7\3\2\2\2\u00b3\u00aa\3\2\2\2\u00b3\u00ab\3")
-        buf.write("\2\2\2\u00b3\u00b0\3\2\2\2\u00b4\27\3\2\2\2\u00b5\u00bc")
-        buf.write("\7(\2\2\u00b6\u00b7\7(\2\2\u00b7\u00b8\7\b\2\2\u00b8\u00b9")
-        buf.write("\5\32\16\2\u00b9\u00ba\7\t\2\2\u00ba\u00bc\3\2\2\2\u00bb")
-        buf.write("\u00b5\3\2\2\2\u00bb\u00b6\3\2\2\2\u00bc\u00bf\3\2\2\2")
-        buf.write("\u00bd\u00be\7\27\2\2\u00be\u00c0\5\30\r\2\u00bf\u00bd")
-        buf.write("\3\2\2\2\u00bf\u00c0\3\2\2\2\u00c0\31\3\2\2\2\u00c1\u00c2")
-        buf.write("\b\16\1\2\u00c2\u00ce\5\34\17\2\u00c3\u00ce\5\30\r\2\u00c4")
-        buf.write("\u00ce\5*\26\2\u00c5\u00c6\7\30\2\2\u00c6\u00ce\5\32\16")
-        buf.write("\n\u00c7\u00c8\7\31\2\2\u00c8\u00ce\5\32\16\t\u00c9\u00ca")
-        buf.write("\7\17\2\2\u00ca\u00cb\5\32\16\2\u00cb\u00cc\7\21\2\2\u00cc")
-        buf.write("\u00ce\3\2\2\2\u00cd\u00c1\3\2\2\2\u00cd\u00c3\3\2\2\2")
-        buf.write("\u00cd\u00c4\3\2\2\2\u00cd\u00c5\3\2\2\2\u00cd\u00c7\3")
-        buf.write("\2\2\2\u00cd\u00c9\3\2\2\2\u00ce\u00e5\3\2\2\2\u00cf\u00d0")
-        buf.write("\f\7\2\2\u00d0\u00d1\5 \21\2\u00d1\u00d2\5\32\16\b\u00d2")
-        buf.write("\u00e4\3\2\2\2\u00d3\u00d4\f\6\2\2\u00d4\u00d5\5\"\22")
-        buf.write("\2\u00d5\u00d6\5\32\16\7\u00d6\u00e4\3\2\2\2\u00d7\u00d8")
-        buf.write("\f\5\2\2\u00d8\u00d9\5$\23\2\u00d9\u00da\5\32\16\6\u00da")
-        buf.write("\u00e4\3\2\2\2\u00db\u00dc\f\4\2\2\u00dc\u00dd\5&\24\2")
-        buf.write("\u00dd\u00de\5\32\16\5\u00de\u00e4\3\2\2\2\u00df\u00e0")
-        buf.write("\f\3\2\2\u00e0\u00e1\5(\25\2\u00e1\u00e2\5\32\16\4\u00e2")
-        buf.write("\u00e4\3\2\2\2\u00e3\u00cf\3\2\2\2\u00e3\u00d3\3\2\2\2")
-        buf.write("\u00e3\u00d7\3\2\2\2\u00e3\u00db\3\2\2\2\u00e3\u00df\3")
-        buf.write("\2\2\2\u00e4\u00e7\3\2\2\2\u00e5\u00e3\3\2\2\2\u00e5\u00e6")
-        buf.write("\3\2\2\2\u00e6\33\3\2\2\2\u00e7\u00e5\3\2\2\2\u00e8\u00e9")
+        buf.write("\2\2\2:8\3\2\2\2;<\7\6\2\2<\3\3\2\2\2=A\5\b\5\2>A\5\6")
+        buf.write("\4\2?A\5\f\7\2@=\3\2\2\2@>\3\2\2\2@?\3\2\2\2A\5\3\2\2")
+        buf.write("\2BC\5\n\6\2CD\7(\2\2DE\7\7\2\2EN\3\2\2\2FG\5\n\6\2GH")
+        buf.write("\7(\2\2HI\7\b\2\2IJ\7)\2\2JK\7\t\2\2KL\7\7\2\2LN\3\2\2")
+        buf.write("\2MB\3\2\2\2MF\3\2\2\2N\7\3\2\2\2OP\7\n\2\2PQ\7(\2\2Q")
+        buf.write("U\7\5\2\2RT\5\6\4\2SR\3\2\2\2TW\3\2\2\2US\3\2\2\2UV\3")
+        buf.write("\2\2\2VX\3\2\2\2WU\3\2\2\2XZ\7\6\2\2Y[\7\7\2\2ZY\3\2\2")
+        buf.write("\2Z[\3\2\2\2[\t\3\2\2\2\\d\7\13\2\2]d\7\f\2\2^d\7\r\2")
+        buf.write("\2_`\7\n\2\2`d\7(\2\2ad\5\b\5\2bd\7\16\2\2c\\\3\2\2\2")
+        buf.write("c]\3\2\2\2c^\3\2\2\2c_\3\2\2\2ca\3\2\2\2cb\3\2\2\2d\13")
+        buf.write("\3\2\2\2ef\5\16\b\2fg\7(\2\2gq\7\17\2\2hr\5\20\t\2in\5")
+        buf.write("\20\t\2jk\7\20\2\2km\5\20\t\2lj\3\2\2\2mp\3\2\2\2nl\3")
+        buf.write("\2\2\2no\3\2\2\2or\3\2\2\2pn\3\2\2\2qh\3\2\2\2qi\3\2\2")
+        buf.write("\2qr\3\2\2\2rs\3\2\2\2st\7\21\2\2tu\5\24\13\2u\r\3\2\2")
+        buf.write("\2vw\t\2\2\2w\17\3\2\2\2xy\5\22\n\2yz\7(\2\2z\u0081\3")
+        buf.write("\2\2\2{|\5\22\n\2|}\7(\2\2}~\7\b\2\2~\177\7\t\2\2\177")
+        buf.write("\u0081\3\2\2\2\u0080x\3\2\2\2\u0080{\3\2\2\2\u0081\21")
+        buf.write("\3\2\2\2\u0082\u0083\t\3\2\2\u0083\23\3\2\2\2\u0084\u0088")
+        buf.write("\7\5\2\2\u0085\u0087\5\6\4\2\u0086\u0085\3\2\2\2\u0087")
+        buf.write("\u008a\3\2\2\2\u0088\u0086\3\2\2\2\u0088\u0089\3\2\2\2")
+        buf.write("\u0089\u008e\3\2\2\2\u008a\u0088\3\2\2\2\u008b\u008d\5")
+        buf.write("\26\f\2\u008c\u008b\3\2\2\2\u008d\u0090\3\2\2\2\u008e")
+        buf.write("\u008c\3\2\2\2\u008e\u008f\3\2\2\2\u008f\u0091\3\2\2\2")
+        buf.write("\u0090\u008e\3\2\2\2\u0091\u0092\7\6\2\2\u0092\25\3\2")
+        buf.write("\2\2\u0093\u0094\7\22\2\2\u0094\u0095\7\17\2\2\u0095\u0096")
+        buf.write("\5\32\16\2\u0096\u0097\7\21\2\2\u0097\u009a\5\24\13\2")
+        buf.write("\u0098\u0099\7\23\2\2\u0099\u009b\5\24\13\2\u009a\u0098")
+        buf.write("\3\2\2\2\u009a\u009b\3\2\2\2\u009b\u00b4\3\2\2\2\u009c")
+        buf.write("\u009d\7\24\2\2\u009d\u009e\7\17\2\2\u009e\u009f\5\32")
+        buf.write("\16\2\u009f\u00a0\7\21\2\2\u00a0\u00a1\5\24\13\2\u00a1")
+        buf.write("\u00b4\3\2\2\2\u00a2\u00a4\7\25\2\2\u00a3\u00a5\5\32\16")
+        buf.write("\2\u00a4\u00a3\3\2\2\2\u00a4\u00a5\3\2\2\2\u00a5\u00a6")
+        buf.write("\3\2\2\2\u00a6\u00b4\7\7\2\2\u00a7\u00a8\5\34\17\2\u00a8")
+        buf.write("\u00a9\7\7\2\2\u00a9\u00b4\3\2\2\2\u00aa\u00b4\5\24\13")
+        buf.write("\2\u00ab\u00ac\5\30\r\2\u00ac\u00ad\7\26\2\2\u00ad\u00ae")
+        buf.write("\5\32\16\2\u00ae\u00b4\3\2\2\2\u00af\u00b1\5\32\16\2\u00b0")
+        buf.write("\u00af\3\2\2\2\u00b0\u00b1\3\2\2\2\u00b1\u00b2\3\2\2\2")
+        buf.write("\u00b2\u00b4\7\7\2\2\u00b3\u0093\3\2\2\2\u00b3\u009c\3")
+        buf.write("\2\2\2\u00b3\u00a2\3\2\2\2\u00b3\u00a7\3\2\2\2\u00b3\u00aa")
+        buf.write("\3\2\2\2\u00b3\u00ab\3\2\2\2\u00b3\u00b0\3\2\2\2\u00b4")
+        buf.write("\27\3\2\2\2\u00b5\u00bc\7(\2\2\u00b6\u00b7\7(\2\2\u00b7")
+        buf.write("\u00b8\7\b\2\2\u00b8\u00b9\5\32\16\2\u00b9\u00ba\7\t\2")
+        buf.write("\2\u00ba\u00bc\3\2\2\2\u00bb\u00b5\3\2\2\2\u00bb\u00b6")
+        buf.write("\3\2\2\2\u00bc\u00bf\3\2\2\2\u00bd\u00be\7\27\2\2\u00be")
+        buf.write("\u00c0\5\30\r\2\u00bf\u00bd\3\2\2\2\u00bf\u00c0\3\2\2")
+        buf.write("\2\u00c0\31\3\2\2\2\u00c1\u00c2\b\16\1\2\u00c2\u00ce\5")
+        buf.write("\34\17\2\u00c3\u00ce\5\30\r\2\u00c4\u00ce\5*\26\2\u00c5")
+        buf.write("\u00c6\7\30\2\2\u00c6\u00ce\5\32\16\n\u00c7\u00c8\7\31")
+        buf.write("\2\2\u00c8\u00ce\5\32\16\t\u00c9\u00ca\7\17\2\2\u00ca")
+        buf.write("\u00cb\5\32\16\2\u00cb\u00cc\7\21\2\2\u00cc\u00ce\3\2")
+        buf.write("\2\2\u00cd\u00c1\3\2\2\2\u00cd\u00c3\3\2\2\2\u00cd\u00c4")
+        buf.write("\3\2\2\2\u00cd\u00c5\3\2\2\2\u00cd\u00c7\3\2\2\2\u00cd")
+        buf.write("\u00c9\3\2\2\2\u00ce\u00e5\3\2\2\2\u00cf\u00d0\f\7\2\2")
+        buf.write("\u00d0\u00d1\5 \21\2\u00d1\u00d2\5\32\16\b\u00d2\u00e4")
+        buf.write("\3\2\2\2\u00d3\u00d4\f\6\2\2\u00d4\u00d5\5\"\22\2\u00d5")
+        buf.write("\u00d6\5\32\16\7\u00d6\u00e4\3\2\2\2\u00d7\u00d8\f\5\2")
+        buf.write("\2\u00d8\u00d9\5$\23\2\u00d9\u00da\5\32\16\6\u00da\u00e4")
+        buf.write("\3\2\2\2\u00db\u00dc\f\4\2\2\u00dc\u00dd\5&\24\2\u00dd")
+        buf.write("\u00de\5\32\16\5\u00de\u00e4\3\2\2\2\u00df\u00e0\f\3\2")
+        buf.write("\2\u00e0\u00e1\5(\25\2\u00e1\u00e2\5\32\16\4\u00e2\u00e4")
+        buf.write("\3\2\2\2\u00e3\u00cf\3\2\2\2\u00e3\u00d3\3\2\2\2\u00e3")
+        buf.write("\u00d7\3\2\2\2\u00e3\u00db\3\2\2\2\u00e3\u00df\3\2\2\2")
+        buf.write("\u00e4\u00e7\3\2\2\2\u00e5\u00e3\3\2\2\2\u00e5\u00e6\3")
+        buf.write("\2\2\2\u00e6\33\3\2\2\2\u00e7\u00e5\3\2\2\2\u00e8\u00e9")
         buf.write("\7(\2\2\u00e9\u00f3\7\17\2\2\u00ea\u00f4\5\36\20\2\u00eb")
         buf.write("\u00f0\5\36\20\2\u00ec\u00ed\7\20\2\2\u00ed\u00ef\5\36")
         buf.write("\20\2\u00ee\u00ec\3\2\2\2\u00ef\u00f2\3\2\2\2\u00f0\u00ee")
@@ -125,8 +126,8 @@ def serializedATN():
         buf.write("\5.\30\2\u0105\u0107\5\60\31\2\u0106\u0103\3\2\2\2\u0106")
         buf.write("\u0104\3\2\2\2\u0106\u0105\3\2\2\2\u0107+\3\2\2\2\u0108")
         buf.write("\u0109\7)\2\2\u0109-\3\2\2\2\u010a\u010b\7*\2\2\u010b")
-        buf.write("/\3\2\2\2\u010c\u010d\t\t\2\2\u010d\61\3\2\2\2\308ANV")
-        buf.write("cnq\u0080\u0088\u008e\u009a\u00a4\u00b0\u00b3\u00bb\u00bf")
+        buf.write("/\3\2\2\2\u010c\u010d\t\t\2\2\u010d\61\3\2\2\2\318@MU")
+        buf.write("Zcnq\u0080\u0088\u008e\u009a\u00a4\u00b0\u00b3\u00bb\u00bf")
         buf.write("\u00cd\u00e3\u00e5\u00f0\u00f3\u0106")
         return buf.getvalue()
 
@@ -253,9 +254,6 @@ class DecafParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def EOF(self):
-            return self.getToken(DecafParser.EOF, 0)
-
         def declaration(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(DecafParser.DeclarationContext)
@@ -308,8 +306,6 @@ class DecafParser ( Parser ):
 
             self.state = 57
             self.match(DecafParser.T__3)
-            self.state = 58
-            self.match(DecafParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -363,24 +359,24 @@ class DecafParser ( Parser ):
         localctx = DecafParser.DeclarationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 2, self.RULE_declaration)
         try:
-            self.state = 63
+            self.state = 62
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 60
+                self.state = 59
                 self.struct_declar()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 61
+                self.state = 60
                 self.var_declar()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 62
+                self.state = 61
                 self.method_declar()
                 pass
 
@@ -473,34 +469,34 @@ class DecafParser ( Parser ):
         localctx = DecafParser.Var_declarContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_var_declar)
         try:
-            self.state = 76
+            self.state = 75
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 localctx = DecafParser.Single_VarDeclarContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 65
+                self.state = 64
                 self.var_type()
-                self.state = 66
+                self.state = 65
                 self.match(DecafParser.ID)
-                self.state = 67
+                self.state = 66
                 self.match(DecafParser.T__4)
                 pass
 
             elif la_ == 2:
                 localctx = DecafParser.List_VarDeclarContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 69
+                self.state = 68
                 self.var_type()
-                self.state = 70
+                self.state = 69
                 self.match(DecafParser.ID)
-                self.state = 71
+                self.state = 70
                 self.match(DecafParser.T__5)
-                self.state = 72
+                self.state = 71
                 self.match(DecafParser.NUM)
-                self.state = 73
+                self.state = 72
                 self.match(DecafParser.T__6)
-                self.state = 74
+                self.state = 73
                 self.match(DecafParser.T__4)
                 pass
 
@@ -558,26 +554,32 @@ class DecafParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 78
+            self.state = 77
             self.match(DecafParser.T__7)
-            self.state = 79
+            self.state = 78
             self.match(DecafParser.ID)
-            self.state = 80
+            self.state = 79
             self.match(DecafParser.T__2)
-            self.state = 84
+            self.state = 83
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << DecafParser.T__7) | (1 << DecafParser.T__8) | (1 << DecafParser.T__9) | (1 << DecafParser.T__10) | (1 << DecafParser.T__11))) != 0):
-                self.state = 81
+                self.state = 80
                 self.var_declar()
-                self.state = 86
+                self.state = 85
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 87
+            self.state = 86
             self.match(DecafParser.T__3)
             self.state = 88
-            self.match(DecafParser.T__4)
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==DecafParser.T__4:
+                self.state = 87
+                self.match(DecafParser.T__4)
+
+
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -628,7 +630,7 @@ class DecafParser ( Parser ):
         try:
             self.state = 97
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 90
@@ -737,7 +739,7 @@ class DecafParser ( Parser ):
             self.match(DecafParser.T__12)
             self.state = 111
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
             if la_ == 1:
                 self.state = 102
                 self.parameter()
@@ -864,7 +866,7 @@ class DecafParser ( Parser ):
         try:
             self.state = 126
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 118
@@ -1044,32 +1046,35 @@ class DecafParser ( Parser ):
 
 
 
-    class Stmnt_methodCallContext(StatementContext):
+    class WhileStmtContext(StatementContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def method_call(self):
-            return self.getTypedRuleContext(DecafParser.Method_callContext,0)
+        def expression(self):
+            return self.getTypedRuleContext(DecafParser.ExpressionContext,0)
+
+        def block(self):
+            return self.getTypedRuleContext(DecafParser.BlockContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStmnt_methodCall" ):
-                listener.enterStmnt_methodCall(self)
+            if hasattr( listener, "enterWhileStmt" ):
+                listener.enterWhileStmt(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStmnt_methodCall" ):
-                listener.exitStmnt_methodCall(self)
+            if hasattr( listener, "exitWhileStmt" ):
+                listener.exitWhileStmt(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStmnt_methodCall" ):
-                return visitor.visitStmnt_methodCall(self)
+            if hasattr( visitor, "visitWhileStmt" ):
+                return visitor.visitWhileStmt(self)
             else:
                 return visitor.visitChildren(self)
 
 
-    class If_ScopeContext(StatementContext):
+    class IfStmtContext(StatementContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
             super().__init__(parser)
@@ -1088,99 +1093,46 @@ class DecafParser ( Parser ):
 
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterIf_Scope" ):
-                listener.enterIf_Scope(self)
+            if hasattr( listener, "enterIfStmt" ):
+                listener.enterIfStmt(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitIf_Scope" ):
-                listener.exitIf_Scope(self)
+            if hasattr( listener, "exitIfStmt" ):
+                listener.exitIfStmt(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIf_Scope" ):
-                return visitor.visitIf_Scope(self)
+            if hasattr( visitor, "visitIfStmt" ):
+                return visitor.visitIfStmt(self)
             else:
                 return visitor.visitChildren(self)
 
 
-    class While_ScopeContext(StatementContext):
+    class BlockStmtContext(StatementContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
             super().__init__(parser)
             self.copyFrom(ctx)
-
-        def expression(self):
-            return self.getTypedRuleContext(DecafParser.ExpressionContext,0)
 
         def block(self):
             return self.getTypedRuleContext(DecafParser.BlockContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterWhile_Scope" ):
-                listener.enterWhile_Scope(self)
+            if hasattr( listener, "enterBlockStmt" ):
+                listener.enterBlockStmt(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitWhile_Scope" ):
-                listener.exitWhile_Scope(self)
+            if hasattr( listener, "exitBlockStmt" ):
+                listener.exitBlockStmt(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitWhile_Scope" ):
-                return visitor.visitWhile_Scope(self)
+            if hasattr( visitor, "visitBlockStmt" ):
+                return visitor.visitBlockStmt(self)
             else:
                 return visitor.visitChildren(self)
 
 
-    class Stmnt_expressionContext(StatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self):
-            return self.getTypedRuleContext(DecafParser.ExpressionContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStmnt_expression" ):
-                listener.enterStmnt_expression(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStmnt_expression" ):
-                listener.exitStmnt_expression(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStmnt_expression" ):
-                return visitor.visitStmnt_expression(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class Stmnt_returnContext(StatementContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self):
-            return self.getTypedRuleContext(DecafParser.ExpressionContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStmnt_return" ):
-                listener.enterStmnt_return(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStmnt_return" ):
-                listener.exitStmnt_return(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStmnt_return" ):
-                return visitor.visitStmnt_return(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class Stmnt_equalContext(StatementContext):
+    class AssigStmtContext(StatementContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
             super().__init__(parser)
@@ -1196,41 +1148,91 @@ class DecafParser ( Parser ):
 
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStmnt_equal" ):
-                listener.enterStmnt_equal(self)
+            if hasattr( listener, "enterAssigStmt" ):
+                listener.enterAssigStmt(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStmnt_equal" ):
-                listener.exitStmnt_equal(self)
+            if hasattr( listener, "exitAssigStmt" ):
+                listener.exitAssigStmt(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStmnt_equal" ):
-                return visitor.visitStmnt_equal(self)
+            if hasattr( visitor, "visitAssigStmt" ):
+                return visitor.visitAssigStmt(self)
             else:
                 return visitor.visitChildren(self)
 
 
-    class Stmnt_blockContext(StatementContext):
+    class ExpressionStmtContext(StatementContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
             super().__init__(parser)
             self.copyFrom(ctx)
 
-        def block(self):
-            return self.getTypedRuleContext(DecafParser.BlockContext,0)
+        def expression(self):
+            return self.getTypedRuleContext(DecafParser.ExpressionContext,0)
 
 
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterStmnt_block" ):
-                listener.enterStmnt_block(self)
+            if hasattr( listener, "enterExpressionStmt" ):
+                listener.enterExpressionStmt(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitStmnt_block" ):
-                listener.exitStmnt_block(self)
+            if hasattr( listener, "exitExpressionStmt" ):
+                listener.exitExpressionStmt(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitStmnt_block" ):
-                return visitor.visitStmnt_block(self)
+            if hasattr( visitor, "visitExpressionStmt" ):
+                return visitor.visitExpressionStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class ReturnStmtContext(StatementContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expression(self):
+            return self.getTypedRuleContext(DecafParser.ExpressionContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReturnStmt" ):
+                listener.enterReturnStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReturnStmt" ):
+                listener.exitReturnStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReturnStmt" ):
+                return visitor.visitReturnStmt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class MethodCallStmtContext(StatementContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a DecafParser.StatementContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def method_call(self):
+            return self.getTypedRuleContext(DecafParser.Method_callContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMethodCallStmt" ):
+                listener.enterMethodCallStmt(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMethodCallStmt" ):
+                listener.exitMethodCallStmt(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitMethodCallStmt" ):
+                return visitor.visitMethodCallStmt(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1244,9 +1246,9 @@ class DecafParser ( Parser ):
         try:
             self.state = 177
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
             if la_ == 1:
-                localctx = DecafParser.If_ScopeContext(self, localctx)
+                localctx = DecafParser.IfStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 145
                 self.match(DecafParser.T__15)
@@ -1271,7 +1273,7 @@ class DecafParser ( Parser ):
                 pass
 
             elif la_ == 2:
-                localctx = DecafParser.While_ScopeContext(self, localctx)
+                localctx = DecafParser.WhileStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 154
                 self.match(DecafParser.T__17)
@@ -1286,7 +1288,7 @@ class DecafParser ( Parser ):
                 pass
 
             elif la_ == 3:
-                localctx = DecafParser.Stmnt_returnContext(self, localctx)
+                localctx = DecafParser.ReturnStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 160
                 self.match(DecafParser.T__18)
@@ -1303,7 +1305,7 @@ class DecafParser ( Parser ):
                 pass
 
             elif la_ == 4:
-                localctx = DecafParser.Stmnt_methodCallContext(self, localctx)
+                localctx = DecafParser.MethodCallStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 165
                 self.method_call()
@@ -1312,14 +1314,14 @@ class DecafParser ( Parser ):
                 pass
 
             elif la_ == 5:
-                localctx = DecafParser.Stmnt_blockContext(self, localctx)
+                localctx = DecafParser.BlockStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 168
                 self.block()
                 pass
 
             elif la_ == 6:
-                localctx = DecafParser.Stmnt_equalContext(self, localctx)
+                localctx = DecafParser.AssigStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
                 self.state = 169
                 localctx.left = self.location()
@@ -1330,7 +1332,7 @@ class DecafParser ( Parser ):
                 pass
 
             elif la_ == 7:
-                localctx = DecafParser.Stmnt_expressionContext(self, localctx)
+                localctx = DecafParser.ExpressionStmtContext(self, localctx)
                 self.enterOuterAlt(localctx, 7)
                 self.state = 174
                 self._errHandler.sync(self)
@@ -1400,7 +1402,7 @@ class DecafParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 185
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
             if la_ == 1:
                 self.state = 179
                 self.match(DecafParser.ID)
@@ -1420,7 +1422,7 @@ class DecafParser ( Parser ):
 
             self.state = 189
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
             if la_ == 1:
                 self.state = 187
                 self.match(DecafParser.T__20)
@@ -1780,7 +1782,7 @@ class DecafParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 203
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
             if la_ == 1:
                 localctx = DecafParser.MethodCallExpressionContext(self, localctx)
                 self._ctx = localctx
@@ -1842,7 +1844,7 @@ class DecafParser ( Parser ):
             self._ctx.stop = self._input.LT(-1)
             self.state = 227
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,19,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -1850,7 +1852,7 @@ class DecafParser ( Parser ):
                     _prevctx = localctx
                     self.state = 225
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
                     if la_ == 1:
                         localctx = DecafParser.HigherArithOpContext(self, DecafParser.ExpressionContext(self, _parentctx, _parentState))
                         localctx.left = _prevctx
@@ -1924,7 +1926,7 @@ class DecafParser ( Parser ):
              
                 self.state = 229
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,19,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1985,7 +1987,7 @@ class DecafParser ( Parser ):
             self.match(DecafParser.T__12)
             self.state = 241
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
             if la_ == 1:
                 self.state = 232
                 self.arg()

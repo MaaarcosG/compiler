@@ -3,14 +3,7 @@ from os import replace
 from typing import Type
 
 # Los tipos de variables aceptables
-'''
-default = {
-    'int': 4,
-    'boolean': 4,
-    'char': 4
-}
-'''
-default = ['int', 'boolean', 'char']
+default = {'int': 4, 'boolean': 4, 'char': 4}
 
 class Type_Enum(Enum):
     Char = 0
@@ -75,6 +68,12 @@ class SymbolTable:
                     left_size = self.parent.search(symbol.stype.replace('struct', ''))
                     size += left_size.size * int(symbol.param)
         return size
+    
+    def __str__(self) -> str:
+        string = 'Name: ' + str(self.name) + '\n'
+        string = string + 'id: ' + str(self.id) + '\n'
+
+        return string
 
 class Symbol:
     def __init__(self, stype, name, param, id=0, offset=0):
@@ -83,6 +82,13 @@ class Symbol:
         self.param = param
         self.id = id
         self.offset = offset
+
+    def __str__(self) -> str:
+        string = 'Name: ' + str(self.name) + '\n'
+        string = string + 'id: ' + str(self.id) + '\n'
+        string = string + 'stype: ' + str(self.stype) + '\n'
+
+        return string
 
 # clase extra para la instantiacion de los metodos
 class More:
@@ -98,3 +104,10 @@ class More:
             self.stype = stype
             self.retorn = retorn
             self.params = data
+    
+    def __str__(self) -> str:
+        string = 'Name: ' + str(self.name) + '\n'
+        string = string + 'id: ' + str(self.id) + '\n'
+        string = string + 'stype: ' + str(self.stype) + '\n'
+
+        return string

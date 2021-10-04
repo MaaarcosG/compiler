@@ -107,66 +107,66 @@ class DecafListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#if_Scope.
-    def enterIf_Scope(self, ctx:DecafParser.If_ScopeContext):
+    # Enter a parse tree produced by DecafParser#ifStmt.
+    def enterIfStmt(self, ctx:DecafParser.IfStmtContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#if_Scope.
-    def exitIf_Scope(self, ctx:DecafParser.If_ScopeContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#while_Scope.
-    def enterWhile_Scope(self, ctx:DecafParser.While_ScopeContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#while_Scope.
-    def exitWhile_Scope(self, ctx:DecafParser.While_ScopeContext):
+    # Exit a parse tree produced by DecafParser#ifStmt.
+    def exitIfStmt(self, ctx:DecafParser.IfStmtContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#stmnt_return.
-    def enterStmnt_return(self, ctx:DecafParser.Stmnt_returnContext):
+    # Enter a parse tree produced by DecafParser#whileStmt.
+    def enterWhileStmt(self, ctx:DecafParser.WhileStmtContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#stmnt_return.
-    def exitStmnt_return(self, ctx:DecafParser.Stmnt_returnContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#stmnt_methodCall.
-    def enterStmnt_methodCall(self, ctx:DecafParser.Stmnt_methodCallContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#stmnt_methodCall.
-    def exitStmnt_methodCall(self, ctx:DecafParser.Stmnt_methodCallContext):
+    # Exit a parse tree produced by DecafParser#whileStmt.
+    def exitWhileStmt(self, ctx:DecafParser.WhileStmtContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#stmnt_block.
-    def enterStmnt_block(self, ctx:DecafParser.Stmnt_blockContext):
+    # Enter a parse tree produced by DecafParser#returnStmt.
+    def enterReturnStmt(self, ctx:DecafParser.ReturnStmtContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#stmnt_block.
-    def exitStmnt_block(self, ctx:DecafParser.Stmnt_blockContext):
-        pass
-
-
-    # Enter a parse tree produced by DecafParser#stmnt_equal.
-    def enterStmnt_equal(self, ctx:DecafParser.Stmnt_equalContext):
-        pass
-
-    # Exit a parse tree produced by DecafParser#stmnt_equal.
-    def exitStmnt_equal(self, ctx:DecafParser.Stmnt_equalContext):
+    # Exit a parse tree produced by DecafParser#returnStmt.
+    def exitReturnStmt(self, ctx:DecafParser.ReturnStmtContext):
         pass
 
 
-    # Enter a parse tree produced by DecafParser#stmnt_expression.
-    def enterStmnt_expression(self, ctx:DecafParser.Stmnt_expressionContext):
+    # Enter a parse tree produced by DecafParser#methodCallStmt.
+    def enterMethodCallStmt(self, ctx:DecafParser.MethodCallStmtContext):
         pass
 
-    # Exit a parse tree produced by DecafParser#stmnt_expression.
-    def exitStmnt_expression(self, ctx:DecafParser.Stmnt_expressionContext):
+    # Exit a parse tree produced by DecafParser#methodCallStmt.
+    def exitMethodCallStmt(self, ctx:DecafParser.MethodCallStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#blockStmt.
+    def enterBlockStmt(self, ctx:DecafParser.BlockStmtContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#blockStmt.
+    def exitBlockStmt(self, ctx:DecafParser.BlockStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#assigStmt.
+    def enterAssigStmt(self, ctx:DecafParser.AssigStmtContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#assigStmt.
+    def exitAssigStmt(self, ctx:DecafParser.AssigStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by DecafParser#expressionStmt.
+    def enterExpressionStmt(self, ctx:DecafParser.ExpressionStmtContext):
+        pass
+
+    # Exit a parse tree produced by DecafParser#expressionStmt.
+    def exitExpressionStmt(self, ctx:DecafParser.ExpressionStmtContext):
         pass
 
 
