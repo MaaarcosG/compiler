@@ -1,8 +1,8 @@
 grammar Decaf;
 
 /*Definiciones para letras y digitos*/
-fragment LETTER: [a-zA-Z_];
-fragment DIGIT: [0-9]; 
+fragment LETTER: ('a'..'z'|'A'..'Z');
+fragment DIGIT: '0'..'9' ;
 
 /*Reglas de DECAF*/
 ID: LETTER (LETTER|DIGIT)*;
@@ -23,7 +23,7 @@ var_declar:
       var_type  ID ';' #single_VarDeclar
     | var_type  ID '[' NUM ']' ';' #list_VarDeclar;
 
-struct_declar: 'struct' ID '{' (var_declar)* '}' (';')?;
+struct_declar: 'struct' ID '{' (var_declar)* '}' ';'?;
       
 var_type:
       'int'

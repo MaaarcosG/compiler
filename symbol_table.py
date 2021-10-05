@@ -3,7 +3,7 @@ from os import replace
 from typing import Type
 
 # Los tipos de variables aceptables
-default = {'int': 4, 'boolean': 4, 'char': 4}
+default_variable = {'int': 4, 'boolean': 4, 'char': 4}
 
 class Type_Enum(Enum):
     Char = 0
@@ -59,8 +59,8 @@ class SymbolTable:
     def getSize(self):
         size = 0
         for symbol in self.symbol:
-            if symbol.stype in default:
-                size += default[symbol.stype] * int(symbol.param)
+            if symbol.stype in default_variable:
+                size += default_variable[symbol.stype] * int(symbol.param)
             else:
                 if left_size:=self.search(symbol.stype )!=None:
                     size += left_size.size * int(symbol.param)
