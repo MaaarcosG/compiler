@@ -1,10 +1,11 @@
-from os import name
+from os import error, name
 from Grammar.DecafParser import DecafParser
 from Grammar.DecafLexer import DecafLexer
 from create_tree import get_printer_tree
 from antlr4 import *
 from decaf_function import CustomVisitor
 from decaf_errors import printer
+from intermediate_code import Intermediate
 import sys
 
 def compiler_gui(text):
@@ -39,6 +40,10 @@ def main(argv):
     data = str(argv[1])
     name = data.split('\\')[-1].split('.')[0]
     
+    # jalamos la informacion de la clase Intermediate creada
+    intermediate = Intermediate(visitor.total)
+    intermediate.visit(tree)
+
     '''
     # creamos el arbol
     (view, _) = get_printer_tree(tree, name)

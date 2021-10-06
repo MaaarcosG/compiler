@@ -236,6 +236,7 @@ class CustomVisitor(DecafVisitor):
     def visitReturnStmt(self, ctx: DecafParser.ReturnStmtContext):
         if ctx.expression != None:
             value = self.visit(ctx.expression())
+            print(value)
             for scope in self.scopes[::-1]:
                 if scope.stype != None:
                     if value != scope.stype:
