@@ -33,8 +33,8 @@ class CustomVisitor(DecafVisitor):
     def enter_scope(self, name, t='scope'):
         parent = self.scope.peek()
         # data of symbol table
-        st = SymbolTable(name, parent=parent, stype=t, typeTable=Type_Table(), id={})
-        self.scope.push(st) # ADD data symbol table
+        # st = SymbolTable(name, parent=parent, stype=t, typeTable=Type_Table(), id={})
+        # self.scope.push(st) # ADD data symbol table
         # debugg
         # print('Enter Scope: %s' % name)
     
@@ -379,7 +379,7 @@ class CustomVisitor(DecafVisitor):
     def visitHigherArithOp(self, ctx: DecafParser.HigherArithOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.higher_arith_op().getText(), ctx.right.getText()))
         if (rtype == 'int') and (ltype == 'int'):
             return 'int'
         elif (ltype == None):
@@ -395,7 +395,7 @@ class CustomVisitor(DecafVisitor):
     def visitArithOp(self, ctx: DecafParser.ArithOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.arith_op().getText(), ctx.right.getText()))
         if (rtype == 'int') and (ltype == 'int'):
             return 'int'
         elif (ltype == None):
@@ -411,7 +411,7 @@ class CustomVisitor(DecafVisitor):
     def visitRelationOp(self, ctx: DecafParser.RelationOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.rel_op().getText(), ctx.right.getText()))
         if (rtype == 'int') and (ltype == 'int'):
             return 'boolean'
         elif (ltype == None):
@@ -427,7 +427,7 @@ class CustomVisitor(DecafVisitor):
     def visitEqualityOp(self, ctx: DecafParser.EqualityOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.eq_op().getText(), ctx.right.getText()))
         if (rtype == ltype):
             return 'boolean'
         elif (ltype == None):
@@ -443,7 +443,7 @@ class CustomVisitor(DecafVisitor):
     def visitConditionalOp(self, ctx: DecafParser.ConditionalOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.cond_op().getText(), ctx.right.getText()))
         if (rtype == 'boolean') and (ltype == 'boolean'):
             return 'boolean'
         elif (ltype == None):

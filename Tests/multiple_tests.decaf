@@ -9,7 +9,25 @@ class Program{
 	
 	struct A y;
 	struct A z;
+	
+	int factorial(int n){
+		if (n==0){
+			return 1;
+		} else {
+			return n*factorial(n-1);
+		}
+	}
+	void OutputInt(int n){
 
+	}
+
+	int InputInt(){
+		return 0;
+	}
+
+	int ReturnNumber(){
+		return z.a;
+	}
 	void main(){
 		struct B y[5];
 		int i;
@@ -17,9 +35,10 @@ class Program{
 		int k;	
 		i = 0;
 		j = 0;
-		z.a= 3;	
+		z.a = 3;	
 		while(i<=10){
 			y[j].b[0]=InputInt();
+			
 			if(y[j].b[0]==5){
 				y[j].b[0]=z.a;
 				k=factorial(ReturnNumber());
@@ -30,20 +49,4 @@ class Program{
 			i = i + 1;
 		}
 	}
-	
-	int factorial(int n){
-		if (n==0){
-			return 1;
-		}else{
-			return n*factorial(n-1);}
-		}
-		void OutputInt(int n){
-
-		}
-		int InputInt(){
-			return 0;
-		}
-		int ReturnNumber(){
-			return z.a;
-		}
 }
