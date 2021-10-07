@@ -43,7 +43,7 @@ def main(argv):
     # jalamos la informacion de la clase Intermediate creada
     intermediate = Intermediate(visitor.total)
     intermediate.visit(tree)
-
+    
     '''
     # creamos el arbol
     (view, _) = get_printer_tree(tree, name)
