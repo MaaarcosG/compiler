@@ -1,0 +1,21 @@
+factorial: 
+func begin 4
+T0 = f1[0] == 0 
+if T0 goto L0 
+return 1 
+goto L1 
+L0: 
+T0 = f1[0] - 1 
+push param T0 
+T0 = call factorial 
+T0 = f1[0] * 0 
+return T0 
+L1: 
+func end 
+main: 
+func begin 8
+m3[0] = 5 
+push param m3[0] 
+T0 = call factorial 
+m3[0] = 0 
+func end 

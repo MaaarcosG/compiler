@@ -1,19 +1,5 @@
 class Program{
 	int A[10];
-	void main(void){
-		int i;
-		i = 0;
-		while(i<10){
-			A[i]=InputInt();
-			i = i+1;		
-		}
-		Ordenar();
-		i = 0;
-		while(i<10){
-			OutputInt(A[i]);
-			i = i+1;
-		}
-	}
 	void Ordenar(void){
 		int i;
 		int j;
@@ -47,5 +33,20 @@ class Program{
 	}
 	int InputInt(void){
 		return 0;
+	}
+	
+	void main(void){
+		int i;
+		i = 0;
+		while(i<10){
+			A[i]=InputInt();
+			i = i+1;		
+		}
+		Ordenar();
+		i = 0;
+		while(i<10){
+			OutputInt(A[i]);
+			i = i+1;
+		}
 	}
 }

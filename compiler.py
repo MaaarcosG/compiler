@@ -43,7 +43,14 @@ def main(argv):
     # jalamos la informacion de la clase Intermediate creada
     intermediate = Intermediate(visitor.total)
     intermediate.visit(tree)
+    ic = intermediate.line
+    print(ic)
     
+    # GUARDAMOS EN UN TXT EL CODIGO INTERMEDIO
+    file = open(('./IC/ic_%s.txt' % name), 'w')
+    file.write(ic)
+    file.close
+
     '''
     # creamos el arbol
     (view, _) = get_printer_tree(tree, name)
