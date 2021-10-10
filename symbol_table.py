@@ -5,6 +5,8 @@ from typing import Type
 # Los tipos de variables aceptables
 default_variable = {'int': 4, 'boolean': 4, 'char': 4}
 
+def print_code(code):
+    return '\n'.join(code)
 class Type_Enum(Enum):
     Char = 0
     Boolean = 1

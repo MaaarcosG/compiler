@@ -3,8 +3,7 @@
 # Importamos el Decaf Visitor
 from Grammar.DecafVisitor import DecafVisitor
 from Grammar.DecafParser import DecafParser
-
-default_variable = {'int': 4, 'boolean': 1, 'char': 1}
+from decaf_function import default_variable
 
 class Intermediate(DecafVisitor):
     '''
@@ -12,7 +11,7 @@ class Intermediate(DecafVisitor):
     '''
     def __init__(self, scope):
         super().__init__()
-        self.op_registers = ['T'+str(i) for i in range(0,8)]
+        self.op_registers =  ['r'+str(i) for i in range(0,8)]
         self.registers = self.op_registers[::-1]
         self.global_scope = ['global']
         self.scopes = scope
@@ -20,7 +19,24 @@ class Intermediate(DecafVisitor):
         self.scope_ids = 0
         self.offset = 0
         self.line = '' # esta variable guardara el codigo generado
-        
+
+    '''FUNCIONES NECESARIAS PARA CREAR IC'''
+
+    def generate_code(self, *args):
+        return '%s = %s %s %s' % args
+    
+    def get_location(self, scope, ofsset):
+        return '%s[%s]' % (scope.capitalize(), str(ofsset))
+    
+    def get_actual(self):
+        data = self.op_registers.pop()
+        self.registers.add(data)
+        return data
+    
+    def add_register(self, re):
+        if re in self.op_registers:
+            self.registers.append(re)
+    
     ''' FUNCIONES QUE SE ENCUENTRAN EN DECAF VISITOR'''
     
     def visitProgram(self, ctx: DecafParser.ProgramContext):
@@ -42,7 +58,7 @@ class Intermediate(DecafVisitor):
         start_method += ('func begin %s\n' % str(actual_scope.getSize()))
         self.line += start_method
         self.visitChildren(ctx)
-        end = ('func end \n')
+        end = ('func end \n \n')
         self.line += end
         self.global_scope.pop()
         return 0
@@ -55,8 +71,7 @@ class Intermediate(DecafVisitor):
             expresssion = self.visit(ctx.expression())
             # print(expresssion )
             self.line += ('return %s \n' % expresssion)
-            if expresssion  in self.op_registers:
-                self.registers.append(expresssion)
+            self.add_register(expresssion)
         return 0
     
     def visitMethod_call(self, ctx: DecafParser.Method_callContext):
@@ -69,13 +84,12 @@ class Intermediate(DecafVisitor):
                     anadimos el parametro en el stack, lo denotamos como param para parametros
                 '''
                 self.line += ('push param %s \n' % parameter)
-                if parameter in self.op_registers:
-                    self.registers.append(parameter)
+                self.add_register(parameter)
+                
         data_regs = self.registers.pop()
         ''' call llamadas de los procedimientos'''
         self.line += ('%s = call %s \n' % (data_regs, method_name))
-        if data_regs in self.op_registers:
-            self.registers.append(data_regs)
+        self.add_register(data_regs)
         #self.visitChildren(ctx)
         return 0
     
@@ -99,8 +113,8 @@ class Intermediate(DecafVisitor):
         line_if = ('if %s goto %s \n' % (expression, jump_instruction))
         # print(line_if)
         # condicion para agregarlo al registro
-        if expression in self.op_registers:
-            self.registers.append(expression)
+        self.add_register(expression)
+
         self.line += line_if
         self.visit(ctx.block1)
         if ctx.block2:
@@ -138,8 +152,7 @@ class Intermediate(DecafVisitor):
         end = ('L%s' % str(self.offset))
         self.offset += 1
         wc = ('if %s goto %s \n' % (expression, end))
-        if expression in self.op_registers:
-            self.registers.append(expression)
+        self.add_register(expression)
         self.line += wc
         self.visit(ctx.block())
         we = 'goto %s \n' % start
@@ -159,8 +172,7 @@ class Intermediate(DecafVisitor):
 
         equal = ('%s = %s \n' % (str(left_data), str(right_data)))
         # agregamos al registro
-        if right_data in self.op_registers:
-            self.registers.append(right_data)
+        self.add_register(equal)
         self.line += equal
         return left_data
     
@@ -212,14 +224,13 @@ class Intermediate(DecafVisitor):
         exp = self.registers.pop() # x
         
         # creamos una nueva linea con los valores (x = y op z)
-        expression = ('%s = %s %s %s' % (exp, left_data, operation, right_data))
+        expression = self.generate_code(exp, left_data, operation, right_data)
         print('HIGHER OPERATION: %s' % expression)
 
         # verificamos los registros y los anadimos
-        if right_data in self.op_registers:
-            self.registers.append(right_data)
-        if left_data in self.op_registers:
-            self.registers.append(left_data)
+        self.add_register(right_data)
+        self.add_register(left_data)
+
         self.line += ('%s \n' % expression)
         return exp
     
@@ -234,14 +245,13 @@ class Intermediate(DecafVisitor):
         exp = self.registers.pop()
 
         # creamos la instrucciones (x = y op x)
-        expression = ('%s = %s %s %s' % (exp, left_data, operation, right_data))
+        expression = self.generate_code(exp, left_data, operation, right_data)
         print('RELATION OPERATION: %s' % expression)
 
-        # verificamos los registros
-        if right_data in self.op_registers:
-            self.registers.append(right_data)
-        if left_data in self.op_registers:
-            self.registers.append(left_data)
+        # verificamos los registros y los anadimos
+        self.add_register(right_data)
+        self.add_register(left_data)
+
         self.line += ('%s \n' % expression)
         return exp
 
@@ -256,14 +266,13 @@ class Intermediate(DecafVisitor):
         exp = self.registers.pop()
 
         # creamos la instrucciones (x = y op x)
-        expression = ('%s = %s %s %s' % (exp, left_data, operation, right_data))
+        expression = self.generate_code(exp, left_data, operation, right_data)
         print('ARTIH OPERATION: %s' % expression)
 
-        # verificamos los registros
-        if right_data in self.op_registers:
-            self.registers.append(right_data)
-        if left_data in self.op_registers:
-            self.registers.append(left_data)
+        # verificamos los registros y los anadimos
+        self.add_register(right_data)
+        self.add_register(left_data)
+
         self.line += ('%s \n' % expression)
         return exp
     
@@ -278,14 +287,13 @@ class Intermediate(DecafVisitor):
         exp = self.registers.pop()
 
         # creamos la instrucciones (x = y op x)
-        expression = ('%s = %s %s %s' % (exp, left_data, operation, right_data))
+        expression = self.generate_code(exp, left_data, operation, right_data)
         print('EQUIALITY OPERATION: %s' % expression)
 
-        # verificamos los registros
-        if right_data in self.op_registers:
-            self.registers.append(right_data)
-        if left_data in self.op_registers:
-            self.registers.append(left_data)
+        # verificamos los registros y los anadimos
+        self.add_register(right_data)
+        self.add_register(left_data)
+
         self.line += ('%s \n' % expression)
         return exp
     
@@ -300,14 +308,13 @@ class Intermediate(DecafVisitor):
         exp = self.registers.pop()
 
         # creamos la instrucciones (x = y op x)
-        expression = ('%s = %s %s %s' % (exp, left_data, operation, right_data))
+        expression = self.generate_code(exp, left_data, operation, right_data)
         print('CONDITIONAL OPERATION: %s' % expression)
 
-        # verificamos los registros
-        if right_data in self.op_registers:
-            self.registers.append(right_data)
-        if left_data in self.op_registers:
-            self.registers.append(left_data)
+        # verificamos los registros y los anadimos
+        self.add_register(right_data)
+        self.add_register(left_data)
+
         self.line += ('%s \n' % expression)
         return exp
     
@@ -332,7 +339,7 @@ class Intermediate(DecafVisitor):
         
         if ctx.expression() != None:
             data = self.visit(ctx.expression())
-            # print(data)
+            print('entra data %s'%data)
             try:
                 if symbol.stype in default_variable:
                     offset += default_variable[symbol.stype] * int(ctx.expression().getText())
@@ -354,6 +361,8 @@ class Intermediate(DecafVisitor):
             creamos una variable con la inicial de la funcion
             ejemplo: main --> m+id_funcion
         '''
+        print('offset %s' % (offset*2))
         symbol_name = actual.name[0] + str(actual.id)
-        value = ('%s[%s]' % (symbol_name, str(offset)))
+        # value = ('%s[%s]' % (symbol_name, str(offset)))
+        value = self.get_location(symbol_name, (offset*2))
         return value

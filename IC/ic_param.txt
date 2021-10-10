@@ -1,6 +1,6 @@
 main: 
 func begin 12
-m1[8] = 0 
+M1[16] = 0 
 push param 4 
 push param 2 
 push param 6 
@@ -17,34 +17,38 @@ push param 1
 push param 1 
 push param 1 
 push param 1 
-T0 = call Test 
+r0 = call Test 
 func end 
+ 
 Test: 
 func begin 68
-T0 = T2[0] / T2[4] 
-T1 = T2[0] / T2[4] 
-T2 = T1 * T2[8] 
-T1 = T2 - T2[12] 
-T2 = T1 + T2[16] 
-T1 = T2 + T2[20] 
-T2 = T1 + T2[24] 
-T1 = T2 + T2[28] 
-T2 = T1 + T2[32] 
-T1 = T2 + T2[36] 
-T2 = T1 + T2[40] 
-T1 = T2 + T2[44] 
-T2 = T1 + T2[48] 
-T1 = T2 + T2[52] 
-T2 = T1 + T2[56] 
-T1 = T2 + T2[60] 
-T2[64] = T1 
-push param T2[64] 
-T1 = call OutputInt 
+r0 = T2[0] / T2[8] 
+r1 = T2[0] / T2[8] 
+r2 = r1 * T2[16] 
+r1 = r2 - T2[24] 
+r2 = r1 + T2[32] 
+r1 = r2 + T2[40] 
+r2 = r1 + T2[48] 
+r1 = r2 + T2[56] 
+r2 = r1 + T2[64] 
+r1 = r2 + T2[72] 
+r2 = r1 + T2[80] 
+r1 = r2 + T2[88] 
+r2 = r1 + T2[96] 
+r1 = r2 + T2[104] 
+r2 = r1 + T2[112] 
+r1 = r2 + T2[120] 
+T2[128] = r1 
+push param T2[128] 
+r2 = call OutputInt 
 func end 
+ 
 OutputInt: 
 func begin 4
 func end 
+ 
 InputInt: 
 func begin 0
 return 0 
 func end 
+ 

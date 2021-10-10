@@ -18,12 +18,17 @@ def compiler_gui(text):
     visitor = CustomVisitor()
     visitor.visit(tree) 
 
+    # jalamos la informacion de la clase Intermediate creada
+    intermediate = Intermediate(visitor.total)
+    intermediate.visit(tree)
+    ic = intermediate.line
+
     name = 'gui'
     # creamos el arbol
     (view, _) = get_printer_tree(tree, name)
     view.render('tree_'+name+'.gv', './Interfaz/Static/img')
 
-    return visitor
+    return visitor, ic
 
 def main(argv):
     input = FileStream(argv[1])
