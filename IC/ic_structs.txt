@@ -1,7 +1,7 @@
-main: 
 func begin 69
-M1[65] = 1 
-r0 = M1[65] * 13 
-M1[r0] = 2 
+main: 
+Main[65] = 1 
+r0 = Main[65] * 13 
+Main[r0] = 2 
 func end 
  

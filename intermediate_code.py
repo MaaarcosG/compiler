@@ -20,7 +20,7 @@ class Intermediate(DecafVisitor):
         ''' mismos contadores que el analisis semantico '''
         self.scope_ids = 0
         self.offset = 0
-        self.line = '' # esta variable guardara el codigo generado
+        self.code = '' # esta variable guardara el codigo generado
 
     '''FUNCIONES NECESARIAS PARA CREAR IC'''
 
@@ -56,12 +56,12 @@ class Intermediate(DecafVisitor):
         self.global_scope.append(method_name)
         actual_scope = self.scopes[self.global_scope[-1]]
         ''' COMIENZA EL CODIGO INTERMEDIO '''
-        start_method = ('%s: \n') % method_name
-        start_method += ('func begin %s\n' % str(actual_scope.getSize()))
-        self.line += start_method
+        start_method = ('func begin %s\n' % str(actual_scope.getSize()))
+        start_method += ('%s: \n') % method_name
+        self.code += start_method
         self.visitChildren(ctx)
         end = ('func end \n \n')
-        self.line += end
+        self.code += end
         self.global_scope.pop()
         return 0
     
@@ -72,7 +72,7 @@ class Intermediate(DecafVisitor):
         if ctx.expression:
             expresssion = self.visit(ctx.expression())
             # print(expresssion )
-            self.line += ('return %s \n' % expresssion)
+            self.code += ('return %s \n' % expresssion)
             self.add_register(expresssion)
         return 0
     
@@ -85,12 +85,12 @@ class Intermediate(DecafVisitor):
                 '''
                     anadimos el parametro en el stack, lo denotamos como param para parametros
                 '''
-                self.line += ('push param %s \n' % parameter)
+                self.code += ('push param %s \n' % parameter)
                 self.add_register(parameter)
                 
         data_regs = self.registers.pop()
         ''' call llamadas de los procedimientos'''
-        self.line += ('%s = call %s \n' % (data_regs, method_name))
+        self.code += ('%s = call %s \n' % (data_regs, method_name))
         self.add_register(data_regs)
         #self.visitChildren(ctx)
         return 0
@@ -106,7 +106,7 @@ class Intermediate(DecafVisitor):
         print(self.scope_ids)
         '''
         expression = self.visit(ctx.expression())
-        jump_instruction = ('L%s' % str(self.offset))
+        jump_instruction = ('Label%s' % str(self.offset))
         self.offset += 1
         '''
             salto condicionales y relop x goto L
@@ -117,25 +117,25 @@ class Intermediate(DecafVisitor):
         # condicion para agregarlo al registro
         self.add_register(expression)
 
-        self.line += line_if
+        self.code += line_if
         self.visit(ctx.block1)
         if ctx.block2:
             '''
                 se ejecuta la instruccion de la etiqueta con goto L
             '''
             end = '%s: \n' % jump_instruction
-            final = 'L%s' % str(self.offset)
-            self.line += 'goto %s \n' % final
-            self.line += end
+            final = 'Label%s' % str(self.offset)
+            self.code += 'goto %s \n' % final
+            self.code += end
             self.visit(ctx.block2)
-            self.line += '%s: \n' % final
+            self.code += '%s: \n' % final
             self.offset += 1
         else:
             '''
                 si no es asi, se ejecuta la siguiente instruccion
             '''
             end = '%s: \n' % jump_instruction
-            self.line += end
+            self.code += end
         self.global_scope.pop()
     
     def visitWhileStmt(self, ctx: DecafParser.WhileStmtContext):
@@ -146,20 +146,20 @@ class Intermediate(DecafVisitor):
         print(self.global_scope)
         print(self.scope_ids)
         '''
-        start = ('L%s' % str(self.offset))
+        start = ('Label%s' % str(self.offset))
         line_while = ('%s: \n' % start)
         self.offset += 1
-        self.line += line_while
+        self.code += line_while
         expression = self.visit(ctx.expression())
-        end = ('L%s' % str(self.offset))
+        end = ('Label%s' % str(self.offset))
         self.offset += 1
         wc = ('if %s goto %s \n' % (expression, end))
         self.add_register(expression)
-        self.line += wc
+        self.code += wc
         self.visit(ctx.block())
         we = 'goto %s \n' % start
         we += '%s: \n' % end
-        self.line += we
+        self.code += we
         self.global_scope.pop() 
     
     def visitAssigStmt(self, ctx: DecafParser.AssigStmtContext):
@@ -169,7 +169,7 @@ class Intermediate(DecafVisitor):
         equal = ('%s = %s \n' % (str(left_data), str(right_data)))
         # agregamos al registro
         self.add_register(right_data)
-        self.line += equal
+        self.code += equal
         return left_data
     
     '''
@@ -225,7 +225,7 @@ class Intermediate(DecafVisitor):
         self.add_register(right_data)
         self.add_register(left_data)
 
-        self.line += ('%s \n' % expression)
+        self.code += ('%s \n' % expression)
         return exp
     
     '''
@@ -246,7 +246,7 @@ class Intermediate(DecafVisitor):
         self.add_register(right_data)
         self.add_register(left_data)
 
-        self.line += ('%s \n' % expression)
+        self.code += ('%s \n' % expression)
         return exp
 
     '''
@@ -267,7 +267,7 @@ class Intermediate(DecafVisitor):
         self.add_register(right_data)
         self.add_register(left_data)
 
-        self.line += ('%s \n' % expression)
+        self.code += ('%s \n' % expression)
         return exp
     
     '''
@@ -288,7 +288,7 @@ class Intermediate(DecafVisitor):
         self.add_register(right_data)
         self.add_register(left_data)
 
-        self.line += ('%s \n' % expression)
+        self.code += ('%s \n' % expression)
         return exp
     
     '''
@@ -309,7 +309,7 @@ class Intermediate(DecafVisitor):
         self.add_register(right_data)
         self.add_register(left_data)
 
-        self.line += ('%s \n' % expression)
+        self.code += ('%s \n' % expression)
         return exp
     
     def visitLocation(self, ctx: DecafParser.LocationContext, parent=None):
@@ -334,6 +334,7 @@ class Intermediate(DecafVisitor):
         
         if ctx.expression() != None:
             data = self.visit(ctx.expression())
+            print('data %s' % data)
             try:
                 if symbol.stype in default_variable:
                     offset += default_variable[symbol.stype] * int(ctx.expression().getText())
@@ -343,12 +344,13 @@ class Intermediate(DecafVisitor):
             except:
                 register = self.registers.pop()
                 if symbol.stype in default_variable:
-                    # creamos la instrucciones (x = y op x)
-                    self.line += ('%s = %s * %s \n' % (register, data, str(default_variable[symbol.stype])))
+                    ''' si el symbol es un location, y obtenemos un string'''
+                    self.code += ('%s = %s * %s \n' % (register, data, str(default_variable[symbol.stype])))
                 else:
                     st = symbol.stype.replace('struct', '')
+                    ''' creamos un codigo donde tomamos el registro correspondiente a las asignaciones '''
                     # creamos la instrucciones (x = y op x)
-                    self.line += ('%s = %s * %s \n' % (register, data, str(actual.get_data_size(st))))
+                    self.code += ('%s = %s * %s \n' % (register, data, str(actual.get_data_size(st))))
                 offset = register
         
         '''
@@ -358,8 +360,10 @@ class Intermediate(DecafVisitor):
             instruccion de copia indexada
                 x = y[i]
                 x = valor en la ubicacion i unidad de memoria mas alla de y
+                e y es el valor que se estara retornando
 
         '''
-        symbol_name = actual.name[0] + str(actual.id)
+        symbol_name = actual.name
         value = self.get_location(symbol_name, (offset))
+        print('value: %s' % value)
         return value

@@ -6,6 +6,7 @@ from antlr4 import *
 from decaf_function import CustomVisitor
 from decaf_errors import printer
 from intermediate_code import Intermediate
+from symbol_table import print_code
 import sys
 
 def compiler_gui(text):
@@ -21,7 +22,7 @@ def compiler_gui(text):
     # jalamos la informacion de la clase Intermediate creada
     intermediate = Intermediate(visitor.total)
     intermediate.visit(tree)
-    ic = intermediate.line
+    ic = intermediate.code
 
     name = 'gui'
     # creamos el arbol
@@ -48,7 +49,7 @@ def main(argv):
     # jalamos la informacion de la clase Intermediate creada
     intermediate = Intermediate(visitor.total)
     intermediate.visit(tree)
-    ic = intermediate.line
+    ic = intermediate.code
     
     # GUARDAMOS EN UN TXT EL CODIGO INTERMEDIO
     file = open(('./IC/ic_%s.txt' % name), 'w')
