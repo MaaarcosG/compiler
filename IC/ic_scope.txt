@@ -1,38 +1,42 @@
 main: 
 func begin 0
-g0[0] = 3 
-g0[4] = 4 
-push param g0[0] 
-T0 = call OutputInt 
+G0[0] = 3 
+G0[4] = 4 
+push param G0[0] 
+r0 = call OutputInt 
 push param 5 
 push param 6 
 push param 7 
 push param 8 
-T0 = call Test 
-T0 = g0[0] == 3 
-if T0 goto L0 
-i2[0] = 5 
-push param i2[0] 
-T0 = call OutputInt 
+r0 = call Test 
+r0 = G0[0] == 3 
+if r0 goto L0 
+I2[0] = 5 
+push param I2[0] 
+r0 = call OutputInt 
 L0: 
-push param g0[4] 
-T0 = call OutputInt 
+push param G0[4] 
+r0 = call OutputInt 
 func end 
+ 
 Test: 
 func begin 16
 push param T3[0] 
-T0 = call OutputInt 
+r0 = call OutputInt 
 push param T3[4] 
-T0 = call OutputInt 
+r0 = call OutputInt 
 push param T3[8] 
-T0 = call OutputInt 
+r0 = call OutputInt 
 push param T3[12] 
-T0 = call OutputInt 
+r0 = call OutputInt 
 func end 
+ 
 OutputInt: 
 func begin 4
 func end 
+ 
 InputInt: 
 func begin 0
 return 0 
 func end 
+ 

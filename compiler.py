@@ -49,7 +49,6 @@ def main(argv):
     intermediate = Intermediate(visitor.total)
     intermediate.visit(tree)
     ic = intermediate.line
-    print(ic)
     
     # GUARDAMOS EN UN TXT EL CODIGO INTERMEDIO
     file = open(('./IC/ic_%s.txt' % name), 'w')

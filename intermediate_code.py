@@ -4,6 +4,8 @@
 from Grammar.DecafVisitor import DecafVisitor
 from Grammar.DecafParser import DecafParser
 from decaf_function import default_variable
+from ic_node import Node_IC
+from symbol_table import Type_Enum
 
 class Intermediate(DecafVisitor):
     '''
@@ -160,19 +162,13 @@ class Intermediate(DecafVisitor):
         self.line += we
         self.global_scope.pop() 
     
-    '''
-        instruccion de copia indexada
-        x = y[i]
-            x = valor en la ubicacion i unidad de memoria mas alla de y
-
-    '''
     def visitAssigStmt(self, ctx: DecafParser.AssigStmtContext):
         left_data = self.visit(ctx.left)
         right_data = self.visit(ctx.right)
 
         equal = ('%s = %s \n' % (str(left_data), str(right_data)))
         # agregamos al registro
-        self.add_register(equal)
+        self.add_register(right_data)
         self.line += equal
         return left_data
     
@@ -188,21 +184,17 @@ class Intermediate(DecafVisitor):
         return self.visitChildren(ctx)
 
     def visitInt_literal(self, ctx: DecafParser.Int_literalContext):
-        return ('int', (ctx.NUM().getText()))
+        return (Type_Enum.Integer, ctx.NUM().getText())
     
     def visitChar_literal(self, ctx: DecafParser.Char_literalContext):
-        return ('char', ctx.CHAR().getText())
+        return (Type_Enum.Char, ctx.CHAR().getText())
     
     def visitBool_literal(self, ctx: DecafParser.Bool_literalContext):
-        # esperamos true or false
         boolean = ctx.getText()
-        # si encuentra un true devolver 1
-        if (boolean == 'true'):
+        if boolean == 'true':
             boolean = '1'
-        # si es falso
-        else:
-            boolean = '0'
-        return ('boolean', boolean)
+            return boolean
+        return boolean
     
     ''' OPERACIONES DE EXPRESSIONES DE DECAF'''
 
@@ -223,6 +215,8 @@ class Intermediate(DecafVisitor):
         operation = ctx.higher_arith_op().getText() # op
         exp = self.registers.pop() # x
         
+        harith = Node_IC(operation, right_data, left_data)
+
         # creamos una nueva linea con los valores (x = y op z)
         expression = self.generate_code(exp, left_data, operation, right_data)
         print('HIGHER OPERATION: %s' % expression)
@@ -321,6 +315,7 @@ class Intermediate(DecafVisitor):
     def visitLocation(self, ctx: DecafParser.LocationContext, parent=None):
         method_name = ctx.ID().getText()
         offset = 0
+        print('method %s' % self.global_scope[::-1])
         # revisamos el scope
         for i in self.global_scope[::-1]:
             actual = self.scopes[i]
@@ -335,11 +330,10 @@ class Intermediate(DecafVisitor):
                     offset += default_variable[symbol.stype]
                 else:
                     data = symbol.stype.replace('struct', '')
-                    offset += actual.get_data_size(data) * symbol.param
+                    offset += actual.get_data_size(data) * int(symbol.param)
         
         if ctx.expression() != None:
             data = self.visit(ctx.expression())
-            print('entra data %s'%data)
             try:
                 if symbol.stype in default_variable:
                     offset += default_variable[symbol.stype] * int(ctx.expression().getText())
@@ -360,9 +354,12 @@ class Intermediate(DecafVisitor):
         '''
             creamos una variable con la inicial de la funcion
             ejemplo: main --> m+id_funcion
+            
+            instruccion de copia indexada
+                x = y[i]
+                x = valor en la ubicacion i unidad de memoria mas alla de y
+
         '''
-        print('offset %s' % (offset*2))
         symbol_name = actual.name[0] + str(actual.id)
-        # value = ('%s[%s]' % (symbol_name, str(offset)))
-        value = self.get_location(symbol_name, (offset*2))
+        value = self.get_location(symbol_name, (offset))
         return value

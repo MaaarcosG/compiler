@@ -7,6 +7,7 @@ default_variable = {'int': 4, 'boolean': 4, 'char': 4}
 
 def print_code(code):
     return '\n'.join(code)
+    
 class Type_Enum(Enum):
     Char = 0
     Boolean = 1
@@ -56,7 +57,7 @@ class SymbolTable:
             if i.name == data_name:
                 return i.size
         else:
-            return self.parent.getSize(data_name)
+            return self.parent.get_data_size(data_name)
     
     def getSize(self):
         size = 0

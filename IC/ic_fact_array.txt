@@ -14,10 +14,13 @@ L1:
 func end 
  
 main: 
-func begin 8
-M3[0] = 5 
-push param M3[0] 
+func begin 40
+M3[8] = 2 
+M3[12] = 3 
+r0 = M3[8] + M3[12] 
+M3[4] = r0 
+push param M3[4] 
 r0 = call factorial 
-M3[0] = 0 
+M3[16] = 0 
 func end 
  
