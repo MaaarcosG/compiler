@@ -76,6 +76,7 @@ class Intermediate(DecafVisitor):
             self.add_register(expresssion)
         return 0
     
+    ''' Llama a la funcion y verifica si hay parametros '''
     def visitMethod_call(self, ctx: DecafParser.Method_callContext):
         method_name = ctx.ID().getText()
         if ctx.arg() :
@@ -109,7 +110,7 @@ class Intermediate(DecafVisitor):
         jump_instruction = ('Label%s' % str(self.offset))
         self.offset += 1
         '''
-            salto condicionales y relop x goto L
+            salto condicionales (y relop x goto L)
             donde relop es la expression dentro del arbol 
         '''
         line_if = ('if %s goto %s \n' % (expression, jump_instruction))
@@ -153,6 +154,7 @@ class Intermediate(DecafVisitor):
         expression = self.visit(ctx.expression())
         end = ('Label%s' % str(self.offset))
         self.offset += 1
+        ''' Condicioon if para el while'''
         wc = ('if %s goto %s \n' % (expression, end))
         self.add_register(expression)
         self.code += wc
@@ -319,7 +321,7 @@ class Intermediate(DecafVisitor):
         # revisamos el scope
         for i in self.global_scope[::-1]:
             actual = self.scopes[i]
-            # miramos los simbolos
+            # miramos los simbolos que coincidan con los types
             if symbol := actual.getSymbol(method_name):
                 break
         for symbol in actual.symbol:
@@ -336,6 +338,7 @@ class Intermediate(DecafVisitor):
             data = self.visit(ctx.expression())
             print('data %s' % data)
             try:
+                ''' anadimos al location los valores de offset'''
                 if symbol.stype in default_variable:
                     offset += default_variable[symbol.stype] * int(ctx.expression().getText())
                 else:
@@ -350,6 +353,7 @@ class Intermediate(DecafVisitor):
                     st = symbol.stype.replace('struct', '')
                     ''' creamos un codigo donde tomamos el registro correspondiente a las asignaciones '''
                     # creamos la instrucciones (x = y op x)
+                    print('LOCATION %s = %s * %s' % (register, data, str(actual.get_data_size(st))))
                     self.code += ('%s = %s * %s \n' % (register, data, str(actual.get_data_size(st))))
                 offset = register
         
@@ -363,7 +367,7 @@ class Intermediate(DecafVisitor):
                 e y es el valor que se estara retornando
 
         '''
-        symbol_name = actual.name
+        symbol_name = actual.name[0] + str(actual.id)
         value = self.get_location(symbol_name, (offset))
         print('value: %s' % value)
         return value

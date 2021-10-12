@@ -1,23 +1,23 @@
 func begin 4
 factorial: 
-r0 = Factorial[0] == 0 
+r0 = F1[0] == 0 
 if r0 goto Label0 
 return 1 
 goto Label1 
 Label0: 
-r0 = Factorial[0] - 1 
+r0 = F1[0] - 1 
 push param r0 
 r0 = call factorial 
-r0 = Factorial[0] * 0 
+r0 = F1[0] * 0 
 return r0 
 Label1: 
 func end 
  
 func begin 8
 main: 
-Main[0] = 5 
-push param Main[0] 
+M3[0] = 5 
+push param M3[0] 
 r0 = call factorial 
-Main[0] = 0 
+M3[0] = 0 
 func end 
  
