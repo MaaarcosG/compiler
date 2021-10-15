@@ -2,6 +2,7 @@ from os import error
 from typing import Type
 from Grammar.DecafVisitor import DecafVisitor
 from Grammar.DecafParser import DecafParser
+from symbol_table import Type_Enum
 # librery create
 from decaf_errors import generic, expect_error, not_defined
 
@@ -12,7 +13,7 @@ class Evaluator(DecafVisitor):
         self.error = []
 
     ''' TIPOS DE DATOS --> Tomamos los tipos de datos, de la tabla de simbolo'''
-    
+
     def visitLiteral(self, ctx: DecafParser.LiteralContext):
         value = self.visitChildren(ctx)
         return value[0]
@@ -65,24 +66,22 @@ class Evaluator(DecafVisitor):
         if data == "boolean":
             return data
         else:
-            error = expect_error(data, 'boolean', ctx.start.line)
+            error = expect_error('boolean', data, ctx.start.line)
             self.error.append(error)
     
     def visitNegativeExpression(self, ctx: DecafParser.NegativeExpressionContext):
         data = self.visit(ctx.expression())
+        # si encuentre boolean
+        if data != Type_Enum.Integer:
+            error = generic('Only negate integer expression', ctx.start.line)
+            self.error.append(error)
         return data
 
     def visitAssigStmt(self, ctx: DecafParser.AssigStmtContext):
-        left = self.visit(ctx.left)
-        right = self.visit(ctx.right)
-        if left == None:
-            error = generic("%s is None" % ctx.left.getText(), ctx.start.line)
-            self.error.append(error)
-        elif right == None:
-            error = generic("%s is None" % ctx.left.getText(), ctx.start.line)
-            self.error.append(error)
-        elif left != right:
-            error = generic("%s expected %s found %s of type %s instead " % (ctx.left.getText(), left, ctx.right.getText(), right), ctx.start.line)
+        ltype = self.visit(ctx.left)
+        rtype = self.visit(ctx.right)
+        if ltype != rtype:
+            error = generic("Can only assing to two expressions with the same type left = %s right = %s" % (ltype, rtype), ctx.start.line)
             self.error.append(error)
         return None
     
@@ -91,7 +90,7 @@ class Evaluator(DecafVisitor):
         if ctx.expression() != None:
             data = self.visit(ctx.expression())
             if data != "int":
-                error = generic("Expected int got %s of type %s" % (ctx.expression(), data), ctx.start.line)
+                error = expect_error('int', "%s of type %s" % (ctx.expression(), data), ctx.start.line)
                 self.error.append(error)
 
         if parent != None:
@@ -125,7 +124,7 @@ class Evaluator(DecafVisitor):
                         val = self.visitLocation(ctx.location(), sm_type.replace('struct', ''))
                         return val
                     else:
-                        error = generic("%s has no subattributes" % name, ctx.start.line)
+                        error = generic('Location passed but %s is not a struct' % name, ctx.start.line)
                         self.error.append(error)
         return None
     
@@ -134,81 +133,51 @@ class Evaluator(DecafVisitor):
     def visitHigherArithOp(self, ctx: DecafParser.HigherArithOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.higher_arith_op().getText(), ctx.right.getText()))
         if (rtype == 'int') and (ltype == 'int'):
             return 'int'
-        elif (ltype == None):
-            error = generic('%s is None left data' % ctx.left.getText(), ctx.start.line)
-            self.error.append(error)
-        elif (rtype == None):
-            error = generic('%s is None right data' % ctx.right.getText(), ctx.start.line)
-            self.error.append(error)
         else:
-            error = expect_error(ltype, rtype, ctx.start.line)
+            error = expect_error('int', '%s, %s' % (ltype, rtype), ctx.start.line)
             self.error.append(error)
     
     def visitArithOp(self, ctx: DecafParser.ArithOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.arith_op().getText(), ctx.right.getText()))
         if (rtype == 'int') and (ltype == 'int'):
             return 'int'
-        elif (ltype == None):
-            error = generic('%s is None left data' % ctx.left.getText(), ctx.start.line)
-            self.error.append(error)
-        elif (rtype == None):
-            error = generic('%s is None right data' % ctx.right.getText(), ctx.start.line)
-            self.error.append(error)
         else:
-            error = expect_error(ltype, rtype, ctx.start.line)
+            error = expect_error('int', '%s and %s' % (ltype, rtype), ctx.start.line)
             self.error.append(error)
     
     def visitRelationOp(self, ctx: DecafParser.RelationOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.rel_op().getText(), ctx.right.getText()))
         if (rtype == 'int') and (ltype == 'int'):
             return 'boolean'
-        elif (ltype == None):
-            error = generic('%s is None left data' % ctx.left.getText(), ctx.start.line)
-            self.error.append(error)
-        elif (rtype == None):
-            error = generic('%s is None right data' % ctx.right.getText(), ctx.start.line)
-            self.error.append(error)
         else:
-            error = expect_error(ltype, rtype, ctx.start.line)
+            error = expect_error('int', '%s, %s' % (ltype, rtype), ctx.start.line)
             self.error.append(error)
     
     def visitEqualityOp(self, ctx: DecafParser.EqualityOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.eq_op().getText(), ctx.right.getText()))
         if (rtype == ltype):
             return 'boolean'
-        elif (ltype == None):
-            error = generic('%s is None left data' % ctx.left.getText(), ctx.start.line)
-            self.error.append(error)
-        elif (rtype == None):
-            error = generic('%s is None right data' % ctx.right.getText(), ctx.start.line)
-            self.error.append(error)
         else:
-            error = expect_error(ltype, rtype, ctx.start.line)
+            error = expect_error('boolean', '%s %s' % (ltype, rtype), ctx.start.line)
             self.error.append(error)
     
     def visitConditionalOp(self, ctx: DecafParser.ConditionalOpContext):
         ltype = self.visit(ctx.left)
         rtype = self.visit(ctx.right)
-        
+        # print('%s %s %s' % (ctx.left.getText(), ctx.cond_op().getText(), ctx.right.getText()))
         if (rtype == 'boolean') and (ltype == 'boolean'):
             return 'boolean'
-        elif (ltype == None):
-            error = generic('%s is None left data' % ctx.left.getText(), ctx.start.line)
-            self.error.append(error)
-        elif (rtype == None):
-            error = generic('%s is None right data' % ctx.right.getText(), ctx.start.line)
-            self.error.append(error)
         else:
-            error = expect_error(ltype, rtype, ctx.start.line)
+            error = expect_error('boolean', '%s %s' % (ltype, rtype), ctx.start.line)
             self.error.append(error)
     
     def visitParentExpression(self, ctx: DecafParser.ParentExpressionContext):
