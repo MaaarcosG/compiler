@@ -1,10 +1,12 @@
-from os import name
+from os import error, name
 from Grammar.DecafParser import DecafParser
 from Grammar.DecafLexer import DecafLexer
 from create_tree import get_printer_tree
 from antlr4 import *
 from decaf_function import CustomVisitor
 from decaf_errors import printer
+from intermediate_code import Intermediate
+from symbol_table import print_code
 import sys
 
 def compiler_gui(text):
@@ -17,12 +19,17 @@ def compiler_gui(text):
     visitor = CustomVisitor()
     visitor.visit(tree) 
 
+    # jalamos la informacion de la clase Intermediate creada
+    intermediate = Intermediate(visitor.total)
+    intermediate.visit(tree)
+    ic = intermediate.code
+
     name = 'gui'
     # creamos el arbol
     (view, _) = get_printer_tree(tree, name)
     view.render('tree_'+name+'.gv', './Interfaz/Static/img')
 
-    return visitor
+    return visitor, ic
 
 def main(argv):
     input = FileStream(argv[1])
@@ -34,6 +41,20 @@ def main(argv):
     visitor.visit(tree)   
     # print(visitor.scope.peek().id)
     # printer(visitor.validator.errors)
+
+    # obtenemos la informacion del archivo y lo mandamos para que se imprima el arbol
+    data = str(argv[1])
+    name = data.split('\\')[-1].split('.')[0]
+    
+    # jalamos la informacion de la clase Intermediate creada
+    intermediate = Intermediate(visitor.total)
+    intermediate.visit(tree)
+    ic = intermediate.code
+    
+    # GUARDAMOS EN UN TXT EL CODIGO INTERMEDIO
+    file = open(('./IC/ic_%s.txt' % name), 'w')
+    file.write(ic)
+    file.close
 
     '''
     # creamos el arbol

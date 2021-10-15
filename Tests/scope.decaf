@@ -2,7 +2,7 @@ class Program{
 	int a;
 	int b;
 	
-	void main(void){
+	void main(){
 		a = 3;
 		b = 4;
 		OutputInt(a);
@@ -24,7 +24,7 @@ class Program{
 	void OutputInt(int n){
 
 	}
-	int InputInt(void){
+	int InputInt(){
 		return 0;
 	}
 }

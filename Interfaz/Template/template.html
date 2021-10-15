@@ -10,7 +10,8 @@
               {% set navigation_bar = [
                   ('/', 'code', 'Code'),
                   ('/tree', 'tree', 'Tree'),
-                  ('/errors', 'errors', 'Errors')
+                  ('/errors', 'errors', 'Errors'),
+                  ('/intermediate_code', intermediate_code, 'Intermediate Code')
               ] -%}
               {% set active_page = active_page|default('code') -%}
               {% for href, id, caption in navigation_bar %}

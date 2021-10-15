@@ -1,0 +1,42 @@
+func begin 0
+main: 
+Global[0] = 3 
+Global[4] = 4 
+push param Global[0] 
+r0 = call OutputInt 
+push param 5 
+push param 6 
+push param 7 
+push param 8 
+r0 = call Test 
+r0 = Global[0] == 3 
+if r0 goto Label0 
+If2[0] = 5 
+push param If2[0] 
+r0 = call OutputInt 
+Label0: 
+push param Global[4] 
+r0 = call OutputInt 
+func end 
+ 
+func begin 16
+Test: 
+push param Test[0] 
+r0 = call OutputInt 
+push param Test[4] 
+r0 = call OutputInt 
+push param Test[8] 
+r0 = call OutputInt 
+push param Test[12] 
+r0 = call OutputInt 
+func end 
+ 
+func begin 4
+OutputInt: 
+func end 
+ 
+func begin 0
+InputInt: 
+return 0 
+func end 
+ 

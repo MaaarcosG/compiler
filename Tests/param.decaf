@@ -1,5 +1,5 @@
 class Program{
-	void main(void){
+	void main(){
 		int n;
 		int f;
 		int i;
@@ -14,7 +14,7 @@ class Program{
 	void OutputInt(int n){
 
 	}
-	int InputInt(void){
+	int InputInt(){
 		return 0;
 		}
 }

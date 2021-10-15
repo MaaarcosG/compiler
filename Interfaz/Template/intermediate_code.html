@@ -1,0 +1,9 @@
+{% extends "template.html" %}
+{% block title %}Codigo Intermedio{% endblock %}
+{% set active_page = "intermediate_code" %}
+{% block content %}
+<h3 class="titulo">CODIGO INTERMEDIO</h3>
+<form class="input-wrapper" action="/" method="POST">
+    <textarea class="source" name="src" cols="80">{{intermediate_code}}</textarea>
+</form>
+{% endblock %}

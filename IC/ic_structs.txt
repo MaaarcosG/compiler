@@ -1,0 +1,7 @@
+func begin 69
+main: 
+Main[65] = 1 
+r0 = Main[65] * 13 
+Main[r0] = 2 
+func end 
+ 
