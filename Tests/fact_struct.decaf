@@ -14,7 +14,7 @@ class Program{
 			return n*factorial(n-1);
 		}
 	}
-	void main(void){
+	void main(){
 		struct B y;
 		y.b = 5;
 		y.c.a = factorial(y.b);

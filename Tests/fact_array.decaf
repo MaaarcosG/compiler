@@ -6,7 +6,7 @@ class Program{
 			return n*factorial(n-1);
 		}
 	}
-	void main(void){
+	void main(){
 		int y[10];
 		y[2] = 2;
 		y[3] = 3;
