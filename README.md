@@ -38,6 +38,9 @@ Para revisar el arbol generado se encuentra en la carpeta Trees
 ## Ejecucion con GUI
 
 La interfaz grafica se encuentra en el archivo compiler_gui.py
+En esta actualmente se puede hacer lo siguienteÑ
+- Analizador Semantico
+- Generación de Codigo Intermedio
 
 ```bash
 $ git python compiler_gui.py
