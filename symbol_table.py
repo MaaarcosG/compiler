@@ -65,7 +65,7 @@ class SymbolTable:
             if symbol.stype in default_variable:
                 size += default_variable[symbol.stype] * int(symbol.param)
             else:
-                if left_size:=self.search(symbol.stype )!=None:
+                if left_size:=self.search(symbol.stype) != None:
                     size += left_size.size * int(symbol.param)
                 else:
                     left_size = self.parent.search(symbol.stype.replace('struct', ''))

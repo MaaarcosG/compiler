@@ -1,6 +1,6 @@
 func begin 12
 main: 
-Main[8] = 0 
+M1[8] = 0 
 push param 4 
 push param 2 
 push param 6 
@@ -22,24 +22,24 @@ func end
  
 func begin 68
 Test: 
-r0 = Test[0] / Test[4] 
-r1 = Test[0] / Test[4] 
-r2 = r1 * Test[8] 
-r1 = r2 - Test[12] 
-r2 = r1 + Test[16] 
-r1 = r2 + Test[20] 
-r2 = r1 + Test[24] 
-r1 = r2 + Test[28] 
-r2 = r1 + Test[32] 
-r1 = r2 + Test[36] 
-r2 = r1 + Test[40] 
-r1 = r2 + Test[44] 
-r2 = r1 + Test[48] 
-r1 = r2 + Test[52] 
-r2 = r1 + Test[56] 
-r1 = r2 + Test[60] 
-Test[64] = r1 
-push param Test[64] 
+r0 = T2[0] / T2[4] 
+r1 = T2[0] / T2[4] 
+r2 = r1 * T2[8] 
+r1 = r2 - T2[12] 
+r2 = r1 + T2[16] 
+r1 = r2 + T2[20] 
+r2 = r1 + T2[24] 
+r1 = r2 + T2[28] 
+r2 = r1 + T2[32] 
+r1 = r2 + T2[36] 
+r2 = r1 + T2[40] 
+r1 = r2 + T2[44] 
+r2 = r1 + T2[48] 
+r1 = r2 + T2[52] 
+r2 = r1 + T2[56] 
+r1 = r2 + T2[60] 
+T2[64] = r1 
+push param T2[64] 
 r1 = call OutputInt 
 func end 
  

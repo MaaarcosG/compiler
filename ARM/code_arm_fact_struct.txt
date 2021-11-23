@@ -1,0 +1,29 @@
+.section .data
+g0 TIMES 0 DB 0
+i2 TIMES 0 DB 0
+f1 TIMES 1 DB 0
+m3 TIMES 2 DB 0
+.section .text
+.global start
+factorial: 
+mov r0 F1[0]
+je L0
+je L1
+L0: 
+mov r0 F1[0]
+mov R0 F1[0]
+mov R1 1
+sub R0 R1
+mov r0 call
+mov r0 F1[0]
+mov R1 F1[0]
+mov R2 0
+sub R1 R2
+L1: 
+ret
+_start:
+main: 
+mov M3[0] 5
+mov r0 call
+mov M3[0] 0
+ret

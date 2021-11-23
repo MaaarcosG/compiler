@@ -1,0 +1,40 @@
+.section .data
+g0 TIME DB 0 
+p1 TIME DB 0 
+w0 TIME DB 0 
+f4 TIME DB 0 
+m1 TIME DB 0 
+.section .text
+.global _start
+print: 
+  ret
+fib: 
+  mov F2[4] 0 
+  mov F2[8] 1 
+L0: 
+  mov r0 F2[0] 
+  mov R0 F2[0] 
+  mov R1 2 
+  sub R0 R1 
+  mov r1 r0 
+  je L1 
+  mov r1 F2[4] 
+  mov R1 F2[4] 
+  mov R2 F2[8] 
+  add R1 R2 
+  mov F2[12] r1 
+  mov F2[4] F2[8] 
+  mov F2[8] F2[12] 
+  mov r1 F2[0] 
+  mov R2 F2[0] 
+  mov R3 1 
+  sub R2 R3 
+  mov F2[0] r1 
+  je L0 
+L1: 
+  ret
+_start:
+main: 
+  mov M4[0] 5 
+  mov r1 call 
+  ret

@@ -1,0 +1,14 @@
+class Program {
+    int a;
+    int c;
+    int ejemplo(){
+        int b;
+        int c;
+        b = 5 + 3;
+        return b;
+    }
+    void main(){
+        a = 10 + 5;
+        c = 10 - 4;
+    }
+}

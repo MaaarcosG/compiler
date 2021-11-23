@@ -1,0 +1,26 @@
+.section .data
+g0 TIMES 2 DB 0
+e1 TIMES 2 DB 0
+m2 TIMES 0 DB 0
+.section .text
+.global start
+ejemplo:
+mov r0 5
+mov R0 5
+mov R1 3
+add R0 R1
+mov E1[0] r0
+ret
+_start:
+main:
+mov r0 10
+mov R1 10
+mov R2 5
+add R1 R2
+mov G0[0] r0
+mov r0 10
+mov R2 10
+mov R3 4
+sub R2 R3
+mov G0[4] r0
+ret

@@ -56,8 +56,8 @@ class Intermediate(DecafVisitor):
         self.global_scope.append(method_name)
         actual_scope = self.scopes[self.global_scope[-1]]
         ''' COMIENZA EL CODIGO INTERMEDIO '''
-        start_method = ('func begin %s\n' % str(actual_scope.getSize()))
-        start_method += ('%s: \n') % method_name
+        start_method = ('%s: \n') % method_name
+        start_method += ('func begin %s\n' % str(actual_scope.getSize()))
         self.code += start_method
         self.visitChildren(ctx)
         end = ('func end \n \n')
@@ -107,7 +107,7 @@ class Intermediate(DecafVisitor):
         print(self.scope_ids)
         '''
         expression = self.visit(ctx.expression())
-        jump_instruction = ('Label%s' % str(self.offset))
+        jump_instruction = ('L%s' % str(self.offset))
         self.offset += 1
         '''
             salto condicionales (y relop x goto L)
@@ -125,7 +125,7 @@ class Intermediate(DecafVisitor):
                 se ejecuta la instruccion de la etiqueta con goto L
             '''
             end = '%s: \n' % jump_instruction
-            final = 'Label%s' % str(self.offset)
+            final = 'L%s' % str(self.offset)
             self.code += 'goto %s \n' % final
             self.code += end
             self.visit(ctx.block2)
@@ -147,12 +147,12 @@ class Intermediate(DecafVisitor):
         print(self.global_scope)
         print(self.scope_ids)
         '''
-        start = ('Label%s' % str(self.offset))
+        start = ('L%s' % str(self.offset))
         line_while = ('%s: \n' % start)
         self.offset += 1
         self.code += line_while
         expression = self.visit(ctx.expression())
-        end = ('Label%s' % str(self.offset))
+        end = ('L%s' % str(self.offset))
         self.offset += 1
         ''' Condicioon if para el while'''
         wc = ('if %s goto %s \n' % (expression, end))

@@ -1,0 +1,15 @@
+ejemplo: 
+func begin 8
+r0 = 5 + 3 
+E1[0] = r0 
+return E1[0] 
+func end 
+ 
+main: 
+func begin 0
+r0 = 10 + 5 
+G0[0] = r0 
+r0 = 10 - 4 
+G0[4] = r0 
+func end 
+ 
