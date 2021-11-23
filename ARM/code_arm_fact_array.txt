@@ -2,7 +2,7 @@
 g0 TIME DB 0 
 i0 TIME DB 0 
 f1 TIME DB 0 
-m2 TIME DB 0 
+m10 TIME DB 0 
 .section .text
 .global _start
 factorial: 
@@ -23,7 +23,13 @@ L1:
   ret
 _start:
 main: 
-  mov M3[0] 5 
+  mov M3[8] 2 
+  mov M3[12] 3 
+  mov r0 M3[8] 
+  mov R2 M3[8] 
+  mov R3 M3[12] 
+  add R2 R3 
+  mov M3[4] r0 
   mov r0 call 
-  mov M3[0] 0 
+  mov M3[16] 0 
   ret

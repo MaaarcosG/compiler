@@ -2,20 +2,20 @@ main:
 func begin 8
 M1[0] = 0 
 M1[4] = 0 
-Label0: 
+L0: 
 r0 = M1[0] < 10 
-if r0 goto Label1 
+if r0 goto L1 
 r0 = M1[0] * 4 
 r1 = call InputInt 
 G0[r0] = 0 
 r1 = M1[0] + 1 
 M1[0] = r1 
-goto Label0 
-Label1: 
+goto L0 
+L1: 
 M1[0] = 0 
-Label2: 
+L2: 
 r1 = M1[0] < 10 
-if r1 goto Label3 
+if r1 goto L3 
 r1 = M1[0] * 4 
 push param G0[r1] 
 push param M1[4] 
@@ -24,8 +24,8 @@ push param 0
 r2 = call OutputInt 
 r2 = M1[0] + 1 
 M1[0] = r2 
-goto Label2 
-Label3: 
+goto L2 
+L3: 
 func end 
  
 OutputInt: 
@@ -40,20 +40,20 @@ func end
 Ackerman: 
 func begin 8
 r2 = A6[0] == 0 
-if r2 goto Label4 
+if r2 goto L4 
 r2 = A6[4] + 1 
 return r2 
-goto Label5 
-Label4: 
+goto L5 
+L4: 
 r2 = A6[4] == 0 
-if r2 goto Label5 
+if r2 goto L5 
 r2 = A6[0] - 1 
 push param r2 
 push param 1 
 r2 = call Ackerman 
 return 0 
-goto Label6 
-Label5: 
+goto L6 
+L5: 
 r2 = A6[0] - 1 
 push param r2 
 push param A6[0] 
@@ -63,7 +63,7 @@ r2 = call Ackerman
 push param 0 
 r2 = call Ackerman 
 return 0 
-Label6: 
-Label5: 
+L6: 
+L5: 
 func end 
  

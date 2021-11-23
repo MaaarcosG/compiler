@@ -1,77 +1,85 @@
 .section .data
-g0 TIMES 10 DB 0
-w2 TIMES 0 DB 0
-w3 TIMES 0 DB 0
-m1 TIMES 2 DB 0
-O4 TIMES 1 DB 0
-I5 TIMES 0 DB 0
-i8 TIMES 0 DB 0
-i7 TIMES 0 DB 0
-A6 TIMES 2 DB 0
+g10 TIME DB 0 
+w0 TIME DB 0 
+w0 TIME DB 0 
+m2 TIME DB 0 
+O1 TIME DB 0 
+I0 TIME DB 0 
+i0 TIME DB 0 
+i0 TIME DB 0 
+A2 TIME DB 0 
 .section .text
-.global start
+.global _start
 _start:
-main:
-mov M1[0] 0
-mov M1[4] 0
-Label0:
-mov r0 M1[0]
-mov r0 M1[0]
-mov R0 M1[0]
-mov R1 4
-sub R0 R1
-mov r1 call
-mov G0[r0] 0
-mov r1 M1[0]
-mov R1 M1[0]
-mov R2 1
-add R1 R2
-mov M1[0] r1
-Label1:
-mov M1[0] 0
-Label2:
-mov r1 M1[0]
-mov r1 M1[0]
-mov R2 M1[0]
-mov R3 4
-sub R2 R3
-mov r2 call
-mov r2 call
-mov r2 M1[0]
-mov R3 M1[0]
-mov R4 1
-add R3 R4
-mov M1[0] r2
-Label3:
-ret
-OutputInt:
-ret
-InputInt:
-ret
-Ackerman:
-mov r2 A6[0]
-mov r2 A6[4]
-mov R4 A6[4]
-mov R5 1
-add R4 R5
-Label4:
-mov r2 A6[4]
-mov r2 A6[0]
-mov R5 A6[0]
-mov R6 1
-sub R5 R6
-mov r2 call
-Label5:
-mov r2 A6[0]
-mov R6 A6[0]
-mov R7 1
-sub R6 R7
-mov r2 A6[4]
-mov R7 A6[4]
-mov R8 1
-sub R7 R8
-mov r2 call
-mov r2 call
-Label6:
-Label5:
-ret
+main: 
+  mov M1[0] 0 
+  mov M1[4] 0 
+L0: 
+  mov r0 M1[0] 
+  je L1 
+  mov r0 M1[0] 
+  mov R0 M1[0] 
+  mov R1 4 
+  sub R0 R1 
+  mov r1 call 
+  mov G0[r0] 0 
+  mov r1 M1[0] 
+  mov R1 M1[0] 
+  mov R2 1 
+  add R1 R2 
+  mov M1[0] r1 
+  je L0 
+L1: 
+  mov M1[0] 0 
+L2: 
+  mov r1 M1[0] 
+  je L3 
+  mov r1 M1[0] 
+  mov R2 M1[0] 
+  mov R3 4 
+  sub R2 R3 
+  mov r2 call 
+  mov r2 call 
+  mov r2 M1[0] 
+  mov R3 M1[0] 
+  mov R4 1 
+  add R3 R4 
+  mov M1[0] r2 
+  je L2 
+L3: 
+  ret
+OutputInt: 
+  ret
+InputInt: 
+  ret
+Ackerman: 
+  mov r2 A6[0] 
+  je L4 
+  mov r2 A6[4] 
+  mov R4 A6[4] 
+  mov R5 1 
+  add R4 R5 
+  je L5 
+L4: 
+  mov r2 A6[4] 
+  je L5 
+  mov r2 A6[0] 
+  mov R5 A6[0] 
+  mov R6 1 
+  sub R5 R6 
+  mov r2 call 
+  je L6 
+L5: 
+  mov r2 A6[0] 
+  mov R6 A6[0] 
+  mov R7 1 
+  sub R6 R7 
+  mov r2 A6[4] 
+  mov R7 A6[4] 
+  mov R8 1 
+  sub R7 R8 
+  mov r2 call 
+  mov r2 call 
+L6: 
+L5: 
+  ret
